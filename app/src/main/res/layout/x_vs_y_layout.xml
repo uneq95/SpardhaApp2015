@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_rectangle">
+
+    <RelativeLayout
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+
+
+        <com.ritesh.spardha.custom_views.RoundedImageView
+            android:id="@+id/ivTeam1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/iitbhu_logo"
+            android:layout_marginTop="10dp" />
+        <com.ritesh.spardha.custom_views.RoundedImageView
+            android:id="@+id/ivTeam2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/iitd_logo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:background="@drawable/vs_final"
+            android:layout_alignBottom="@+id/ivTeam2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout"
+            android:layout_below="@+id/ivTeam1"
+            android:layout_alignRight="@+id/ivTeam1"
+            android:layout_alignEnd="@+id/ivTeam1"
+            android:layout_marginRight="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="26dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/background_floating_material_dark"></LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="IIT-BHU"
+                android:id="@+id/tvTeam1"
+                android:layout_below="@+id/ivTeam1"
+                android:layout_alignRight="@+id/ivTeam1"
+                android:layout_alignEnd="@+id/ivTeam1" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/background_floating_material_dark"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_alignRight="@+id/ivTeam2"
+            android:layout_alignEnd="@+id/ivTeam2"
+            android:layout_marginRight="20dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/background_floating_material_dark"></LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="IIT DELHI"
+                android:id="@+id/tvTeam2"
+                android:layout_alignTop="@+id/linearLayout2"
+                android:layout_alignRight="@+id/ivTeam2"
+                android:layout_alignEnd="@+id/ivTeam2" />
+
+            <LinearLayout
+                android:background="@color/background_floating_material_dark"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="10dp"
+            android:layout_alignRight="@+id/ivTeam2"
+            android:layout_alignEnd="@+id/ivTeam2"
+            android:layout_alignLeft="@+id/ivTeam1"
+            android:layout_alignStart="@+id/ivTeam1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Badminton Mens Singles"
+                android:id="@+id/tvMatchGenre"
+                android:gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
