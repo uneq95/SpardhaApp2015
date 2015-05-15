@@ -17,13 +17,13 @@ public class ContactsHelper {
     private String MobileNumber="0000000000";
     private String DisplayName="New Contact";
 
-    private ContactsHelper(String MobileNumber,String DisplayName,Context context){
+    public ContactsHelper(String MobileNumber,String DisplayName,Context context){
         this.MobileNumber=MobileNumber;
         this.DisplayName=DisplayName;
         this.context=context;
     }
 
-    private void insertContact(){
+    public void insertContact(){
 
         ArrayList< ContentProviderOperation > ops = new ArrayList <ContentProviderOperation> ();
 
@@ -70,9 +70,9 @@ public class ContactsHelper {
 
     }
 
-    private void makeCall(){
+    public void makeCall(){
 
-        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse(String.format("tel:%s", MobileNumber)));
         context.startActivity(intent);
     }

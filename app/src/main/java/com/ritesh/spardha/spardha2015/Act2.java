@@ -4,16 +4,30 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.ritesh.spardha.ContactFunctions.ContactsHelper;
 
 
 public class Act2 extends ActionBarActivity {
 
+    ContactsHelper contactsHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.x_vs_y_layout);
+        setContentView(R.layout.single_contact_layout);
+        contactsHelper = new ContactsHelper("+918953839075", "Ritesh Kumar", this);
     }
 
+
+    public void onClickCall(View v) {
+        contactsHelper.makeCall();
+    }
+
+    public void onClickAddToContacts(View v) {
+        contactsHelper.insertContact();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -35,5 +49,10 @@ public class Act2 extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
