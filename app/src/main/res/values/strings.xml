@@ -16,10 +16,13 @@
         <item name="sports">Sports</item>
         <item name="informals">Informals</item>
         <item name="maps">Maps</item>
-        <item name="a">a</item>
-        <item name="a">a</item>
+        <item name="gallery">Gallery</item>
+        <item name="youtube">YouTube</item>
         <item name="closing">Closing Ceremony</item>
-        <item name="contacts">Contacts</item>
+        <item name="sponsers">Sponsers</item>
     </string-array>
+
+    <string name="title_activity_spardha_gallery">SpardhaGallery</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

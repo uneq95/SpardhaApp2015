@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
         tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
 
         pager = (ViewPager) findViewById(R.id.pager);
-        adapter = new MyPagerAdapter(getSupportFragmentManager(),this);
+        adapter = new MyPagerAdapter(getSupportFragmentManager(), this);
 
         pager.setAdapter(adapter);
 
@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
 
         tabs.setViewPager(pager);
         //changeColor(currentColor);
-        startActivity(new Intent(this,Act2.class));
+        //startActivity(new Intent(this, Act2.class));
     }
 
     private void changeColor(int newColor) {
@@ -63,7 +63,7 @@ public class MainActivity extends ActionBarActivity {
 
             Drawable colorDrawable = new ColorDrawable(newColor);
             Drawable bottomDrawable = getResources().getDrawable(R.drawable.actionbar_bottom);
-            LayerDrawable ld = new LayerDrawable(new Drawable[] { colorDrawable, bottomDrawable });
+            LayerDrawable ld = new LayerDrawable(new Drawable[]{colorDrawable, bottomDrawable});
 
             if (oldBackground == null) {
 
@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
 
             } else {
 
-                TransitionDrawable td = new TransitionDrawable(new Drawable[] { oldBackground, ld });
+                TransitionDrawable td = new TransitionDrawable(new Drawable[]{oldBackground, ld});
 
                 // workaround for broken ActionBarContainer drawable handling on
                 // pre-API 17 builds
@@ -101,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
         currentColor = newColor;
 
     }
+
     private Drawable.Callback drawableCallback = new Drawable.Callback() {
         @Override
         public void invalidateDrawable(Drawable who) {

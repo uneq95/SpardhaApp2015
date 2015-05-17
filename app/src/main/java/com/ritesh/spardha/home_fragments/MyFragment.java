@@ -47,12 +47,12 @@ public class MyFragment extends Fragment {
         fl.setLayoutParams(params);
 
         final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources()
-                .  getDisplayMetrics());
-        params.setMargins(margin,margin,margin,margin);
-        View v1,v2;
-        v1=inflater.inflate(R.layout.x_vs_y_layout,container,false);
-        v2=inflater.inflate(R.layout.x_vs_y_layout,container,false);
-        ViewGroup.LayoutParams viewParams= new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                .getDisplayMetrics());
+        params.setMargins(margin, margin, margin, margin);
+        View v1, v2;
+        v1 = inflater.inflate(R.layout.x_vs_y_layout, container, false);
+        v2 = inflater.inflate(R.layout.x_vs_y_layout, container, false);
+        ViewGroup.LayoutParams viewParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 //        TextView v = new TextView(getActivity());
 
         v1.setLayoutParams(params);

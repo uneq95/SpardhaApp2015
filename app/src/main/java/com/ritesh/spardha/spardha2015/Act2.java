@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 
 import com.ritesh.spardha.ContactFunctions.ContactsHelper;
+import com.ritesh.spardha.adapters.CategoriesGridAdapter;
 
 
 public class Act2 extends ActionBarActivity {
@@ -16,8 +18,13 @@ public class Act2 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.single_contact_layout);
-        contactsHelper = new ContactsHelper("+918953839075", "Ritesh Kumar", this);
+        setContentView(R.layout.categories_grid_layout);
+        GridView gridView = (GridView) findViewById(R.id.gridView);
+        String[] catArray = getResources().getStringArray(R.array.categories_array);
+        CategoriesGridAdapter categoriesGridAdapter = new CategoriesGridAdapter(this, catArray, R.drawable.bkg1);
+        gridView.setAdapter(categoriesGridAdapter);
+        // setContentView(R.layout.single_contact_layout);
+        // contactsHelper = new ContactsHelper("+918953839075", "Ritesh Kumar", this);
     }
 
 
