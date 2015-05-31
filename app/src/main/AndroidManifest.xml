@@ -24,9 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SpardhaGallery"
-            android:label="@string/title_activity_spardha_gallery" >
+            android:name=".LocationActivity"
+            android:label="Locations" >
         </activity>
+        <activity android:name=".FadingActionBar"
+            android:label="Sports"/>
     </application>
 
 </manifest>

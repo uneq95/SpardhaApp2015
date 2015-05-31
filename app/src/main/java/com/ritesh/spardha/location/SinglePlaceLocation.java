@@ -6,12 +6,15 @@ package com.ritesh.spardha.location;
 public class SinglePlaceLocation {
 
     public String placeName,placeLongitude,placeLatitude;
+    public int categoryInt;
 
-    public SinglePlaceLocation(String placeName,String placeLongitude,String placeLatitude){
+    public SinglePlaceLocation(int category,String placeName,String placeLongitude,String placeLatitude){
         this.placeName=placeName;
         this.placeLongitude=placeLongitude;
         this.placeLatitude=placeLatitude;
+        this.categoryInt=category;
     }
+
 
     public void setPlaceName(String placeName){
         this.placeName=placeName;
@@ -22,6 +25,9 @@ public class SinglePlaceLocation {
     public void setPlaceLatitude(String placeLatitude){
         this.placeLatitude=placeLatitude;
     }
+    public void setPlaceCategory(int category){
+        this.categoryInt=category;
+    }
 
     public String getPlaceName(){
         return placeName;
@@ -31,6 +37,9 @@ public class SinglePlaceLocation {
     }
     public String getPlaceLatitude(){
         return placeLatitude;
+    }
+    public int getPlaceCategory(){
+        return categoryInt;
     }
 
 }

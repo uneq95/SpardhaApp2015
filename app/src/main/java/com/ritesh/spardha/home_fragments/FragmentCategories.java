@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ritesh.spardha.adapters.CategoriesGridAdapter;
+import com.ritesh.spardha.spardha2015.FadingActionBar;
+import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.R;
 
 /**
@@ -56,13 +58,17 @@ public class FragmentCategories extends Fragment implements AdapterView.OnItemCl
         if(position==4){
             Toast.makeText(getActivity(),"Here is the gallery..",Toast.LENGTH_SHORT).show();
         }if(position==3){
-            Uri gmmIntentUri=Uri.parse("http://maps.google.com/maps?saddr="+"28.5747500"+","+"77.3204900"+"&daddr="+"28.5701755"+","+"77.3253555");
-            //Uri.parse("http://maps.google.com/maps?saddr="+src_lat+","+src_ltg+"&daddr="+des_lat+","+des_ltg))
-            //Uri gmmIntentUri = Uri.parse("google.navigation:q=India+Gate,+Delhi+India");
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-            startActivity(mapIntent);
+            startActivity(new Intent(getActivity(), LocationActivity.class));
+//            Uri gmmIntentUri=Uri.parse("http://maps.google.com/maps?saddr="+"28.5747500"+","+"77.3204900"+"&daddr="+"28.5701755"+","+"77.3253555");
+//            //Uri.parse("http://maps.google.com/maps?saddr="+src_lat+","+src_ltg+"&daddr="+des_lat+","+des_ltg))
+//            //Uri gmmIntentUri = Uri.parse("google.navigation:q=India+Gate,+Delhi+India");
+//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//            mapIntent.setPackage("com.google.android.apps.maps");
+//            startActivity(mapIntent);
+        }if(position==1){
+            startActivity(new Intent(getActivity(), FadingActionBar.class));
         }
+
 
     }
 }
