@@ -22,6 +22,7 @@
         <item name="sponsers">Sponsers</item>
     </string-array>
     <string-array name="itemslist">
+        <item>Home</item>
         <item>Contacts</item>
         <item>Get Directions</item>
         <item>Register</item>

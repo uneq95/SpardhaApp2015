@@ -16,7 +16,7 @@ import com.ritesh.spardha.spardha2015.R;
 public class CustomNavigationDrawerAdapter extends BaseAdapter {
     Context context;
     String[] content;
-    int[] picture = {android.R.drawable.ic_menu_my_calendar,android.R.drawable.ic_dialog_map,android.R.drawable.ic_menu_add,android.R.drawable.ic_dialog_dialer,android.R.drawable.btn_star,android.R.drawable.ic_dialog_info};
+    int[] picture = {R.drawable.home,android.R.drawable.ic_menu_my_calendar,android.R.drawable.ic_dialog_map,android.R.drawable.ic_menu_add,android.R.drawable.ic_dialog_dialer,android.R.drawable.btn_star,android.R.drawable.ic_dialog_info};
 
     public CustomNavigationDrawerAdapter(Context context) {
         this.context = context;

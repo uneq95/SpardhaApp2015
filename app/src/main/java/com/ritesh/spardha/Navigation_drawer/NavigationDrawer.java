@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ritesh.spardha.spardha2015.LocationActivity;
+import com.ritesh.spardha.spardha2015.MainActivity;
 import com.ritesh.spardha.spardha2015.R;
 
 public class NavigationDrawer extends Fragment implements AdapterView.OnItemClickListener /*implements AdapterView.OnItemClickListener */{
@@ -50,7 +51,7 @@ public class NavigationDrawer extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-    if(position==1){
+    if(position==2){
             startActivity(new Intent(getActivity(), LocationActivity.class));
 //            Uri gmmIntentUri=Uri.parse("http://maps.google.com/maps?saddr="+"28.5747500"+","+"77.3204900"+"&daddr="+"28.5701755"+","+"77.3253555");
 //            //Uri.parse("http://maps.google.com/maps?saddr="+src_lat+","+src_ltg+"&daddr="+des_lat+","+des_ltg))
@@ -60,6 +61,10 @@ public class NavigationDrawer extends Fragment implements AdapterView.OnItemClic
 //            startActivity(mapIntent);
 
     }
+        if(position==0){
+            Intent i = new Intent(v.getContext(), MainActivity.class);
+            startActivity(i);
+        }
     }
 
 }

@@ -1,6 +1,8 @@
 package com.ritesh.spardha.spardha2015;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.ritesh.spardha.Navigation_drawer.NavigationDrawer;
 import com.ritesh.spardha.location.IITPlacesOfInterest;
 import com.ritesh.spardha.location.SinglePlaceLocation;
 
@@ -36,6 +39,8 @@ public class LocationActivity extends Activity {
         loadLocationLists();
         setCategorySpinners();
         setLocationSpinners();
+
+        
     }
 
     public void loadLocationData() {
