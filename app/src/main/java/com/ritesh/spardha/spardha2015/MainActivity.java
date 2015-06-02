@@ -1,5 +1,7 @@
 package com.ritesh.spardha.spardha2015;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +16,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.ritesh.spardha.Navigation_drawer.NavigationDrawer;
 import com.ritesh.spardha.adapters.MyPagerAdapter;
 
 /**
@@ -52,6 +55,13 @@ public class MainActivity extends ActionBarActivity {
         tabs.setViewPager(pager);
         //changeColor(currentColor);
         //startActivity(new Intent(this, Act2.class));
+        NavigationDrawer fr = new NavigationDrawer();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.activitymainid,fr,"asdf");
+        ft.commit();
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void changeColor(int newColor) {

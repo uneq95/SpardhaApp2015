@@ -21,7 +21,14 @@
         <item name="closing">Closing Ceremony</item>
         <item name="sponsers">Sponsers</item>
     </string-array>
-
+    <string-array name="itemslist">
+        <item>Contacts</item>
+        <item>Get Directions</item>
+        <item>Register</item>
+        <item>Settings</item>
+        <item>FeedBack</item>
+        <item>About Us</item>
+    </string-array>
     <string name="title_activity_spardha_gallery">SpardhaGallery</string>
     <string name="hello_world">Hello world!</string>
 

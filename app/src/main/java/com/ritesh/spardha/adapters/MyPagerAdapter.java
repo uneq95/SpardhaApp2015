@@ -23,6 +23,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         this.context = c;
     }
 
+
     @Override
     public CharSequence getPageTitle(int position) {
         return TITLES[position];
