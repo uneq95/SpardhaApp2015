@@ -16,26 +16,11 @@ import com.ritesh.spardha.spardha2015.R;
 public class CustomNavigationDrawerAdapter extends BaseAdapter {
     Context context;
     String[] content;
-    int[] picture = {R.drawable.home,android.R.drawable.ic_menu_my_calendar,android.R.drawable.ic_dialog_map,android.R.drawable.ic_menu_add,android.R.drawable.ic_dialog_dialer,android.R.drawable.btn_star,android.R.drawable.ic_dialog_info};
+    int[] picture = {R.drawable.home,android.R.drawable.ic_menu_my_calendar,android.R.drawable.ic_dialog_map,R.drawable.images,android.R.drawable.ic_menu_add,android.R.drawable.ic_dialog_dialer,android.R.drawable.btn_star,android.R.drawable.ic_dialog_info};
 
     public CustomNavigationDrawerAdapter(Context context) {
         this.context = context;
         content = context.getResources().getStringArray(R.array.itemslist);
-    }
-
-    @Override
-    public int getCount() {
-        return content.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return content[position];
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
     }
 
     @Override
@@ -54,5 +39,21 @@ public class CustomNavigationDrawerAdapter extends BaseAdapter {
         titleiv.setImageResource(picture[position]);
         return row;
     }
+    @Override
+    public int getCount() {
+        return content.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return content[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+
 }
 

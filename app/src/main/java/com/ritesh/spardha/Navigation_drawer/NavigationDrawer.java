@@ -19,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ritesh.spardha.ContactFunctions.ContactsHelper;
+import com.ritesh.spardha.CustomizeGallery.GalleryMainActivity;
 import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.MainActivity;
 import com.ritesh.spardha.spardha2015.R;
@@ -65,6 +67,15 @@ public class NavigationDrawer extends Fragment implements AdapterView.OnItemClic
             Intent i = new Intent(v.getContext(), MainActivity.class);
             startActivity(i);
         }
+        if(position==1) {
+            Intent j = new Intent(v.getContext(), ContactsHelper.class);
+            startActivity(j);
+        }
+        if(position==3){
+            Intent kl = new Intent(v.getContext(), GalleryMainActivity.class);
+            startActivity(kl);
+        }
+        }
     }
 
-}
+

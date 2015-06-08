@@ -1,0 +1,4 @@
+ListBuddiesFragment == MainFragment
+ListBuddies=CustomGallery
+MainActivity == GalleryMainActivity
+BaseActivity = GallerBaseActivity
