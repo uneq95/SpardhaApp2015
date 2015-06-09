@@ -37,6 +37,7 @@
         <item name="closing">Closing Ceremony</item>
         <item name="sponsers">Sponsers</item>
     </string-array>
+
     <string-array name="itemslist">
         <item>Home</item>
         <item>Contacts</item>

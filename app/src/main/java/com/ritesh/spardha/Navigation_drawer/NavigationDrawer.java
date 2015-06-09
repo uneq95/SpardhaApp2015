@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.ritesh.spardha.ContactFunctions.ContactsHelper;
 import com.ritesh.spardha.CustomizeGallery.GalleryMainActivity;
+import com.ritesh.spardha.registration.RegistrationForm;
 import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.MainActivity;
 import com.ritesh.spardha.spardha2015.R;
@@ -53,28 +54,32 @@ public class NavigationDrawer extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-    if(position==2){
-            startActivity(new Intent(getActivity(), LocationActivity.class));
-//            Uri gmmIntentUri=Uri.parse("http://maps.google.com/maps?saddr="+"28.5747500"+","+"77.3204900"+"&daddr="+"28.5701755"+","+"77.3253555");
-//            //Uri.parse("http://maps.google.com/maps?saddr="+src_lat+","+src_ltg+"&daddr="+des_lat+","+des_ltg))
-//            //Uri gmmIntentUri = Uri.parse("google.navigation:q=India+Gate,+Delhi+India");
-//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-//            mapIntent.setPackage("com.google.android.apps.maps");
-//            startActivity(mapIntent);
+        if(position==2){
+                startActivity(new Intent(getActivity(), LocationActivity.class));
+    //            Uri gmmIntentUri=Uri.parse("http://maps.google.com/maps?saddr="+"28.5747500"+","+"77.3204900"+"&daddr="+"28.5701755"+","+"77.3253555");
+    //            //Uri.parse("http://maps.google.com/maps?saddr="+src_lat+","+src_ltg+"&daddr="+des_lat+","+des_ltg))
+    //            //Uri gmmIntentUri = Uri.parse("google.navigation:q=India+Gate,+Delhi+India");
+    //            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+    //            mapIntent.setPackage("com.google.android.apps.maps");
+    //            startActivity(mapIntent);
 
-    }
-        if(position==0){
-            Intent i = new Intent(v.getContext(), MainActivity.class);
-            startActivity(i);
         }
-        if(position==1) {
-            Intent j = new Intent(v.getContext(), ContactsHelper.class);
-            startActivity(j);
-        }
-        if(position==3){
-            Intent kl = new Intent(v.getContext(), GalleryMainActivity.class);
-            startActivity(kl);
-        }
+            if(position==0){
+                Intent i = new Intent(v.getContext(), MainActivity.class);
+                startActivity(i);
+            }
+            if(position==1) {
+                Intent j = new Intent(v.getContext(), ContactsHelper.class);
+                startActivity(j);
+            }
+            if(position==3){
+                Intent kl = new Intent(v.getContext(), GalleryMainActivity.class);
+                startActivity(kl);
+            }
+            if (position == 4){
+                Intent k = new Intent(v.getContext(), RegistrationForm.class);
+                startActivity(k);
+            }
         }
     }
 
