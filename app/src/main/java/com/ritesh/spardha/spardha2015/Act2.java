@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 
-import com.ritesh.spardha.ContactFunctions.ContactsHelper;
+import com.ritesh.spardha.contact_functions.ContactsHelper;
 import com.ritesh.spardha.adapters.CategoriesGridAdapter;
 
 

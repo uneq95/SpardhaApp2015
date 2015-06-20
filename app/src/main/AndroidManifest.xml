@@ -18,7 +18,7 @@
             android:name=".Act2"
             android:label="@string/title_activity_act2" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity2main"
             android:label="Spardha Home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,27 +27,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ritesh.spardha.CustomizeGallery.GalleryMainActivity"
+            android:name="com.ritesh.spardha.customize_gallery.GalleryMainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/Gallerytheme">
 
         </activity>
         <activity
-            android:name="com.ritesh.spardha.CustomizeGallery.DetailActivity"
-            android:parentActivityName="com.ritesh.spardha.CustomizeGallery.GalleryMainActivity"
+            android:name="com.ritesh.spardha.customize_gallery.DetailActivity"
             android:label="@string/detail"
             android:theme="@style/Gallerytheme">
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.ritesh.spardha.CustomizeGallery.GalleryMainActivity" />
+            android:value="com.ritesh.spardha.customize_gallery.GalleryMainActivity" />
         </activity>
         <activity
             android:name=".LocationActivity"
             android:label="Locations" >
         </activity>
-        <activity android:name="com.ritesh.spardha.CustomizeGallery.GallerBaseActivity"
+        <activity android:name="com.ritesh.spardha.customize_gallery.GallerBaseActivity"
             android:label="@string/app_name">
         </activity>
         <activity android:name=".FadingActionBar"

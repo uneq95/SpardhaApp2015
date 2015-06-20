@@ -49,5 +49,6 @@
     </string-array>
     <string name="title_activity_spardha_gallery">SpardhaGallery</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="openDrawer">Drawer Opened</string>
+    <string name="closeDrawer">Drawer Closed</string>
 </resources>
