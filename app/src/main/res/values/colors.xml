@@ -6,4 +6,8 @@
     <color name="frame">@android:color/black</color>
     <color name="apptheme_color">#33b5e5</color>
     <color name="inset">#9000</color>
+    <color name="ColorPrimary">#3F51B5</color>
+    <color name="ColorPrimaryDark">#303F9F</color>
+    <!--<color name="tabsScrollColor">#FFFFFF</color>-->
+    <color name="tabsScrollColor">#FF4081</color>
 </resources>
