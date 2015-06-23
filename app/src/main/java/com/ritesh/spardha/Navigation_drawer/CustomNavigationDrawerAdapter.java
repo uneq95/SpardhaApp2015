@@ -1,3 +1,5 @@
+/*
+
 package com.ritesh.spardha.Navigation_drawer;
 
 import android.content.Context;
@@ -10,9 +12,6 @@ import android.widget.TextView;
 
 import com.ritesh.spardha.spardha2015.R;
 
-/**
- * Created by Abhishek on 02-06-2015.
- */
 public class CustomNavigationDrawerAdapter extends BaseAdapter {
     Context context;
     String[] content;
@@ -57,3 +56,4 @@ public class CustomNavigationDrawerAdapter extends BaseAdapter {
 
 }
 
+*/

@@ -1,8 +1,7 @@
+
+/*
 package com.ritesh.spardha.Navigation_drawer;
 
-/**
- * Created by Abhishek on 02-06-2015.
- */
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -26,7 +25,7 @@ import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.MainActivity;
 import com.ritesh.spardha.spardha2015.R;
 
-public class NavigationDrawer extends Fragment implements AdapterView.OnItemClickListener /*implements AdapterView.OnItemClickListener */{
+public class NavigationDrawer extends Fragment implements AdapterView.OnItemClickListener {
     DrawerLayout drawer;
     ListView lv;
     String[] content;
@@ -83,4 +82,4 @@ public class NavigationDrawer extends Fragment implements AdapterView.OnItemClic
         }
     }
 
-
+*/

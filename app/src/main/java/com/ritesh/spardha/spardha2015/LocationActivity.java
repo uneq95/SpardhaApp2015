@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.ritesh.spardha.Navigation_drawer.NavigationDrawer;
 import com.ritesh.spardha.location.IITPlacesOfInterest;
 import com.ritesh.spardha.location.SinglePlaceLocation;
 

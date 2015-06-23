@@ -12,11 +12,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+ import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.ritesh.spardha.Navigation_drawer.NavigationDrawer;
+//import com.ritesh.spardha.Navigation_drawer.NavigationDrawer;
 import com.ritesh.spardha.adapters.MyPagerAdapter;
 
 /**
@@ -55,14 +55,14 @@ public class MainActivity extends ActionBarActivity {
         tabs.setViewPager(pager);
         //changeColor(currentColor);
         //startActivity(new Intent(this, Act2.class));
-        NavigationDrawer fr = new NavigationDrawer();
+      /*  NavigationDrawer fr = new NavigationDrawer();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.activitymainid,fr,"asdf");
         ft.commit();
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+   */ }
 
     private void changeColor(int newColor) {
 
