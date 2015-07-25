@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <com.ritesh.spardha.custom_views.RoundedImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/face_rit"
+        android:id="@+id/ivSportsIcon"
+        />

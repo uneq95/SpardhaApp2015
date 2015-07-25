@@ -14,25 +14,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.ritesh.spardha.spardha2015.MainActivity2main"
-            android:label="spardha home">
+        <activity android:name=".SpardhaHome"
+            android:label="Spardha Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".Act2"
-            android:label="@string/title_activity_act2" />
-        <activity
-            android:name=".MainActivity"
-            android:label="Spardha Home" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
         <activity
             android:name="com.ritesh.spardha.CustomizeGallery.GalleryMainActivity"
@@ -51,19 +39,10 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.ritesh.spardha.CustomizeGallery.GalleryMainActivity" />
         </activity>
-        <activity
-            android:name=".LocationActivity"
-            android:label="Locations" >
-        </activity>
-        <activity
-            android:name="com.ritesh.spardha.registration.RegistrationForm"
-            android:label="Locations" >
-        </activity>
+
         <activity android:name="com.ritesh.spardha.CustomizeGallery.GallerBaseActivity"
             android:label="@string/app_name">
         </activity>
-        <activity android:name=".FadingActionBar"
-            android:label="Sports"/>
     </application>
 
 </manifest>

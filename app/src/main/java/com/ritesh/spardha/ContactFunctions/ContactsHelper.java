@@ -22,6 +22,10 @@ public class ContactsHelper {
         this.DisplayName=DisplayName;
         this.context=context;
     }
+    public ContactsHelper(String MobileNumber,Context context){
+        this.MobileNumber=MobileNumber;
+        this.context=context;
+    }
 
     public void insertContact(){
 
