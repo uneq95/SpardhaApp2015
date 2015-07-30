@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.ritesh.spardha.CustomizeGallery.GalleryMainActivity;
 import com.ritesh.spardha.adapters.MyAdapter;
 import com.ritesh.spardha.adapters.ViewPagerAdapter;
+import com.ritesh.spardha.gcm.GCMClientManager;
 import com.ritesh.spardha.home_fragments.ContactFragment;
 import com.ritesh.spardha.home_fragments.SpardhaHomeFragment;
 import com.ritesh.spardha.registration.RegistrationFragment;
@@ -29,6 +30,8 @@ import com.ritesh.spardha.sliding_tabs.SlidingTabLayout;
 public class SpardhaHome extends ActionBarActivity {
 
 
+    private GCMClientManager pushClientManager;
+    String PROJECT_NUMBER = "669111683478";
     // Declaring Your View and Variables
     Context context;
     Toolbar toolbar;
@@ -63,6 +66,26 @@ public class SpardhaHome extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spardha_home_activity_layout);
+        pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
+        pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
+            @Override
+            public void onSuccess(String registrationId, boolean isNewRegistration) {
+                Toast.makeText(SpardhaHome.this, registrationId,
+                        Toast.LENGTH_SHORT).show();
+                // SEND async device registration to your back-end server
+                // linking user with device registration id
+                // POST https://my-back-end.com/devices/register?user_id=123&device_id=abc
+            }
+
+            @Override
+            public void onFailure(String ex) {
+                super.onFailure(ex);
+                // If there is an error registering, don't just keep trying to register.
+                // Require the user to click a button again, or perform
+                // exponential back-off when retrying.
+            }
+        });
+
         context = getApplicationContext();
         fm=getSupportFragmentManager();
 

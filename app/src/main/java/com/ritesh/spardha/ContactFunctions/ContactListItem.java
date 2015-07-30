@@ -6,7 +6,7 @@ package com.ritesh.spardha.ContactFunctions;
 public class ContactListItem {
 
     //for contacts
-    public String name, designation, phoneNumber;
+    public String name, email, phoneNumber;
     int photoResId;
     //for contact header
     public String contactHeader;
@@ -16,7 +16,7 @@ public class ContactListItem {
     // constructor for contacts
     public ContactListItem(String name, String desg, String phn, int photoRes) {
         this.name = name;
-        this.designation = desg;
+        this.email = desg;
         this.phoneNumber = phn;
         this.photoResId = photoRes;
         this.isHeader = false;
@@ -32,8 +32,8 @@ public class ContactListItem {
         return name;
     }
 
-    public String getDesignation() {
-        return designation;
+    public String getEmail() {
+        return email;
     }
 
     public String getPhoneNumber() {

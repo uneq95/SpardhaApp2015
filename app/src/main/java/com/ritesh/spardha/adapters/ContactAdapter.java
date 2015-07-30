@@ -48,19 +48,19 @@ public class ContactAdapter extends BaseAdapter{
             LayoutInflater inflater = LayoutInflater.from(context);
             if(contacts.get(position).isHeader()){
                 //header =true
-                convertView = inflater.inflate(R.layout.contact_headers,parent,false);
+                convertView = inflater.inflate(R.layout.contact_headers,parent,true);
                 holder.tvHeaderText=(TextView)convertView.findViewById(R.id.contact_header);
                 holder.tvHeaderText.setText(listItem.getContactHeader());
                 convertView.setClickable(false);
                 //convertView.setEnabled(false);
             }else{
                 //for contacts
-                convertView = inflater.inflate(R.layout.single_contact_layout2,parent,false);
+                convertView = inflater.inflate(R.layout.single_contact_layout2,parent,true);
                 holder.tvContactName=(TextView)convertView.findViewById(R.id.tvTeamMemberName);
-                holder.tvDesignation=(TextView)convertView.findViewById(R.id.tvTeamMemberDesignation);
+                holder.tvDesignation=(TextView)convertView.findViewById(R.id.tvTeamMemberEmail);
                 holder.ivContactPic=(ImageView)convertView.findViewById(R.id.ivTeamMemberPic);
                 holder.tvContactName.setText(listItem.getContactName());
-                holder.tvDesignation.setText(listItem.getDesignation());
+                holder.tvDesignation.setText(listItem.getEmail());
                 holder.ivContactPic.setImageResource(listItem.getPhotoResId());
                 /*convertView.setOnClickListener(new View.OnClickListener() {
                     @Override

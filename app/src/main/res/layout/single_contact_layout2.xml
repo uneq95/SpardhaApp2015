@@ -3,7 +3,7 @@
     android:id="@+id/item_linear_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:drawable/dialog_holo_light_frame"
+    android:background="@android:drawable/alert_light_frame"
     android:orientation="horizontal">
 
     <ImageView
@@ -33,7 +33,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvTeamMemberDesignation"
+            android:id="@+id/tvTeamMemberEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTeamMemberName"

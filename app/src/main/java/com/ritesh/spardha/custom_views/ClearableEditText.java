@@ -25,6 +25,8 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
 
+import com.ritesh.spardha.spardha2015.R;
+
 /**
  * To change clear icon, set
  *
@@ -115,7 +117,7 @@ public class ClearableEditText extends EditText implements OnTouchListener, OnFo
     private void init() {
         xD = getCompoundDrawables()[2];
         if (xD == null) {
-            xD = getResources().getDrawable(android.R.drawable.ic_delete);
+            xD = getResources().getDrawable(R.drawable.ic_clear_text);
         }
         xD.setBounds(0, 0, xD.getIntrinsicWidth(), xD.getIntrinsicHeight());
         setClearIconVisible(false);
