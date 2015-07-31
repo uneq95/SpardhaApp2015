@@ -22,7 +22,9 @@ import com.ritesh.spardha.adapters.MyAdapter;
 import com.ritesh.spardha.adapters.ViewPagerAdapter;
 import com.ritesh.spardha.gcm.GCMClientManager;
 import com.ritesh.spardha.home_fragments.ContactFragment;
+import com.ritesh.spardha.home_fragments.MapsFragment;
 import com.ritesh.spardha.home_fragments.SpardhaHomeFragment;
+import com.ritesh.spardha.maps.MapsActivity;
 import com.ritesh.spardha.registration.RegistrationFragment;
 import com.ritesh.spardha.sliding_tabs.SlidingTabLayout;
 
@@ -157,8 +159,12 @@ public class SpardhaHome extends ActionBarActivity {
 
                             break;
                         case 3://getSupportActionBar().setSelectedNavigationItem(2);
+//                            transaction=fm.beginTransaction();
+//                            transaction.replace(R.id.container, new MapsFragment());
+//                            transaction.commit();
+                            startActivity(new Intent(SpardhaHome.this, MapsActivity.class));
                             Toast.makeText(context, "you clicked maps ", Toast.LENGTH_SHORT).show();
-                            spardhaHomeFragment.shiftToTab3(1);
+                            //spardhaHomeFragment.shiftToTab3(1);
                             break;
                         case 4:
                             Intent kl = new Intent(SpardhaHome.this, GalleryMainActivity.class);
@@ -193,6 +199,11 @@ public class SpardhaHome extends ActionBarActivity {
 
             @Override
             public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
 
             }
         });

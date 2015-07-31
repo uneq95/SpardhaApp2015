@@ -1,11 +1,8 @@
-package com.ritesh.spardha.home_fragments;
+package com.ritesh.spardha.maps;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,14 +10,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.ritesh.spardha.maps.FloatingActionButton;
-import com.ritesh.spardha.maps.FloatingActionsMenu;
 import com.ritesh.spardha.spardha2015.R;
 
-/**
- * Created by ritesh_kumar on 09-Jun-15.
- */
-public class MapsFragment extends Fragment{
+public class MapsActivity extends FragmentActivity {
+
 
     private GoogleMap mMap;
     float zoomlevel = (float) 14.55;
@@ -44,24 +37,17 @@ public class MapsFragment extends Fragment{
     private final String[] OTHER_NAMES = {"DG Corner","Limbdi Corner","Vishvanath Temple","Swatantrata Bhawan"};
     private final double[] OTHER_LATITUDE = {25.263023,25.260777,25.265676,25.260636};
     private final double[] OTHER_LONGITUDE = {82.986498,82.986884,82.989475,82.993676};
-    View superView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        superView =inflater.inflate(R.layout.map_fragment_layout,container,false);
-
-        return superView;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.map_fragment_layout);
         setUpMapIfNeeded();
         addMarker(HOSTEL_LATITUDE, HOSTEL_LONGITUDE, HOSTEL_NAME);
 
-        final FloatingActionsMenu fam = (FloatingActionsMenu) superView.findViewById(R.id.multiple_actions);
+        final FloatingActionsMenu fam = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
 
-        final FloatingActionButton button_hospital = (FloatingActionButton) superView.findViewById(R.id.button_hospital);
+        final FloatingActionButton button_hospital = (FloatingActionButton) findViewById(R.id.button_hospital);
         button_hospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +57,7 @@ public class MapsFragment extends Fragment{
             }
         });
 
-        final FloatingActionButton button_venue = (FloatingActionButton) superView.findViewById(R.id.button_venue);
+        final FloatingActionButton button_venue = (FloatingActionButton) findViewById(R.id.button_venue);
         button_venue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,7 +68,7 @@ public class MapsFragment extends Fragment{
             }
         });
 
-        final FloatingActionButton button_atm = (FloatingActionButton) superView.findViewById(R.id.button_atm);
+        final FloatingActionButton button_atm = (FloatingActionButton) findViewById(R.id.button_atm);
         button_atm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +79,7 @@ public class MapsFragment extends Fragment{
             }
         });
 
-        final FloatingActionButton button_hostel = (FloatingActionButton) superView.findViewById(R.id.button_hostel);
+        final FloatingActionButton button_hostel = (FloatingActionButton) findViewById(R.id.button_hostel);
         button_hostel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +89,7 @@ public class MapsFragment extends Fragment{
 
             }
         });
-        final FloatingActionButton button_miscellaneous = (FloatingActionButton) superView.findViewById(R.id.button_miscellaneous);
+        final FloatingActionButton button_miscellaneous = (FloatingActionButton) findViewById(R.id.button_miscellaneous);
         button_miscellaneous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,11 +111,18 @@ public class MapsFragment extends Fragment{
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpMapIfNeeded();
+    }
+
+
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            mMap = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map))
+            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
@@ -137,6 +130,8 @@ public class MapsFragment extends Fragment{
             }
         }
     }
+
+
     private void setUpMap() {
         /** To Get Current Location **/
             /*mMap.setMyLocationEnabled(true);
@@ -146,16 +141,19 @@ public class MapsFragment extends Fragment{
             Location myLocation = locationManager.getLastKnownLocation(provider);
             double latitude = myLocation.getLatitude();
             double longitude = myLocation.getLongitude();*/
-        LatLng latLng = new LatLng(25.265834, 82.989499);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomlevel));
+            LatLng latLng = new LatLng(25.265834, 82.989499);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomlevel));
 
 
     }
+
     public void addMarker(double[] Latitude,double[] Longitude, String[] Title){
 
-        for(int i = 0; i < Latitude.length;i++) {
+       for(int i = 0; i < Latitude.length;i++) {
             mMap.addMarker(new MarkerOptions().position(new LatLng(Latitude[i], Longitude[i])).title(Title[i]));
         }
+
+
     }
 }

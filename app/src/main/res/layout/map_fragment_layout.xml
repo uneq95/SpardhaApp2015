@@ -1,0 +1,83 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_maplayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MapsActivity" />
+
+
+    <com.ritesh.spardha.maps.FloatingActionsMenu
+        android:id="@+id/multiple_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="5dp"
+        fab:fab_addButtonColorNormal="#ab47bc"
+        fab:fab_addButtonColorPressed="#ba68c8"
+        fab:fab_addButtonPlusIconColor="@color/black_semi_transparent"
+        fab:fab_labelStyle="@style/menu_labels_style">
+
+        <com.ritesh.spardha.maps.FloatingActionButton
+            android:id="@+id/button_hospital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="testing"
+            fab:fab_colorNormal="#2979ff"
+            fab:fab_colorPressed="#448aff"
+            fab:fab_size="mini"
+            fab:fab_title="Hospital" />
+
+        <com.ritesh.spardha.maps.FloatingActionButton
+            android:id="@+id/button_venue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="#2979ff"
+            fab:fab_colorPressed="#448aff"
+            fab:fab_size="mini"
+            fab:fab_title="Sports Venue" />
+
+        <com.ritesh.spardha.maps.FloatingActionButton
+            android:id="@+id/button_atm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="#2979ff"
+            fab:fab_colorPressed="#448aff"
+            fab:fab_size="mini"
+            fab:fab_title="ATM" />
+
+        <com.ritesh.spardha.maps.FloatingActionButton
+            android:id="@+id/button_hostel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="#2979ff"
+            fab:fab_colorPressed="#448aff"
+            fab:fab_size="mini"
+            fab:fab_title="Hostel" />
+
+        <com.ritesh.spardha.maps.FloatingActionButton
+            android:id="@+id/button_miscellaneous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="#2979ff"
+            fab:fab_colorPressed="#448aff"
+            fab:fab_size="mini"
+            fab:fab_title="Miscellaneous" />
+
+
+    </com.ritesh.spardha.maps.FloatingActionsMenu>
+
+</FrameLayout>

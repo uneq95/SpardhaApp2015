@@ -14,4 +14,12 @@
         <item name="android:displayOptions">homeAsUp|showTitle|showHome</item>
     </style>
 
+    <style name="Theme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:textViewStyle">@style/theme_textview_style</item>
+    </style>
+
+    <style name="theme_textview_style" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:textColor">@color/pink</item>
+    </style>
+
 </resources>

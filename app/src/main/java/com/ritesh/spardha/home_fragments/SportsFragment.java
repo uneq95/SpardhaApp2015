@@ -27,7 +27,7 @@ public class SportsFragment extends Fragment {
 //        sportsGridAdapter = new SportsGridAdapter(getActivity().getBaseContext());
 //        sportsGrid.setAdapter(sportsGridAdapter);
 //        return superView;
-        return inflater.inflate(R.layout.single_contact_layout2,container,false);
+        return inflater.inflate(R.layout.sport_layout,container,false);
 //        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //
 //        LinearLayout fl = new LinearLayout(getActivity());
