@@ -10,4 +10,7 @@
     <color name="ColorPrimaryDark">#303F9F</color>
     <!--<color name="tabsScrollColor">#FFFFFF</color>-->
     <color name="tabsScrollColor">#FF4081</color>
+
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="grey_shadow">#dbdbdb</color>
 </resources>

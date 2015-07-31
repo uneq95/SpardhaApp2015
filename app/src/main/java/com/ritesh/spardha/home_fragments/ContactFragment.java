@@ -35,10 +35,9 @@ public class ContactFragment extends Fragment {
         contactsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println(contacts.get(position).getPhoneNumber());
-                if(contacts.get(position).getPhoneNumber()!=null){
-                    ContactsHelper callerInstance= new ContactsHelper(contacts.get(position).getPhoneNumber(),getActivity());
-                    callerInstance.makeCall();
+                ContactListItem clickedContact=contacts.get(position);
+                if(clickedContact.getPhoneNumber()!=null){
+                     new ContactsHelper(clickedContact.getPhoneNumber(),getActivity()).makeCall();
                 }
             }
         });
@@ -46,8 +45,6 @@ public class ContactFragment extends Fragment {
     }
     private void initContacts(){
         contacts = new ArrayList<ContactListItem>();
-
-
 
         contacts.add(new ContactListItem("CORE TEAM"));
         contacts.add(new ContactListItem("Rohit Dixit","rohit.dixit.mst12@iitbhu.ac.in","7607048644", R.drawable.ic_no_pic));

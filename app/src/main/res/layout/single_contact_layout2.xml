@@ -3,7 +3,8 @@
     android:id="@+id/item_linear_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:drawable/alert_light_frame"
+    android:layout_margin="5dp"
+    android:background="@drawable/rect_l"
     android:orientation="horizontal">
 
     <ImageView
@@ -42,13 +43,14 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/iv_call_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_margin="5dp"
-        android:background="#f6f6f6"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_call_black_18dp" />
 
 </RelativeLayout>
