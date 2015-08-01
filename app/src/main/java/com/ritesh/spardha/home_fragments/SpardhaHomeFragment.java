@@ -20,8 +20,8 @@ public class SpardhaHomeFragment extends Fragment {
     View superView;
     public ViewPager pager;
     SlidingTabLayout tabs;
-    CharSequence Titles[] = {"Upcomings", "Categories", "Recents"};
-    int Numboftabs = 3;
+    CharSequence Titles[] = {"Upcomings", "Categories"};
+    int Numboftabs = 2;
     ViewPagerAdapter adapter;
     @Nullable
     @Override

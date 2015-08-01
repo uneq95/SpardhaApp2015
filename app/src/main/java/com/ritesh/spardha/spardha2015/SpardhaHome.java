@@ -24,6 +24,7 @@ import com.ritesh.spardha.gcm.GCMClientManager;
 import com.ritesh.spardha.home_fragments.ContactFragment;
 import com.ritesh.spardha.home_fragments.MapsFragment;
 import com.ritesh.spardha.home_fragments.SpardhaHomeFragment;
+import com.ritesh.spardha.home_fragments.SportsFragment;
 import com.ritesh.spardha.maps.MapsActivity;
 import com.ritesh.spardha.registration.RegistrationFragment;
 import com.ritesh.spardha.sliding_tabs.SlidingTabLayout;
@@ -137,48 +138,29 @@ public class SpardhaHome extends ActionBarActivity {
                             transaction=fm.beginTransaction();
                             transaction.replace(R.id.container, spardhaHomeFragment);
                             transaction.commit();
-                            Toast.makeText(context, "you clicked home ", Toast.LENGTH_SHORT).show();
                             spardhaHomeFragment.pager.setCurrentItem(0, true);
                             break;
                         case 2:
-                            Toast.makeText(context, "you clicked contacts ", Toast.LENGTH_SHORT).show();
-//                            SportsFragment fragmentCheck= (SportsFragment)getSupportFragmentManager().findFragmentByTag(SPORTS_FRAGMENT_TAG);
-//                            if(fragmentCheck==null ){
-
-                                //fm.popBackStack();
                                 transaction=fm.beginTransaction();
-                                //transaction.remove(spardhaHomeFragment);
-                                //transaction.remove(fm.findFragmentById(R.id.fragment_spardha_home));
-                                //transaction.disallowAddToBackStack();
                                 transaction.replace(R.id.container, new ContactFragment());
-//                                transaction.add(R.id.container, new SportsFragment(),SPORTS_FRAGMENT_TAG);
                                 transaction.commit();
-//                            getSupportFragmentManager().beginTransaction()
-//                                    .replace(R.id.container, new SportsFragment()).commit();
-//                            }
-
                             break;
-                        case 3://getSupportActionBar().setSelectedNavigationItem(2);
-//                            transaction=fm.beginTransaction();
-//                            transaction.replace(R.id.container, new MapsFragment());
-//                            transaction.commit();
+                        case 3:
                             startActivity(new Intent(SpardhaHome.this, MapsActivity.class));
-                            Toast.makeText(context, "you clicked maps ", Toast.LENGTH_SHORT).show();
-                            //spardhaHomeFragment.shiftToTab3(1);
                             break;
                         case 4:
                             Intent kl = new Intent(SpardhaHome.this, GalleryMainActivity.class);
                             startActivity(kl);
                             break;
                         case 5:
-                            Toast.makeText(context, "you clicked register ", Toast.LENGTH_SHORT).show();
                             transaction=fm.beginTransaction();
-                            //transaction.remove(fm.findFragmentById(R.id.fragment_spardha_home));
-                            //transaction.disallowAddToBackStack();
-                            transaction.replace(R.id.container, new RegistrationFragment(), SPORTS_FRAGMENT_TAG);
+                            transaction.replace(R.id.container, new RegistrationFragment());
                             transaction.commit();
                             break;
                         case 6:
+                            transaction=fm.beginTransaction();
+                            transaction.replace(R.id.container, new SportsFragment());
+                            transaction.commit();
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
                             break;
                         case 7:
@@ -188,7 +170,7 @@ public class SpardhaHome extends ActionBarActivity {
                             Toast.makeText(context, "you clicked about us ", Toast.LENGTH_SHORT).show();
                             break;
                     }
-                    Toast.makeText(SpardhaHome.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SpardhaHome.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     return true;
 
@@ -239,8 +221,6 @@ public class SpardhaHome extends ActionBarActivity {
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs);
 
         spardhaHomeFragment = new SpardhaHomeFragment();
-//        getSupportFragmentManager().beginTransaction()
-//                .add(R.id.container, spardhaHomeFragment,SPORTS_HOME_FRAGMENT_TAG).commit();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, spardhaHomeFragment).commit();
 
@@ -264,11 +244,6 @@ public class SpardhaHome extends ActionBarActivity {
 
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);*/
-
-
-    }
-
-    public void isTabFragmentOnline(){
 
 
     }

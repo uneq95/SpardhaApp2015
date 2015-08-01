@@ -22,12 +22,12 @@ public class SportsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        superView = inflater.inflate(R.layout.sport_layout,container,false);
-//        sportsGrid = (GridView)superView.findViewById(R.id.gvSportsGrid);
-//        sportsGridAdapter = new SportsGridAdapter(getActivity().getBaseContext());
-//        sportsGrid.setAdapter(sportsGridAdapter);
-//        return superView;
-        return inflater.inflate(R.layout.sport_layout,container,false);
+        superView = inflater.inflate(R.layout.sport_layout,container,false);
+        sportsGrid = (GridView)superView.findViewById(R.id.gvSportsGrid);
+        sportsGridAdapter = new SportsGridAdapter(getActivity().getBaseContext());
+        sportsGrid.setAdapter(sportsGridAdapter);
+        return superView;
+        //return inflater.inflate(R.layout.sport_layout,container,false);
 //        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //
 //        LinearLayout fl = new LinearLayout(getActivity());

@@ -3,9 +3,11 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <GridView
+        android:id="@+id/gvSportsGrid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="sports layout"/>
+        android:layout_height="match_parent"
+        android:numColumns="auto_fit"
+        />
 
 </LinearLayout>

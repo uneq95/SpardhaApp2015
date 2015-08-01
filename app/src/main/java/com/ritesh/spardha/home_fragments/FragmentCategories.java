@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ritesh.spardha.adapters.CategoriesGridAdapter;
-import com.ritesh.spardha.spardha2015.FadingActionBar;
 import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.R;
 
@@ -65,8 +64,6 @@ public class FragmentCategories extends Fragment implements AdapterView.OnItemCl
 //            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
 //            mapIntent.setPackage("com.google.android.apps.maps");
 //            startActivity(mapIntent);
-        }if(position==1){
-            startActivity(new Intent(getActivity(), FadingActionBar.class));
         }
 
 

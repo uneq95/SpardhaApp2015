@@ -40,8 +40,9 @@ public class ContactFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ContactListItem clickedContact=contacts.get(position);
-                if(clickedContact.getPhoneNumber()!=null){
-                    makeCall(clickedContact.getPhoneNumber());
+                String number=clickedContact.getPhoneNumber();
+                if(number!=null){
+                    makeCall(number);
                 }
             }
         });
@@ -95,6 +96,7 @@ public class ContactFragment extends Fragment {
     private void makeCall(String number){
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse(String.format("tel:%s", number)));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 }
