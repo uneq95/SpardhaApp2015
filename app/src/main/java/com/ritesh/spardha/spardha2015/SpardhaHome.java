@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -20,9 +20,8 @@ import android.widget.Toast;
 import com.ritesh.spardha.CustomizeGallery.GalleryMainActivity;
 import com.ritesh.spardha.adapters.MyAdapter;
 import com.ritesh.spardha.adapters.ViewPagerAdapter;
-import com.ritesh.spardha.gcm.GCMClientManager;
+import com.ritesh.spardha.home_fragments.AboutUsFragment;
 import com.ritesh.spardha.home_fragments.ContactFragment;
-import com.ritesh.spardha.home_fragments.MapsFragment;
 import com.ritesh.spardha.home_fragments.SpardhaHomeFragment;
 import com.ritesh.spardha.home_fragments.SportsFragment;
 import com.ritesh.spardha.maps.MapsActivity;
@@ -30,11 +29,9 @@ import com.ritesh.spardha.registration.RegistrationFragment;
 import com.ritesh.spardha.sliding_tabs.SlidingTabLayout;
 
 
-public class SpardhaHome extends ActionBarActivity {
+public class SpardhaHome extends AppCompatActivity {
 
 
-    private GCMClientManager pushClientManager;
-    String PROJECT_NUMBER = "669111683478";
     // Declaring Your View and Variables
     Context context;
     Toolbar toolbar;
@@ -69,25 +66,6 @@ public class SpardhaHome extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spardha_home_activity_layout);
-        pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
-        pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
-            @Override
-            public void onSuccess(String registrationId, boolean isNewRegistration) {
-                Toast.makeText(SpardhaHome.this, registrationId,
-                        Toast.LENGTH_SHORT).show();
-                // SEND async device registration to your back-end server
-                // linking user with device registration id
-                // POST https://my-back-end.com/devices/register?user_id=123&device_id=abc
-            }
-
-            @Override
-            public void onFailure(String ex) {
-                super.onFailure(ex);
-                // If there is an error registering, don't just keep trying to register.
-                // Require the user to click a button again, or perform
-                // exponential back-off when retrying.
-            }
-        });
 
         context = getApplicationContext();
         fm=getSupportFragmentManager();
@@ -136,14 +114,15 @@ public class SpardhaHome extends ActionBarActivity {
                     switch (recyclerView.getChildPosition(child)) {
                         case 1:
                             transaction=fm.beginTransaction();
-                            transaction.replace(R.id.container, spardhaHomeFragment);
+                            transaction.replace(R.id.container, new SpardhaHomeFragment());
                             transaction.commit();
-                            spardhaHomeFragment.pager.setCurrentItem(0, true);
+                            //spardhaHomeFragment.pager.setCurrentItem(0, true);
                             break;
-                        case 2:
-                                transaction=fm.beginTransaction();
-                                transaction.replace(R.id.container, new ContactFragment());
-                                transaction.commit();
+                        case 2://toolbar.setTitle("Contacts");
+                            startActivity(new Intent(SpardhaHome.this, ContactActivity.class));
+//                                transaction=fm.beginTransaction();
+//                                transaction.replace(R.id.container, new ContactFragment());
+//                                transaction.commit();
                             break;
                         case 3:
                             startActivity(new Intent(SpardhaHome.this, MapsActivity.class));
@@ -152,22 +131,25 @@ public class SpardhaHome extends ActionBarActivity {
                             Intent kl = new Intent(SpardhaHome.this, GalleryMainActivity.class);
                             startActivity(kl);
                             break;
-                        case 5:
+                        case 5:startActivity(new Intent(SpardhaHome.this, RegisterActivity.class));
+                        /*toolbar.setTitle("Register");
                             transaction=fm.beginTransaction();
                             transaction.replace(R.id.container, new RegistrationFragment());
-                            transaction.commit();
+                            transaction.commit();*/
                             break;
-                        case 6:
+                        case 6:toolbar.setTitle("Settings");
                             transaction=fm.beginTransaction();
                             transaction.replace(R.id.container, new SportsFragment());
                             transaction.commit();
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
                             break;
-                        case 7:
+                        case 7:toolbar.setTitle("Feedback");
                             Toast.makeText(context, "you clicked feedback ", Toast.LENGTH_SHORT).show();
                             break;
-                        case 8:
-                            Toast.makeText(context, "you clicked about us ", Toast.LENGTH_SHORT).show();
+                        case 8:toolbar.setTitle("About Us");
+                            transaction=fm.beginTransaction();
+                            transaction.replace(R.id.container, new AboutUsFragment());
+                            transaction.commit();
                             break;
                     }
                     //Toast.makeText(SpardhaHome.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();

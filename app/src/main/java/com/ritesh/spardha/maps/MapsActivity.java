@@ -2,6 +2,8 @@ package com.ritesh.spardha.maps;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -12,7 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ritesh.spardha.spardha2015.R;
 
-public class MapsActivity extends FragmentActivity {
+public class MapsActivity extends ActionBarActivity {
 
 
     private GoogleMap mMap;
@@ -42,6 +44,7 @@ public class MapsActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_fragment_layout);
+
         setUpMapIfNeeded();
         addMarker(HOSTEL_LATITUDE, HOSTEL_LONGITUDE, HOSTEL_NAME);
 
@@ -108,6 +111,8 @@ public class MapsActivity extends FragmentActivity {
         mapSettings.setTiltGesturesEnabled(true);
         mapSettings.setRotateGesturesEnabled(true);
         mapSettings.setMyLocationButtonEnabled(true);
+        Toolbar toolbar =(Toolbar)findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
 
     }
 

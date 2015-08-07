@@ -1,19 +1,16 @@
-package com.ritesh.spardha.registration;
+package com.ritesh.spardha.spardha2015;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.ritesh.spardha.spardha2015.R;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -29,35 +26,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by ritesh_kumar on 04-Jul-15.
+ * Created by ritesh_kumar on 06-Aug-15.
  */
-public class RegistrationFragment extends Fragment implements View.OnClickListener {
-
-    String[] sportsList;
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+    Context context;
+    Toolbar toolbar;
     View superView;
     EditText etFirstName, etLastName, etEmail, etCollege, etBranch, etEvent, etContactno;
     Button btregister;
-    Context context;
     String firstName, lastName, fullName, email, college, branch, event, contactNum;
     ArrayList<NameValuePair> formData;
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        superView = inflater.inflate(R.layout.registration_layout_new, container, false);
-//        etFirstName = (EditText) superView.findViewById(R.id.userfirstname);
-//        etLastName = (EditText) superView.findViewById(R.id.userlastname);
-//        etEmail = (EditText) superView.findViewById(R.id.useremailid);
-//        etCollege = (EditText) superView.findViewById(R.id.usercollegename);
-//        etBranch = (EditText) superView.findViewById(R.id.userbranch);
-//        etEvent = (EditText) superView.findViewById(R.id.userparticipation);
-//        etContactno = (EditText) superView.findViewById(R.id.userphone);
-//        btregister = (Button) superView.findViewById(R.id.registerbutton);
-//        context = getActivity().getBaseContext();
-//        btregister.setOnClickListener(this);
-        return superView;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context=getBaseContext();
+        setContentView(R.layout.registration_layout_new);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar();
+        if(actionBar!=null){
+            getSupportActionBar().setElevation(10);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
-
     @Override
     public void onClick(View v) {
         if (etFirstName.getText().length() > 0) {
@@ -116,10 +108,10 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
     }
 
-    class RegisterUserAsyncTask extends AsyncTask<Void,Void,Void>{
+    class RegisterUserAsyncTask extends AsyncTask<Void,Void,Void> {
 
         ProgressDialog progressDialog;
-       // ArrayList<NameValuePair> formData;
+        // ArrayList<NameValuePair> formData;
 //        RegisterUserAsyncTask(ArrayList<NameValuePair> formData){
 //            this.formData=formData;
 //
@@ -141,11 +133,11 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
             try {
                 httppost.setEntity(new UrlEncodedFormEntity(formData));
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
-               final String response= httpclient.execute(httppost,responseHandler);
-                getActivity().runOnUiThread(new Runnable() {
+                final String response= httpclient.execute(httppost,responseHandler);
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(),"Response: "+response,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,"Response: "+response,Toast.LENGTH_SHORT).show();
                     }
                 });
             } catch (IOException e) {

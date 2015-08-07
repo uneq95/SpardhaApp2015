@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.ritesh.spardha.home_fragments.MapsFragment;
 import com.ritesh.spardha.home_fragments.Tab1;
 import com.ritesh.spardha.home_fragments.Tab2;
-import com.ritesh.spardha.home_fragments.Tab3;
 
 /**
  * Created by hp1 on 21-01-2015.
@@ -21,7 +20,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     CharSequence Titles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
     int NumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
     int FragmentPicker=0;
-    Fragment[] tab3Framgents={new Tab3(),new MapsFragment()};
+    Fragment[] tab3Framgents={new MapsFragment()};
     String[] tab3Titles ={"Recents","Maps"};
 
     // Build a Constructor and assign the passed Values to appropriate values in the class

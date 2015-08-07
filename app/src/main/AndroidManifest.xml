@@ -62,32 +62,65 @@
             android:label="@string/app_name" >
         </activity>
 
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name="com.ritesh.spardha.maps.MapsActivity"
+            android:label="IIT-BHU Map" />
+        <activity
+            android:name="com.ritesh.spardha.gcm.GcmActivity"
+            android:label="@string/title_activity_gcm" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <!-- [START gcm_receiver] -->
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-
-                <category android:name="com.ritesh.spardha" />
+                <category android:name="gcm.play.android.samples.com.gcmquickstart" />
             </intent-filter>
         </receiver>
+        <!-- [END gcm_receiver] -->
 
+        <!-- [START gcm_listener] -->
         <service
-            android:name="com.ritesh.spardha.gcm.GcmMessageHandler"
+            android:name="com.ritesh.spardha.gcm.MyGcmListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
             </intent-filter>
         </service>
+        <!-- [END gcm_listener] -->
+        <!-- [START instanceId_listener] -->
+        <service
+            android:name="com.ritesh.spardha.gcm.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
 
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/google_maps_key" />
-
-        <activity android:name="com.ritesh.spardha.maps.MapsActivity"
-            android:label="IIT-BHU Map"/>
+            </intent-filter>
+        </service>
+        <!-- [END instanceId_listener] -->
+        <service
+            android:name="com.ritesh.spardha.gcm.RegistrationIntentService"
+            android:exported="false">
+        </service>
+        <activity android:name=".ContactActivity" android:label="Contacts">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHome"/>
+        </activity>
+        <activity android:name=".RegisterActivity" android:label="Register">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHome"/>
+        </activity>
     </application>
 
 </manifest>

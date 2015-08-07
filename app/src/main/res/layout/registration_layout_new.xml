@@ -1,93 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <LinearLayout
+    <include
+        android:elevation="10dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar">
+    </include>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="5dp">
 
 
-        <com.ritesh.spardha.custom_views.ClearableEditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:paddingLeft="15dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_margin="5dp"
-            android:hint="Full Name"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.ritesh.spardha.custom_views.ClearableEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingLeft="15dp"
-            android:hint="Email Id"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
 
-        <com.ritesh.spardha.custom_views.ClearableEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingLeft="15dp"
-            android:layout_margin="5dp"
-            android:hint="College"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:paddingLeft="15dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_margin="5dp"
+                android:hint="Full Name"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp" />
 
-        <com.ritesh.spardha.custom_views.ClearableEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingLeft="15dp"
-            android:layout_margin="5dp"
-            android:hint="Branch"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:hint="Email Id"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp" />
 
-        <com.ritesh.spardha.custom_views.ClearableEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingLeft="15dp"
-            android:layout_margin="5dp"
-            android:hint="Contact Number"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:layout_margin="5dp"
+                android:hint="College"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Participating as :"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:layout_margin="5dp"
+                android:hint="Branch"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp" />
 
-        <com.ritesh.spardha.custom_views.ClearableEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingLeft="15dp"
-            android:layout_margin="5dp"
-            android:hint="Event participating in"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:layout_margin="5dp"
+                android:hint="Contact Number"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="Register"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Participating as :"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="15dp" />
 
-</ScrollView>
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:layout_margin="5dp"
+                android:hint="Event participating in"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INDIVIDUAL"
+                    android:id="@+id/button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OR"
+                    android:id="@+id/textView9"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTINGENT"
+                    android:id="@+id/button2" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Register"/>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
