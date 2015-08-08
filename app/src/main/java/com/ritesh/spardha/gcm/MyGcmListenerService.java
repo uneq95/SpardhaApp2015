@@ -24,7 +24,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
 import com.ritesh.spardha.spardha2015.R;
@@ -46,24 +45,24 @@ public class MyGcmListenerService extends GcmListenerService {
     @Override
     public void onMessageReceived(String from, Bundle data) {
         db = new GcmMessageQueueDatabase(this);
-        String message = data.getString("message");
-        Log.d(TAG, "From: " + from);
-        Log.d(TAG, "Message: " + message);
-        int gcmMsgType = 1;
+        //String message = data.getString("message");
         GcmMessage msg = parseGcmMessage(data);
-        switch (gcmMsgType) {
+        switch (msg.getMsgType()) {
 
             case 1:
+                sendNotification1(msg);
                 db.open();
                 db.insertMsgType1(msg);
                 db.close();
                 break;
             case 2:
+                sendNotification2(msg);
                 db.open();
                 db.insertMsgType2(msg);
                 db.close();
                 break;
             case 3:
+                sendNotification3(msg);
                 db.open();
                 db.insertMsgType3(msg);
                 db.close();
@@ -84,16 +83,18 @@ public class MyGcmListenerService extends GcmListenerService {
          * In some cases it may be useful to show a notification indicating to the user
          * that a message was received.
          */
-        sendNotification(message);
     }
     // [END receive_message]
 
     /**
      * Create and show a simple notification containing the received GCM message.
-     *
-     * @param message GCM message received.
+     * <p/>
+     * message GCM message received.
      */
-    private void sendNotification(String message) {
+    private void sendNotification1(GcmMessage msg) {
+        System.out.println();
+        String match = String.format("%s : %s", msg.getSport(), msg.getTime());
+        String title = String.format("%s VS %s", msg.getTeam1(), msg.getTeam2());
         Intent intent = new Intent(this, SpardhaHome.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -102,8 +103,8 @@ public class MyGcmListenerService extends GcmListenerService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("GCM Message")
-                .setContentText(message)
+                .setContentTitle(title)
+                .setContentText(match)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
@@ -114,8 +115,73 @@ public class MyGcmListenerService extends GcmListenerService {
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
 
+    private void sendNotification2(GcmMessage msg) {
+        Intent intent = new Intent(this, SpardhaHome.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentText(msg.getImageLinkedMsg())
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+    }
+
+    private void sendNotification3(GcmMessage msg) {
+        Intent intent = new Intent(this, SpardhaHome.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle(msg.getMsgTitle())
+                .setContentText(msg.getMsgBody())
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+    }
+
+
     private GcmMessage parseGcmMessage(Bundle data) {
         GcmMessage msg = null;
+        int msgType = Integer.parseInt(data.getString("msg_type"));
+        System.out.println(data.getString("msg_type"));
+        switch (msgType) {
+            case 1:
+                String sport = data.getString("sport");
+                String location = data.getString("location");
+                String date = data.getString("date");
+                String time = data.getString("time");
+                String team1 = data.getString("team1");
+                String team2 = data.getString("team2");
+                msg = new GcmMessage(1, sport, location, date, time, team1, team2);
+                break;
+            case 2:
+                String imageLink = data.getString("imageLink");
+                String imageLinkedMsg = data.getString("imageMsg");
+                msg = new GcmMessage(2, imageLink, imageLinkedMsg);
+                break;
+            case 3:
+                String msgTitle = data.getString("message");
+                String msgBody = data.getString("body");
+                msg = new GcmMessage(3, msgTitle, msgBody, true);
+                break;
+        }
         return msg;
     }
 }

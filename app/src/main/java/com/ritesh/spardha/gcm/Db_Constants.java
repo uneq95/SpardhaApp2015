@@ -10,8 +10,8 @@ public abstract class Db_Constants {
     public static final String KEY_ROWID = "_id";
 
     //key for main Queue table
-    public static final String KEY_FOREIGN_KEY = "FOREIGN";
-    public static final String KEY_TABLE_KEY="TABLE_KEY";
+    public static final String KEY_FOREIGN_KEY = "FOREIGN_KEY";
+    public static final String KEY_TABLE_KEY = "TABLE_KEY";
 
     //keys for GCM1 table
     public static final String KEY_SPORT = "SPORT";
@@ -41,8 +41,9 @@ public abstract class Db_Constants {
 
     // table creation query statements
 
-    public static final String CREATE_MSG_QUEUE_TABLE = String.format("CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s INTEGER,%s INTEGER);)", MSG_QUEUE_TABLE, KEY_ROWID,KEY_TABLE_KEY,KEY_FOREIGN_KEY);
-    public static final String CREATE_MSG_TYPE_1_TABLE = String.format("CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT);)", MSG_TYPE_1_TABLE, KEY_ROWID, KEY_SPORT, KEY_LOCATION, KEY_DATE, KEY_TIME, KEY_TEAM1, KEY_TEAM2);
-    public static final String CREATE_MSG_TYPE_2_TABLE = String.format("CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT);",MSG_TYPE_2_TABLE,KEY_ROWID,KEY_IMAGE_LINK,KEY_MESSAGE);
-    public static final String CREATE_MSG_TYPE_3_TABLE = String.format("CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT);",MSG_TYPE_3_TABLE,KEY_ROWID,KEY_MSG_TITLE,KEY_MSG_BODY);
+    public static final String CREATE_MSG_QUEUE_TABLE =  String.format("CREATE TABLE IF NOT EXISTS %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s INTEGER , %s INTEGER);", MSG_QUEUE_TABLE, KEY_ROWID, KEY_TABLE_KEY, KEY_FOREIGN_KEY);
+    public static final String CREATE_MSG_TYPE_1_TABLE = String.format("CREATE TABLE IF NOT EXISTS %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT , %s TEXT , %s TEXT, %s TEXT, %s TEXT, %s TEXT );", MSG_TYPE_1_TABLE, KEY_ROWID, KEY_SPORT, KEY_LOCATION, KEY_DATE, KEY_TIME, KEY_TEAM1, KEY_TEAM2);
+    public static final String CREATE_MSG_TYPE_2_TABLE = String.format("CREATE TABLE IF NOT EXISTS %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT , %s TEXT );", MSG_TYPE_2_TABLE, KEY_ROWID, KEY_IMAGE_LINK, KEY_MESSAGE);
+    public static final String CREATE_MSG_TYPE_3_TABLE = String.format("CREATE TABLE IF NOT EXISTS %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT );", MSG_TYPE_3_TABLE, KEY_ROWID, KEY_MSG_TITLE, KEY_MSG_BODY);
+
 }

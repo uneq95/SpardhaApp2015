@@ -61,10 +61,10 @@ public class GcmMessageQueueDatabase {
         dbhlp.close();
     }
 
-    private void insertInMainGcmQueue(long foreignKeyId,int tableKey) {
+    private void insertInMainGcmQueue(long foreignKeyId, int tableKey) {
         ContentValues cv = new ContentValues();
         cv.put(Db_Constants.KEY_FOREIGN_KEY, foreignKeyId);
-        cv.put(Db_Constants.KEY_TABLE_KEY,tableKey);
+        cv.put(Db_Constants.KEY_TABLE_KEY, tableKey);
         db.insert(Db_Constants.MSG_QUEUE_TABLE, null, cv);
         // the latest message is added to the end of the table
 
@@ -79,7 +79,7 @@ public class GcmMessageQueueDatabase {
         cv.put(Db_Constants.KEY_TEAM1, gcmMsgType1.getTeam1());
         cv.put(Db_Constants.KEY_TEAM2, gcmMsgType1.getTeam2());
         long foreignKey = db.insert(Db_Constants.MSG_TYPE_1_TABLE, null, cv);
-        insertInMainGcmQueue(foreignKey,1);
+        insertInMainGcmQueue(foreignKey, 1);
     }
 
     public void insertMsgType2(GcmMessage gcmMsgType2) {
@@ -87,7 +87,7 @@ public class GcmMessageQueueDatabase {
         cv.put(Db_Constants.KEY_IMAGE_LINK, gcmMsgType2.getPhotoLink());
         cv.put(Db_Constants.KEY_MESSAGE, gcmMsgType2.getImageLinkedMsg());
         long foreignKey = db.insert(Db_Constants.MSG_TYPE_2_TABLE, null, cv);
-        insertInMainGcmQueue(foreignKey,2);
+        insertInMainGcmQueue(foreignKey, 2);
     }
 
     public void insertMsgType3(GcmMessage gcmMsgType3) {
@@ -96,14 +96,36 @@ public class GcmMessageQueueDatabase {
         cv.put(Db_Constants.KEY_MSG_TITLE, gcmMsgType3.getMsgTitle());
         cv.put(Db_Constants.KEY_MSG_BODY, gcmMsgType3.getMsgBody());
         long foreignKey = db.insert(Db_Constants.MSG_TYPE_3_TABLE, null, cv);
-        insertInMainGcmQueue(foreignKey,3);
+        insertInMainGcmQueue(foreignKey, 3);
     }
 
-    private ArrayList<GcmMessage> fetchAllGcmMessages(){
-        ArrayList<GcmMessage> messages=new ArrayList<>();
-        Cursor c=db.query(Db_Constants.MSG_QUEUE_TABLE, new String[]{Db_Constants.KEY_ROWID,Db_Constants.KEY_FOREIGN_KEY},null,null,null,null,null);
-        if(c!=null){
+    public ArrayList<GcmMessage> fetchAllGcmMessages() {
+        ArrayList<GcmMessage> messages = new ArrayList<>();
+        Cursor c = db.query(Db_Constants.MSG_QUEUE_TABLE, new String[]{Db_Constants.KEY_ROWID,Db_Constants.KEY_TABLE_KEY ,Db_Constants.KEY_FOREIGN_KEY}, null, null, null, null, null);
+        System.out.println(c.getCount());
+        if (c.getCount() > 0) {
+
             c.moveToLast();
+            /*while (c.moveToPrevious()) {
+                int tableKey = c.getInt(c.getColumnIndex(Db_Constants.KEY_TABLE_KEY));
+                int foreignKey = c.getInt(c.getColumnIndex(Db_Constants.KEY_FOREIGN_KEY));
+                GcmMessage gcmMessage = null;
+                switch (tableKey) {
+                    case 1:
+                        gcmMessage = fetchMessageType1(foreignKey);
+                        break;
+                    case 2:
+                        gcmMessage = fetchMessageType2(foreignKey);
+                        break;
+                    case 3:
+                        gcmMessage = fetchMessageType3(foreignKey);
+                        break;
+                    default:
+                        break;
+
+                }
+                messages.add(gcmMessage);
+            }*/
             do{
                 int tableKey=c.getInt(c.getColumnIndex(Db_Constants.KEY_TABLE_KEY));
                 int foreignKey=c.getInt(c.getColumnIndex(Db_Constants.KEY_FOREIGN_KEY));
@@ -122,54 +144,57 @@ public class GcmMessageQueueDatabase {
         return messages;
     }
 
-    private GcmMessage fetchMessageType1(int foreignKey){
-        GcmMessage msg=null;
-        String sport,location,date,time,team1,team2;
+    public GcmMessage fetchMessageType1(int foreignKey) {
+        GcmMessage msg = null;
+        String sport, location, date, time, team1, team2;
         Cursor c;
-        String[] columns =new String[]{Db_Constants.KEY_SPORT,Db_Constants.KEY_LOCATION,Db_Constants.KEY_DATE,Db_Constants.KEY_TIME,Db_Constants.KEY_TEAM1,Db_Constants.KEY_TEAM2};
-        String condition =String.format(" %s = %d",Db_Constants.KEY_ROWID,foreignKey);
-        c=db.query(Db_Constants.MSG_TYPE_1_TABLE, columns,condition,null,null,null,null);
-        if(c!=null){
-            sport=c.getString(c.getColumnIndex(Db_Constants.KEY_SPORT));
-            location=c.getString(c.getColumnIndex(Db_Constants.KEY_LOCATION));
-            date=c.getString(c.getColumnIndex(Db_Constants.KEY_DATE));
-            time=c.getString(c.getColumnIndex(Db_Constants.KEY_TIME));
-            team1=c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM1));
-            team2=c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM2));
+        String[] columns = new String[]{Db_Constants.KEY_SPORT, Db_Constants.KEY_LOCATION, Db_Constants.KEY_DATE, Db_Constants.KEY_TIME, Db_Constants.KEY_TEAM1, Db_Constants.KEY_TEAM2};
+        String condition = String.format(" %s = %d", Db_Constants.KEY_ROWID, foreignKey);
+        c = db.query(Db_Constants.MSG_TYPE_1_TABLE, columns, condition, null, null, null, null);
+        if (c.getCount()>0) {
+            c.moveToFirst();
+            sport = c.getString(c.getColumnIndex(Db_Constants.KEY_SPORT));
+            location = c.getString(c.getColumnIndex(Db_Constants.KEY_LOCATION));
+            date = c.getString(c.getColumnIndex(Db_Constants.KEY_DATE));
+            time = c.getString(c.getColumnIndex(Db_Constants.KEY_TIME));
+            team1 = c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM1));
+            team2 = c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM2));
 
-            msg =new GcmMessage(sport,location,date,time,team1,team2);
+            msg = new GcmMessage(1, sport, location, date, time, team1, team2);
         }
         return msg;
 
     }
-    private GcmMessage fetchMessageType2(int foreignKey){
-        GcmMessage msg=null;
-        String imageLink,imageMessage;
-        Cursor c;
-        String[] columns =new String[]{Db_Constants.KEY_IMAGE_LINK,Db_Constants.KEY_MESSAGE};
-        String condition =String.format(" %s = %d",Db_Constants.KEY_ROWID,foreignKey);
-        c=db.query(Db_Constants.MSG_TYPE_1_TABLE, columns,condition,null,null,null,null);
-        if(c!=null){
-            imageLink=c.getString(c.getColumnIndex(Db_Constants.KEY_IMAGE_LINK));
-            imageMessage=c.getString(c.getColumnIndex(Db_Constants.KEY_MESSAGE));
 
-            msg =new GcmMessage(imageLink,imageMessage);
+    private GcmMessage fetchMessageType2(int foreignKey) {
+        GcmMessage msg = null;
+        String imageLink, imageMessage;
+        Cursor c;
+        String[] columns = new String[]{Db_Constants.KEY_IMAGE_LINK, Db_Constants.KEY_MESSAGE};
+        String condition = String.format(" %s = %d", Db_Constants.KEY_ROWID, foreignKey);
+        c = db.query(Db_Constants.MSG_TYPE_2_TABLE, columns, condition, null, null, null, null);
+        if (c.getCount()>0) {
+            c.moveToFirst();
+            imageLink = c.getString(c.getColumnIndex(Db_Constants.KEY_IMAGE_LINK));
+            imageMessage = c.getString(c.getColumnIndex(Db_Constants.KEY_MESSAGE));
+
+            msg = new GcmMessage(2, imageLink, imageMessage);
         }
         return msg;
 
     }
-    private GcmMessage fetchMessageType3(int foreignKey){
-        GcmMessage msg=null;
-        String msgTitle,msgBody;
-        Cursor c;
-        String[] columns =new String[]{Db_Constants.KEY_MSG_TITLE,Db_Constants.KEY_MSG_BODY};
-        String condition =String.format(" %s = %d",Db_Constants.KEY_ROWID,foreignKey);
-        c=db.query(Db_Constants.MSG_TYPE_1_TABLE, columns,condition,null,null,null,null);
-        if(c!=null){
-            msgTitle=c.getString(c.getColumnIndex(Db_Constants.KEY_SPORT));
-            msgBody=c.getString(c.getColumnIndex(Db_Constants.KEY_LOCATION));
 
-            msg =new GcmMessage(msgTitle,msgBody,true);
+    private GcmMessage fetchMessageType3(int foreignKey) {
+        GcmMessage msg = null;
+        String msgTitle, msgBody;
+        String[] columns = new String[]{Db_Constants.KEY_ROWID,Db_Constants.KEY_MSG_TITLE, Db_Constants.KEY_MSG_BODY};
+        String condition = String.format("%s = %d", Db_Constants.KEY_ROWID, foreignKey);
+        Cursor c= db.query(Db_Constants.MSG_TYPE_3_TABLE, columns, condition, null, null, null, null);
+        if (c.getCount()>0) {
+            c.moveToFirst();
+            msgTitle = c.getString(c.getColumnIndex(Db_Constants.KEY_MSG_TITLE));
+            msgBody = c.getString(c.getColumnIndex(Db_Constants.KEY_MSG_BODY));
+            msg = new GcmMessage(3, msgTitle, msgBody, true);
         }
         return msg;
 

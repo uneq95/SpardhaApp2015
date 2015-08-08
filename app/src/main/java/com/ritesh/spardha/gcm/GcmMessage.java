@@ -5,6 +5,7 @@ package com.ritesh.spardha.gcm;
  */
 public class GcmMessage {
 
+    private int msgType;
     // elements for message type 1
     private String sport;
     private String location;
@@ -22,19 +23,28 @@ public class GcmMessage {
     private String msgBody;
 
 
-    public GcmMessage(String sport,String location,String date,String time,String team1,String team2){
-        this.sport=sport;
-        this.location=location;this.date = date;this.time = time;this.team1 = team1;this.team2 = team2;
+    public GcmMessage(int msgType, String sport, String location, String date, String time, String team1, String team2) {
+        this.sport = sport;
+        this.msgType = msgType;
+        this.location = location;
+        this.date = date;
+        this.time = time;
+        this.team1 = team1;
+        this.team2 = team2;
     }
 
-    public GcmMessage(String photoLink,String imageLinkedMsg){
-        this.photoLink=photoLink;
-        this.imageLinkedMsg=imageLinkedMsg;
+    public GcmMessage(int msgType, String photoLink, String imageLinkedMsg) {
+        this.photoLink = photoLink;
+        this.msgType = msgType;
+        this.imageLinkedMsg = imageLinkedMsg;
     }
-    public GcmMessage(String msgTitle,String msgBody,boolean isMsgtype3){
-        this.msgTitle=msgTitle;
-        this.msgBody=msgBody;
+
+    public GcmMessage(int msgType, String msgTitle, String msgBody, boolean isMsgtype3) {
+        this.msgTitle = msgTitle;
+        this.msgBody = msgBody;
+        this.msgType = msgType;
     }
+
     /* Message type 1    START  */
     public String getSport() {
         return sport;
@@ -122,5 +132,10 @@ public class GcmMessage {
     public void setMsgBody(String msgBody) {
         this.msgBody = msgBody;
     }
+
+
     /* Message type 3    END  */
+    public int getMsgType() {
+        return msgType;
+    }
 }
