@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:id="@+id/id_maplayout"
     android:layout_width="match_parent"
@@ -86,4 +86,4 @@
 
     </com.ritesh.spardha.maps.FloatingActionsMenu>
 
-</FrameLayout>
+</LinearLayout>

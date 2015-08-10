@@ -2,9 +2,11 @@ package com.ritesh.spardha.spardha2015;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -28,87 +30,256 @@ import java.util.ArrayList;
 /**
  * Created by ritesh_kumar on 06-Aug-15.
  */
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     Context context;
     Toolbar toolbar;
-    View superView;
-    EditText etFirstName, etLastName, etEmail, etCollege, etBranch, etEvent, etContactno;
-    Button btregister;
-    String firstName, lastName, fullName, email, college, branch, event, contactNum;
+    EditText etFullName, etEmail, etCollege, etBranch, etContactNo;
+    Button btregister, btIndividual, btContingent;
+    String fullName, email, college, branch, contactNum;
     ArrayList<NameValuePair> formData;
+    ArrayList<String> selectedNonAthletics, selectedAthletics;
+    String selectedNonAthleticSport=null, selectedAthleticSport;
+    boolean isIndividual;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=getBaseContext();
+        context = getBaseContext();
         setContentView(R.layout.registration_layout_new);
+        initView();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             getSupportActionBar().setElevation(10);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
+
+    private void initView() {
+        etFullName = (EditText) findViewById(R.id.etFullName);
+        etEmail = (EditText) findViewById(R.id.etEmailId);
+        etCollege = (EditText) findViewById(R.id.etCollege);
+        etBranch = (EditText) findViewById(R.id.etBranch);
+        etContactNo = (EditText) findViewById(R.id.etContactNumber);
+        btIndividual = (Button) findViewById(R.id.btIndividual);
+        btContingent = (Button) findViewById(R.id.btContingent);
+        btregister = (Button) findViewById(R.id.btRegister);
+        btContingent.setOnClickListener(this);
+        btIndividual.setOnClickListener(this);
+        btregister.setOnClickListener(this);
+
+    }
+
     @Override
     public void onClick(View v) {
-        if (etFirstName.getText().length() > 0) {
+        final String[] nonAthletics = this.getResources().getStringArray(R.array.non_athletics_sports);
+        final String[] athleticsSports = RegisterActivity.this.getResources().getStringArray(R.array.athletics);
+
+        switch (v.getId()) {
+            case R.id.btContingent:
+                selectedNonAthletics = new ArrayList<>();
+                selectedAthletics = new ArrayList<>();
+                isIndividual=false;
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Select sports");
+                builder.setMultiChoiceItems(nonAthletics, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                        if (isChecked) {
+                            selectedNonAthletics.add(nonAthletics[which]);
+                        } else if (selectedNonAthletics.contains(nonAthletics[which])) {
+                            selectedNonAthletics.remove(nonAthletics[which]);
+                        }
+                    }
+                });
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Display selected sports
+                    }
+                });
+                builder.setNeutralButton("Choose Athletics Here", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //final String[] athleticsSports=RegisterActivity.this.getResources().getStringArray(R.array.athletics);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setTitle("Athletics");
+
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Display selected sports
+                            }
+                        });
+                        builder.setMultiChoiceItems(athleticsSports, null, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                                if (isChecked) {
+                                    selectedAthletics.add(athleticsSports[which]);
+                                } else if (selectedNonAthletics.contains(athleticsSports[which])) {
+                                    selectedAthletics.remove(athleticsSports[which]);
+                                }
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                selectedNonAthletics = null;
+                                selectedAthletics = null;
+                            }
+                        });
+                        builder.create();
+                        builder.show();
+
+                    }
+                });
+                builder.create();
+                builder.show();
+                break;
+            case R.id.btIndividual:
+                isIndividual=true;
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+                builder2.setTitle("Select sports");
+                builder2.setSingleChoiceItems(nonAthletics, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        selectedNonAthleticSport = nonAthletics[which];
+                    }
+                });
+                builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Display selected sports
+                    }
+                });
+                builder2.setNeutralButton("Choose Athletics Here", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final String[] athleticsSports = RegisterActivity.this.getResources().getStringArray(R.array.athletics);
+                        selectedAthletics = new ArrayList<>();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setTitle("Athletics");
+
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Display selected sports
+                            }
+                        });
+                        builder.setMultiChoiceItems(athleticsSports, null, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                                if (isChecked) {
+                                    selectedAthletics.add(athleticsSports[which]);
+                                } else if (selectedNonAthletics.contains(athleticsSports[which])) {
+                                    selectedAthletics.remove(athleticsSports[which]);
+                                }
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                selectedNonAthletics = null;
+                                selectedAthletics = null;
+                            }
+                        });
+                        builder.create();
+                        builder.show();
+
+                    }
+                });
+                builder2.create();
+                builder2.show();
+                break;
+            case R.id.btRegister:
+                reg();
+                break;
+
+
+        }
+
+
+    }
+
+    private void reg() {
+        if (etFullName.getText().length() > 0) {
             if (etEmail.getText().length() > 0) {
                 if (etCollege.getText().length() > 0) {
                     if (etBranch.getText().length() > 0) {
-                        if (etEvent.getText().length() > 0) {
-                            if (etContactno.getText().length() == 10) {
-                                register();
-                            } else {
-                                etContactno.setError("Invalid Mobile Number!");
-                                Toast.makeText(context, "Enter Valid No.", Toast.LENGTH_SHORT).show();
-                                etContactno.requestFocus();
-                            }
+
+                        if (etContactNo.getText().length() == 10) {
+                            eventCheck();
                         } else {
-                            Toast.makeText(context, "Aren't you participating in any event?", Toast.LENGTH_SHORT).show();
-                            etEvent.setError("cant be left empty");
-                            etEvent.requestFocus();
+                            etContactNo.setError("Invalid Mobile Number!");
+                            etContactNo.requestFocus();
                         }
+
                     } else {
-                        Toast.makeText(context, "Enter your Branch", Toast.LENGTH_SHORT).show();
+                        etBranch.setError("Enter your Branch!");
                         etBranch.requestFocus();
                     }
                 } else {
-                    Toast.makeText(context, "Enter your college Name", Toast.LENGTH_SHORT).show();
+                    etCollege.setError("Enter your college Name!");
                     etCollege.requestFocus();
                 }
             } else {
-                Toast.makeText(context, "Enter your Email-id", Toast.LENGTH_SHORT).show();
+                etEmail.setError( "Enter your Email-id!");
                 etEmail.requestFocus();
             }
         } else {
-            Toast.makeText(context, "Enter your Name", Toast.LENGTH_SHORT).show();
-            etFirstName.requestFocus();
+            etFullName.setError("Enter your Name!");
+            etFullName.requestFocus();
         }
-
     }
 
+    private void eventCheck(){
+        if(isIndividual){
+            if(selectedNonAthleticSport!=null||selectedNonAthletics.size()>0){
+                register();
+            }else{
+                Toast.makeText(this,"Please select ATLEAST ONE sport!",Toast.LENGTH_LONG).show();
+            }
+        }else{
+            if(selectedNonAthletics.size()>0||selectedNonAthletics.size()>0){
+                register();
+            }else{
+                Toast.makeText(this,"Please select a sport!",Toast.LENGTH_LONG).show();
+            }
+
+        }
+    }
     public void register() {
-        firstName = etFirstName.getText().toString();
-        lastName = etLastName.getText().toString();
+        fullName = etFullName.getText().toString();
         email = etEmail.getText().toString();
         college = etCollege.getText().toString();
         branch = etBranch.getText().toString();
-        event = etEvent.getText().toString();
-        contactNum = etContactno.getText().toString();
-        formData = new ArrayList<NameValuePair>();
-        formData.add(new BasicNameValuePair("first_name",firstName));
-        formData.add(new BasicNameValuePair("last_name",lastName));
-        formData.add(new BasicNameValuePair("email",email));
-        formData.add(new BasicNameValuePair("college",college));
-        formData.add(new BasicNameValuePair("branch",branch));
-        formData.add(new BasicNameValuePair("event",event));
-        formData.add(new BasicNameValuePair("contact_number",contactNum));
-        new RegisterUserAsyncTask().execute();
+        contactNum = etContactNo.getText().toString();
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setPositiveButton("Register", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setTitle("You are registering in the following sports:");
+        /*formData = new ArrayList<NameValuePair>();
+        formData.add(new BasicNameValuePair("first_name", firstName));
+        formData.add(new BasicNameValuePair("last_name", lastName));
+        formData.add(new BasicNameValuePair("email", email));
+        formData.add(new BasicNameValuePair("college", college));
+        formData.add(new BasicNameValuePair("branch", branch));
+        formData.add(new BasicNameValuePair("event", event));
+        formData.add(new BasicNameValuePair("contact_number", contactNum));
+        new RegisterUserAsyncTask().execute();*/
 
     }
 
-    class RegisterUserAsyncTask extends AsyncTask<Void,Void,Void> {
+    class RegisterUserAsyncTask extends AsyncTask<Void, Void, Void> {
 
         ProgressDialog progressDialog;
         // ArrayList<NameValuePair> formData;
@@ -133,11 +304,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             try {
                 httppost.setEntity(new UrlEncodedFormEntity(formData));
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                final String response= httpclient.execute(httppost,responseHandler);
+                final String response = httpclient.execute(httppost, responseHandler);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context,"Response: "+response,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Response: " + response, Toast.LENGTH_SHORT).show();
                     }
                 });
             } catch (IOException e) {
@@ -148,8 +319,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    private JSONObject JsonEncode(){
-        JSONObject registrationData=new JSONObject();
+    private JSONObject JsonEncode() {
+        JSONObject registrationData = new JSONObject();
 
 
         return registrationData;

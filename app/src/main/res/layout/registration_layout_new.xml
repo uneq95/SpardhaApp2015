@@ -2,6 +2,7 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C8E6C9"
     android:orientation="vertical">
     <include
         android:elevation="10dp"
@@ -31,7 +32,9 @@
                 android:hint="Full Name"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:inputType="textPersonName"
+                android:id="@+id/etFullName" />
 
             <com.ritesh.spardha.custom_views.ClearableEditText
                 android:layout_width="match_parent"
@@ -43,7 +46,9 @@
                 android:hint="Email Id"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:inputType="textEmailAddress"
+                android:id="@+id/etEmailId" />
 
             <com.ritesh.spardha.custom_views.ClearableEditText
                 android:layout_width="match_parent"
@@ -55,7 +60,9 @@
                 android:hint="College"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:inputType="textPersonName"
+                android:id="@+id/etCollege" />
 
             <com.ritesh.spardha.custom_views.ClearableEditText
                 android:layout_width="match_parent"
@@ -67,7 +74,9 @@
                 android:hint="Branch"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:inputType="textPersonName"
+                android:id="@+id/etBranch" />
 
             <com.ritesh.spardha.custom_views.ClearableEditText
                 android:layout_width="match_parent"
@@ -79,26 +88,17 @@
                 android:hint="Contact Number"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:inputType="phone"
+                android:id="@+id/etContactNumber" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Participating as :"
+                android:text="REGISTERING FOR"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginLeft="15dp" />
-
-            <com.ritesh.spardha.custom_views.ClearableEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/editbox_dropdown_light_frame"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:paddingLeft="15dp"
-                android:layout_margin="5dp"
-                android:hint="Event participating in"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:padding="10dp" />
+                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -111,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INDIVIDUAL"
-                    android:id="@+id/button" />
+                    android:id="@+id/btIndividual" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,16 +127,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CONTINGENT"
-                    android:id="@+id/button2" />
+                    android:id="@+id/btContingent" />
             </LinearLayout>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_gravity="center"
-                android:text="Register"/>
+                android:text="Register"
+                android:id="@+id/btRegister" />
         </LinearLayout>
 
     </ScrollView>
+
+
 </LinearLayout>

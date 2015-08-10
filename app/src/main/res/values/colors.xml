@@ -6,11 +6,12 @@
     <color name="frame">@android:color/black</color>
     <color name="apptheme_color">#33b5e5</color>
     <color name="inset">#9000</color>
-    <color name="ColorPrimary">#3F51B5</color>
+    <!--<color name="ColorPrimary">#3F51B5</color>-->
+    <color name="ColorPrimary">#1B5E20</color>
     <color name="ColorPrimaryDark">#303F9F</color>
     <!--<color name="tabsScrollColor">#FFFFFF</color>-->
-    <color name="tabsScrollColor">#FF4081</color>
-
+    <!--<color name="tabsScrollColor">#FF4081</color>-->
+    <color name="tabsScrollColor">@android:color/white</color>
     <color name="whiteColor">#FFFFFF</color>
     <color name="whitePressed">#d9d9d9</color>
     <color name="grey_shadow">#dbdbdb</color>

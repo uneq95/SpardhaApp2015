@@ -60,4 +60,51 @@
     <string name="token_error_message">An error occurred while either fetching the InstanceID token,
         sending the fetched token to the server or subscribing to the PubSub topic. Please try
         running the sample again.</string>
+
+    <string-array name="non_athletics_sports">
+        <item>Cricket</item>
+        <item>Hockey</item>
+        <item>Badminton</item>
+        <item>Football</item>
+        <item>Basketball</item>
+        <item>Volleyball</item>
+        <item>Lawn Tennis</item>
+        <item>Table Tennis</item>
+        <item>Handball</item>
+        <item>Kabaddi</item>
+        <item>Kho-Kho</item>
+        <item>Squash</item>
+        <item>Tae-kwon-do</item>
+        <item>Boxing</item>
+        <item>Carrom</item>
+        <item>Chess</item>
+    </string-array>
+    <string-array name="athletics">
+        <item>Weightlifting</item>
+        <item>Javelin Throw</item>
+        <item>Discus Throw</item>
+        <item>High Jump</item>
+        <item>Long Jump</item>
+        <item>Triple Jump</item>
+        <item>Hammer Throw</item>
+        <item>Shot Put</item>
+        <item>100 m</item>
+        <item>200 m</item>
+        <item>400 m</item>
+        <item>800 m</item>
+        <item>1500 m</item>
+        <item>5000 m</item>
+        <item>110 Hurdles</item>
+        <item>400 Hurdles</item>
+    </string-array>
+    <string-array name="races">
+        <item>100 m</item>
+        <item>200 m</item>
+        <item>400 m</item>
+        <item>800 m</item>
+        <item>1500 m</item>
+        <item>5000 m</item>
+        <item>110 Hurdles</item>
+        <item>400 Hurdles</item>
+    </string-array>
 </resources>
