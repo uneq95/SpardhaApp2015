@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="abhishek.pandey.che14@itbhu.ac.in"/>
+                    android:text="abhishek.ramakant.che14@iitbhu.ac.in"/>
             </LinearLayout>
         </LinearLayout>
 
