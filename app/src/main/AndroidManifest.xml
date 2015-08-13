@@ -36,11 +36,11 @@
         <activity
             android:name=".SpardhaHome"
             android:label="Spardha Home" >
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name="com.ritesh.spardha.CustomizeGallery.GalleryMainActivity"
@@ -116,10 +116,20 @@
             android:exported="false">
         </service>
         <activity android:name=".ContactActivity" android:label="Contacts">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHome"/>
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
         </activity>
         <activity android:name=".RegisterActivity" android:label="Register">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHome"/>
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
+        </activity>
+        <activity android:name=".AboutUsActivity" android:label="Developers">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
+        </activity>
+        <activity android:name=".SpardhaHomeTest" android:label="SpardhaHomeTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

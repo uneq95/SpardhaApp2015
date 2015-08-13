@@ -1,14 +1,12 @@
 package com.ritesh.spardha.spardha2015;
 
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -20,18 +18,13 @@ import android.widget.Toast;
 import com.ritesh.spardha.CustomizeGallery.GalleryMainActivity;
 import com.ritesh.spardha.adapters.MyAdapter;
 import com.ritesh.spardha.adapters.ViewPagerAdapter;
-import com.ritesh.spardha.home_fragments.AboutUsFragment;
-import com.ritesh.spardha.home_fragments.ContactFragment;
-import com.ritesh.spardha.home_fragments.SpardhaHomeFragment;
-import com.ritesh.spardha.home_fragments.SportsFragment;
 import com.ritesh.spardha.maps.MapsActivity;
-import com.ritesh.spardha.registration.RegistrationFragment;
 import com.ritesh.spardha.sliding_tabs.SlidingTabLayout;
 
-
-public class SpardhaHome extends AppCompatActivity {
-
-
+/**
+ * Created by ritesh_kumar on 12-Aug-15.
+ */
+public class SpardhaHomeTest extends AppCompatActivity {
     // Declaring Your View and Variables
     Context context;
     Toolbar toolbar;
@@ -40,12 +33,11 @@ public class SpardhaHome extends AppCompatActivity {
     SlidingTabLayout tabs;
     CharSequence Titles[] = {"Upcomings", "Categories"};
     int Numboftabs = 2;
-    String SPORTS_HOME_FRAGMENT_TAG="sportsHomeFragment",SPORTS_FRAGMENT_TAG="sportsFragment";
-    //First We Declare Titles And Icons For Our Navigation Drawer List View
+//First We Declare Titles And Icons For Our Navigation Drawer List View
     //This Icons And Titles Are holded in an Array as you can see
 
-    String TITLES[] = {"Home", "Contacts", "Get Directions", "Gallery", "Register", "Settings", "Feedback", "About Us"};
-    int ICONS[] = {R.drawable.ic_home, R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_register, R.drawable.ic_settings, R.drawable.ic_feedback, R.drawable.ic_aboutus};
+    String TITLES[] = { "Contacts", "Get Directions", "Gallery", "Register", "Settings", "Feedback", "About Us"};
+    int ICONS[] = { R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_register, R.drawable.ic_settings, R.drawable.ic_feedback, R.drawable.ic_aboutus};
 //    int ICONS[] = {R.drawable.ic_home,R.drawable.ic_events,R.drawable.ic_mail,R.drawable.ic_shop,R.drawable.ic_travel};
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
@@ -59,26 +51,13 @@ public class SpardhaHome extends AppCompatActivity {
     DrawerLayout Drawer;                                  // Declaring DrawerLayout
 
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
-    SpardhaHomeFragment spardhaHomeFragment;
-    FragmentManager fm;
-    FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.spardha_home_activity_layout);
+        setContentView(R.layout.saprdhahometest);
+        context=getApplicationContext();
 
-        context = getApplicationContext();
-        fm=getSupportFragmentManager();
-
-//        if(findViewById(R.id.container)!=null){
-           /* if (savedInstanceState != null) {
-                return;
-            }*/
-            /*spardhaHomeFragment = new SpardhaHomeFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, spardhaHomeFragment).commit();*/
-
-//        }
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -93,10 +72,9 @@ public class SpardhaHome extends AppCompatActivity {
         // and header view profile picture
 
         mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
-        final GestureDetector mGestureDetector = new GestureDetector(SpardhaHome.this, new GestureDetector.SimpleOnGestureListener() {
+        final GestureDetector mGestureDetector = new GestureDetector(SpardhaHomeTest.this, new GestureDetector.SimpleOnGestureListener() {
 
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
+            @Override public boolean onSingleTapUp(MotionEvent e) {
                 return true;
             }
 
@@ -106,55 +84,33 @@ public class SpardhaHome extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
 
 
-                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+
+                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
-                    switch (recyclerView.getChildPosition(child)) {
+                    switch(recyclerView.getChildPosition(child)){
                         case 1:
-                            transaction=fm.beginTransaction();
-                            transaction.replace(R.id.container, new SpardhaHomeFragment());
-                            transaction.commit();
-                            //spardhaHomeFragment.pager.setCurrentItem(0, true);
+                            startActivity(new Intent(SpardhaHomeTest.this, ContactActivity.class));
                             break;
-                        case 2://toolbar.setTitle("Contacts");
-                            startActivity(new Intent(SpardhaHome.this, ContactActivity.class));
-//                                transaction=fm.beginTransaction();
-//                                transaction.replace(R.id.container, new ContactFragment());
-//                                transaction.commit();
+                        case 2:Toast.makeText(context, "you clicked maps ", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SpardhaHomeTest.this, MapsActivity.class));
+                        case 3:startActivity(new Intent(SpardhaHomeTest.this, GalleryMainActivity.class));
                             break;
-                        case 3:
-                            startActivity(new Intent(SpardhaHome.this, MapsActivity.class));
+                        case 4:startActivity(new Intent(SpardhaHomeTest.this, RegisterActivity.class));
+                            Toast.makeText(context, "you clicked register ", Toast.LENGTH_SHORT).show();
                             break;
-                        case 4:
-                            Intent kl = new Intent(SpardhaHome.this, GalleryMainActivity.class);
-                            startActivity(kl);
-                            break;
-                        case 5:startActivity(new Intent(SpardhaHome.this, RegisterActivity.class));
-                        /*toolbar.setTitle("Register");
-                            transaction=fm.beginTransaction();
-                            transaction.replace(R.id.container, new RegistrationFragment());
-                            transaction.commit();*/
-                            break;
-                        case 6:toolbar.setTitle("Settings");
-                            transaction=fm.beginTransaction();
-                            transaction.replace(R.id.container, new SportsFragment());
-                            transaction.commit();
+                        case 5:
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
                             break;
-                        case 7:toolbar.setTitle("Feedback");
+                        case 6:
                             Toast.makeText(context, "you clicked feedback ", Toast.LENGTH_SHORT).show();
                             break;
-                        case 8:toolbar.setTitle("About Us");
-                            startActivity(new Intent(SpardhaHome.this,AboutUsActivity.class));
-//                            transaction=fm.beginTransaction();
-//                            transaction.replace(R.id.container, new AboutUsFragment());
-//                            transaction.commit();
+                        case 7:startActivity(new Intent(SpardhaHomeTest.this,AboutUsActivity.class));
+                            Toast.makeText(context, "you clicked about us ", Toast.LENGTH_SHORT).show();
                             break;
                     }
-                    //Toast.makeText(SpardhaHome.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
-
                     return true;
 
                 }
@@ -168,7 +124,7 @@ public class SpardhaHome extends AppCompatActivity {
             }
 
             @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
             }
         });
@@ -203,17 +159,11 @@ public class SpardhaHome extends AppCompatActivity {
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs);
 
-        spardhaHomeFragment = new SpardhaHomeFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, spardhaHomeFragment).commit();
-
-//        spardhaHomeFragment.allInOne(adapter);
-//        spardhaHomeFragment.setViewPagerAdapter(adapter);
-        /*// Assigning ViewPager View and setting the adapter
+        // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
-        pager.setAdapter(adapter);*/
-    //    spardhaHomeFragment.setTabs();
-        /*// Assiging the Sliding Tab Layout View
+        pager.setAdapter(adapter);
+
+        // Assiging the Sliding Tab Layout View
         tabs = (SlidingTabLayout) findViewById(R.id.tabs);
         tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
@@ -226,25 +176,8 @@ public class SpardhaHome extends AppCompatActivity {
         });
 
         // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);*/
+        tabs.setViewPager(pager);
 
-
-    }
-    public void shiftToTab3(int FragmentPicker) {
-        adapter.setFragmentPicker(FragmentPicker);
-//        adapter.setTitle3(FragmentPicker);
-        //pager.setAdapter(adapter);
-
-
-        //title needs to be changed on changing 3rd tab
-        adapter.notifyDataSetChanged();
-
-
-        if (pager.getCurrentItem() == 2) {
-            pager.setAdapter(adapter);
-
-        }
-        pager.setCurrentItem(2, true);
 
     }
 //    @Override
@@ -268,4 +201,6 @@ public class SpardhaHome extends AppCompatActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
+
 }

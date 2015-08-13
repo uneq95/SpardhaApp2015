@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,7 +22,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -33,13 +33,12 @@ import java.util.ArrayList;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     Context context;
     Toolbar toolbar;
-    EditText etFullName, etEmail, etCollege, etBranch, etContactNo;
-    Button btregister, btIndividual, btContingent;
-    String fullName, email, college, branch, contactNum;
+    EditText etFullName, etEmail, etCollege, etCity, etContactNo, etDesignation;
+    Button btMaleSelections, btFemaleSelections, btregister;
+    String fullName, email, college, city, contactNum, designation;
     ArrayList<NameValuePair> formData;
-    ArrayList<String> selectedNonAthletics, selectedAthletics;
-    String selectedNonAthleticSport=null, selectedAthleticSport;
-    boolean isIndividual;
+    ArrayList<String> selectedSports;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,140 +60,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         etFullName = (EditText) findViewById(R.id.etFullName);
         etEmail = (EditText) findViewById(R.id.etEmailId);
         etCollege = (EditText) findViewById(R.id.etCollege);
-        etBranch = (EditText) findViewById(R.id.etBranch);
+        etCity = (EditText) findViewById(R.id.etCity);
         etContactNo = (EditText) findViewById(R.id.etContactNumber);
-        btIndividual = (Button) findViewById(R.id.btIndividual);
-        btContingent = (Button) findViewById(R.id.btContingent);
+        etDesignation = (EditText) findViewById(R.id.etCity);
+        btMaleSelections = (Button) findViewById(R.id.btMaleSelection);
+        btFemaleSelections = (Button) findViewById(R.id.btFemaleSelection);
         btregister = (Button) findViewById(R.id.btRegister);
-        btContingent.setOnClickListener(this);
-        btIndividual.setOnClickListener(this);
+        btMaleSelections.setOnClickListener(this);
+        btFemaleSelections.setOnClickListener(this);
         btregister.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        final String[] nonAthletics = this.getResources().getStringArray(R.array.non_athletics_sports);
-        final String[] athleticsSports = RegisterActivity.this.getResources().getStringArray(R.array.athletics);
 
         switch (v.getId()) {
-            case R.id.btContingent:
-                selectedNonAthletics = new ArrayList<>();
-                selectedAthletics = new ArrayList<>();
-                isIndividual=false;
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Select sports");
-                builder.setMultiChoiceItems(nonAthletics, null, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
-                        if (isChecked) {
-                            selectedNonAthletics.add(nonAthletics[which]);
-                        } else if (selectedNonAthletics.contains(nonAthletics[which])) {
-                            selectedNonAthletics.remove(nonAthletics[which]);
-                        }
-                    }
-                });
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Display selected sports
-                    }
-                });
-                builder.setNeutralButton("Choose Athletics Here", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //final String[] athleticsSports=RegisterActivity.this.getResources().getStringArray(R.array.athletics);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                        builder.setTitle("Athletics");
-
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //Display selected sports
-                            }
-                        });
-                        builder.setMultiChoiceItems(athleticsSports, null, new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
-                                if (isChecked) {
-                                    selectedAthletics.add(athleticsSports[which]);
-                                } else if (selectedNonAthletics.contains(athleticsSports[which])) {
-                                    selectedAthletics.remove(athleticsSports[which]);
-                                }
-                            }
-                        });
-                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                selectedNonAthletics = null;
-                                selectedAthletics = null;
-                            }
-                        });
-                        builder.create();
-                        builder.show();
-
-                    }
-                });
-                builder.create();
-                builder.show();
+            case R.id.btMaleSelection:
+                showAlertDialog(R.array.male_sports);
                 break;
-            case R.id.btIndividual:
-                isIndividual=true;
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2.setTitle("Select sports");
-                builder2.setSingleChoiceItems(nonAthletics, 0, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        selectedNonAthleticSport = nonAthletics[which];
-                    }
-                });
-                builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Display selected sports
-                    }
-                });
-                builder2.setNeutralButton("Choose Athletics Here", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        final String[] athleticsSports = RegisterActivity.this.getResources().getStringArray(R.array.athletics);
-                        selectedAthletics = new ArrayList<>();
-                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                        builder.setTitle("Athletics");
-
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //Display selected sports
-                            }
-                        });
-                        builder.setMultiChoiceItems(athleticsSports, null, new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
-                                if (isChecked) {
-                                    selectedAthletics.add(athleticsSports[which]);
-                                } else if (selectedNonAthletics.contains(athleticsSports[which])) {
-                                    selectedAthletics.remove(athleticsSports[which]);
-                                }
-                            }
-                        });
-                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                selectedNonAthletics = null;
-                                selectedAthletics = null;
-                            }
-                        });
-                        builder.create();
-                        builder.show();
-
-                    }
-                });
-                builder2.create();
-                builder2.show();
+            case R.id.btFemaleSelection:
+                showAlertDialog(R.array.female_sports);
                 break;
             case R.id.btRegister:
                 reg();
@@ -206,11 +92,37 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    private void showAlertDialog(int sportsArrayId) {
+        selectedSports = new ArrayList<>();
+        final String[] sports = this.getResources().getStringArray(sportsArrayId);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select sports");
+        builder.setMultiChoiceItems(sports, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                if (isChecked) {
+                    selectedSports.add(sports[which]);
+                } else if (selectedSports.contains(sports[which])) {
+                    selectedSports.remove(sports[which]);
+                }
+            }
+        });
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Display selected sports
+            }
+        });
+        builder.create();
+        builder.show();
+    }
+
     private void reg() {
         if (etFullName.getText().length() > 0) {
             if (etEmail.getText().length() > 0) {
                 if (etCollege.getText().length() > 0) {
-                    if (etBranch.getText().length() > 0) {
+                    if (etCity.getText().length() > 0) {
 
                         if (etContactNo.getText().length() == 10) {
                             eventCheck();
@@ -220,15 +132,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         }
 
                     } else {
-                        etBranch.setError("Enter your Branch!");
-                        etBranch.requestFocus();
+                        etCity.setError("Enter your City!");
+                        etCity.requestFocus();
                     }
                 } else {
                     etCollege.setError("Enter your college Name!");
                     etCollege.requestFocus();
                 }
             } else {
-                etEmail.setError( "Enter your Email-id!");
+                etEmail.setError("Enter your Email-id!");
                 etEmail.requestFocus();
             }
         } else {
@@ -237,36 +149,42 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void eventCheck(){
-        if(isIndividual){
-            if(selectedNonAthleticSport!=null||selectedNonAthletics.size()>0){
-                register();
-            }else{
-                Toast.makeText(this,"Please select ATLEAST ONE sport!",Toast.LENGTH_LONG).show();
+    private void eventCheck() {
+        adapter = new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_list_item_1);
+        if(selectedSports!=null){
+            for(int i=0;i<selectedSports.size();i++){
+                adapter.add(selectedSports.get(i));
             }
+            register();
         }else{
-            if(selectedNonAthletics.size()>0||selectedNonAthletics.size()>0){
-                register();
-            }else{
-                Toast.makeText(this,"Please select a sport!",Toast.LENGTH_LONG).show();
-            }
-
+            Toast.makeText(this,"Please select at least one sport!",Toast.LENGTH_LONG).show();
         }
     }
+
     public void register() {
         fullName = etFullName.getText().toString();
         email = etEmail.getText().toString();
         college = etCollege.getText().toString();
-        branch = etBranch.getText().toString();
+        city = etCity.getText().toString();
+        designation=etDesignation.getText().toString();
         contactNum = etContactNo.getText().toString();
-        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setPositiveButton("Register", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
-        builder.setTitle("You are registering in the following sports:");
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(RegisterActivity.this,android.R.layout.select_dialog_singlechoice);
+        builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setTitle("You are registering for the following sports:");
+        builder.create();
+        builder.show();
         /*formData = new ArrayList<NameValuePair>();
         formData.add(new BasicNameValuePair("first_name", firstName));
         formData.add(new BasicNameValuePair("last_name", lastName));

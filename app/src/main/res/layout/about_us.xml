@@ -4,7 +4,11 @@
     android:layout_height="match_parent"
     android:background="#C8E6C9"
     android:orientation="vertical">
-
+    <include
+        android:elevation="10dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar">
+    </include>
 
     <LinearLayout
         android:orientation="vertical"
@@ -50,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="ritesh.kumar.ece13@itbhu.ac.in"
+                    android:text="ritesh.kumar.ece13@iitbhu.ac.in"
                     android:id="@+id/textView8" />
             </LinearLayout>
         </LinearLayout>
@@ -135,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="abhishek.pandey.che14@itbhu.ac.in"/>
+                    android:text="abhishek.pandey.che14@iitbhu.ac.in"/>
             </LinearLayout>
         </LinearLayout>
 

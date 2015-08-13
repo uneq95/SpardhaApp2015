@@ -23,32 +23,31 @@
 
 
             <com.ritesh.spardha.custom_views.ClearableEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:paddingLeft="15dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_margin="5dp"
+            android:hint="Full Name"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:padding="10dp"
+            android:inputType="textPersonName"
+            android:id="@+id/etFullName" />
+            <com.ritesh.spardha.custom_views.ClearableEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_dropdown_light_frame"
                 android:paddingLeft="15dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_margin="5dp"
-                android:hint="Full Name"
+                android:hint="Designation (If any)"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:padding="10dp"
                 android:inputType="textPersonName"
-                android:id="@+id/etFullName" />
-
-            <com.ritesh.spardha.custom_views.ClearableEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@android:drawable/editbox_dropdown_light_frame"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:paddingLeft="15dp"
-                android:hint="Email Id"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:padding="10dp"
-                android:inputType="textEmailAddress"
-                android:id="@+id/etEmailId" />
+                android:id="@+id/etDesignation" />
 
             <com.ritesh.spardha.custom_views.ClearableEditText
                 android:layout_width="match_parent"
@@ -71,12 +70,26 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="15dp"
                 android:layout_margin="5dp"
-                android:hint="Branch"
+                android:hint="City"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:padding="10dp"
                 android:inputType="textPersonName"
-                android:id="@+id/etBranch" />
+                android:id="@+id/etCity" />
+
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:hint="Email Id"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp"
+                android:inputType="textEmailAddress"
+                android:id="@+id/etEmailId" />
 
             <com.ritesh.spardha.custom_views.ClearableEditText
                 android:layout_width="match_parent"
@@ -92,16 +105,8 @@
                 android:inputType="phone"
                 android:id="@+id/etContactNumber" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="REGISTERING FOR"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginLeft="15dp"
-                android:gravity="center_horizontal" />
-
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -110,8 +115,8 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="INDIVIDUAL"
-                    android:id="@+id/btIndividual" />
+                    android:text="Selection for Female Teams"
+                    android:id="@+id/btFemaleSelection" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,8 +131,8 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CONTINGENT"
-                    android:id="@+id/btContingent" />
+                    android:text="Selection for Male Teams"
+                    android:id="@+id/btMaleSelection" />
             </LinearLayout>
 
             <Button
