@@ -140,6 +140,7 @@ public class SpardhaHome extends AppCompatActivity {
                         case 6:toolbar.setTitle("Settings");
                             transaction=fm.beginTransaction();
                             transaction.replace(R.id.container, new SportsFragment());
+                            transaction.addToBackStack("Settings");
                             transaction.commit();
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
                             break;
@@ -151,6 +152,9 @@ public class SpardhaHome extends AppCompatActivity {
 //                            transaction=fm.beginTransaction();
 //                            transaction.replace(R.id.container, new AboutUsFragment());
 //                            transaction.commit();
+                            /*transaction=fm.beginTransaction();
+                            transaction.replace(R.id.container, new AboutUsFragment());
+                            transaction.addToBackStack("About Us");*/
                             break;
                     }
                     //Toast.makeText(SpardhaHome.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();

@@ -79,7 +79,8 @@
         <item>Boxing</item>
         <item>Carrom</item>
         <item>Chess</item>
-        <item>Lifting</item>
+        <item>Weight Lifting</item>
+        <item>Power Lifting</item>
     </string-array>
     <string-array name="female_sports">
         <item>Athletics</item>
@@ -89,7 +90,6 @@
         <item>Lawn Tennis</item>
         <item>Table Tennis</item>
         <item>Handball</item>
-        <item>Kabaddi</item>
         <item>Kho-Kho</item>
         <item>Taekwondo</item>
         <item>Carrom</item>

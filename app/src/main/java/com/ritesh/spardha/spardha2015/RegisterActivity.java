@@ -20,8 +20,11 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -36,14 +39,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     EditText etFullName, etEmail, etCollege, etCity, etContactNo, etDesignation;
     Button btMaleSelections, btFemaleSelections, btregister;
     String fullName, email, college, city, contactNum, designation;
-    ArrayList<NameValuePair> formData;
     ArrayList<String> selectedSports;
     ArrayAdapter<String> adapter;
+    String maleOrFemale="male";
+    ProgressDialog pg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getBaseContext();
+
         setContentView(R.layout.registration_layout_new);
         initView();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -69,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         btMaleSelections.setOnClickListener(this);
         btFemaleSelections.setOnClickListener(this);
         btregister.setOnClickListener(this);
-
+        pg= new ProgressDialog(this);
     }
 
     @Override
@@ -77,9 +82,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         switch (v.getId()) {
             case R.id.btMaleSelection:
+                maleOrFemale="male";
                 showAlertDialog(R.array.male_sports);
                 break;
-            case R.id.btFemaleSelection:
+            case R.id.btFemaleSelection:maleOrFemale="female";
                 showAlertDialog(R.array.female_sports);
                 break;
             case R.id.btRegister:
@@ -172,6 +178,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         builder.setPositiveButton("Register", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                new RegisterUserAsyncTask().execute();
 
             }
         });
@@ -185,15 +192,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         builder.setTitle("You are registering for the following sports:");
         builder.create();
         builder.show();
-        /*formData = new ArrayList<NameValuePair>();
-        formData.add(new BasicNameValuePair("first_name", firstName));
-        formData.add(new BasicNameValuePair("last_name", lastName));
-        formData.add(new BasicNameValuePair("email", email));
-        formData.add(new BasicNameValuePair("college", college));
-        formData.add(new BasicNameValuePair("branch", branch));
-        formData.add(new BasicNameValuePair("event", event));
-        formData.add(new BasicNameValuePair("contact_number", contactNum));
-        new RegisterUserAsyncTask().execute();*/
 
     }
 
@@ -209,7 +207,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-//            progressDialog = new ProgressDialog(context);
+            if(!pg.isShowing()){
+                pg.show();
+                pg.setCancelable(false);
+                pg.setMessage("Registering you for Spardha'15... Please wait!");
+                pg.show();
+            }
 //            progressDialog.setMessage("Registering you! Please wait...");
 //            progressDialog.setCancelable(false);
 //            progressDialog.show();
@@ -220,7 +223,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost("http://spardusers.host56.com/zyro/Registeration.php");
             try {
-                httppost.setEntity(new UrlEncodedFormEntity(formData));
+                JSONObject formData= JsonEncode();
+                String jsonToStringFormData= formData.toString();
+                StringEntity stringEntity= new StringEntity(jsonToStringFormData);
+                httppost.setEntity(stringEntity);
+                httppost.setHeader("Accept", "application/json");
+                httppost.setHeader("Content-type", "application/json");
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
                 final String response = httpclient.execute(httppost, responseHandler);
                 runOnUiThread(new Runnable() {
@@ -235,11 +243,39 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return null;
         }
 
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if(pg.isShowing()){
+
+                pg.dismiss();
+                Toast.makeText(context, "You are successfully registered for Spardha'15", Toast.LENGTH_LONG).show();
+
+            }
+        }
     }
 
     private JSONObject JsonEncode() {
         JSONObject registrationData = new JSONObject();
 
+        try {
+            registrationData.put("full_name",fullName);
+            registrationData.put("email",email);
+            registrationData.put("college",college);
+            registrationData.put("city",city);
+            registrationData.put("designation",designation);
+            registrationData.put("contact_num",contactNum);
+            registrationData.put("male_or_female",maleOrFemale);
+            JSONArray sportsArray=new JSONArray();
+            for(int i=0;i<selectedSports.size();i++){
+                sportsArray.put(i,selectedSports.get(i));
+            }
+            registrationData.put("sports",sportsArray);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return registrationData;
     }
