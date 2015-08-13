@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Gallerytheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+    <style name="Gallerytheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <style name="menu_labels_style">
         <item name="android:background">@drawable/fab_label_background</item>

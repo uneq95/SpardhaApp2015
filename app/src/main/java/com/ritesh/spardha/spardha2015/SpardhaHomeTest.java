@@ -94,12 +94,10 @@ public class SpardhaHomeTest extends AppCompatActivity {
                         case 1:
                             startActivity(new Intent(SpardhaHomeTest.this, ContactActivity.class));
                             break;
-                        case 2:Toast.makeText(context, "you clicked maps ", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SpardhaHomeTest.this, MapsActivity.class));
+                        case 2:startActivity(new Intent(SpardhaHomeTest.this, MapsActivity.class));break;
                         case 3:startActivity(new Intent(SpardhaHomeTest.this, GalleryMainActivity.class));
                             break;
                         case 4:startActivity(new Intent(SpardhaHomeTest.this, RegisterActivity.class));
-                            Toast.makeText(context, "you clicked register ", Toast.LENGTH_SHORT).show();
                             break;
                         case 5:
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();

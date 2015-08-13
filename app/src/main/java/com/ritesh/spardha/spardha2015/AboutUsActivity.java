@@ -53,12 +53,12 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
 
     public static Intent getOpenFacebookIntent(Context context, String username) {
 
-        try {
-            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
-            return new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("fb://profile/%s", username)));
-        } catch (Exception e) {
+//        try {
+//            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+//            return new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("fb://profile/%s", username)));
+//        } catch (Exception e) {
             return new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("https://www.facebook.com/%s", username)));
-        }
+//        }
     }
 
     private void openGPlusIntent(String userId) {
@@ -91,11 +91,11 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.inRitesh:
                 openLinkedIn("riteshkumarece13iitbhu");
                 break;
-            case R.id.fbAbhishek:
+            case R.id.fbAbhishek:startActivity(getOpenFacebookIntent(this, "abhishek.pandey.100483").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
-            case R.id.gplusAbhishek:
+            case R.id.gplusAbhishek:openGPlusIntent("113192039843114411696");
                 break;
-            case R.id.inAbhishek:
+            case R.id.inAbhishek:openLinkedIn("/pub/abhishek-pandey/8a/74/513");
                 break;
         }
     }

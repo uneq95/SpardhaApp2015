@@ -12,10 +12,13 @@ import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 
-public class GallerBaseActivity extends ActionBarActivity {
+public class GallerBaseActivity extends AppCompatActivity {
 
 
     private static final int RightToLeft = 1;
@@ -30,6 +33,9 @@ public class GallerBaseActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         overridePendingTransition(0, 0);
         super.onCreate(savedInstanceState);
     }
