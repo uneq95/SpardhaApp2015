@@ -1,9 +1,12 @@
 package com.ritesh.spardha.maps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -12,6 +15,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.R;
 
 public class MapsActivity extends ActionBarActivity {
@@ -139,26 +143,51 @@ public class MapsActivity extends ActionBarActivity {
 
     private void setUpMap() {
         /** To Get Current Location **/
-            /*mMap.setMyLocationEnabled(true);
-            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mMap.setMyLocationEnabled(true);
+            /*LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
             String provider = locationManager.getBestProvider(criteria, true);
             Location myLocation = locationManager.getLastKnownLocation(provider);
             double latitude = myLocation.getLatitude();
             double longitude = myLocation.getLongitude();*/
-            LatLng latLng = new LatLng(25.265834, 82.989499);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomlevel));
+        LatLng latLng = new LatLng(25.265834, 82.989499);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomlevel));
 
 
     }
 
     public void addMarker(double[] Latitude,double[] Longitude, String[] Title){
 
-       for(int i = 0; i < Latitude.length;i++) {
+        for(int i = 0; i < Latitude.length;i++) {
             mMap.addMarker(new MarkerOptions().position(new LatLng(Latitude[i], Longitude[i])).title(Title[i]));
         }
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_map, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_navigate) {
+
+            Intent i = new Intent(MapsActivity.this, LocationActivity.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

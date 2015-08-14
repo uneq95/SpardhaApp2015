@@ -28,8 +28,8 @@
         android:layout_marginBottom="1dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="5dp"
-        fab:fab_addButtonColorNormal="#ab47bc"
-        fab:fab_addButtonColorPressed="#ba68c8"
+        fab:fab_addButtonColorNormal="@color/ColorPrimary"
+        fab:fab_addButtonColorPressed="#27ae60"
         fab:fab_addButtonPlusIconColor="@color/black_semi_transparent"
         fab:fab_labelStyle="@style/menu_labels_style">
 
@@ -37,36 +37,39 @@
             android:id="@+id/button_hospital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="testing"
-            fab:fab_colorNormal="#2979ff"
-            fab:fab_colorPressed="#448aff"
+            fab:fab_colorNormal="#27ae60"
+            fab:fab_colorPressed="@color/ColorPrimary"
             fab:fab_size="mini"
-            fab:fab_title="Hospital" />
+            fab:fab_title="Hospital"
+            fab:fab_icon="@drawable/hospital"/>
 
         <com.ritesh.spardha.maps.FloatingActionButton
             android:id="@+id/button_venue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="#2979ff"
-            fab:fab_colorPressed="#448aff"
+            fab:fab_colorNormal="#27ae60"
+            fab:fab_colorPressed="@color/ColorPrimary"
             fab:fab_size="mini"
+            fab:fab_icon="@drawable/sprots_venues"
             fab:fab_title="Sports Venue" />
 
         <com.ritesh.spardha.maps.FloatingActionButton
             android:id="@+id/button_atm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="#2979ff"
-            fab:fab_colorPressed="#448aff"
+            fab:fab_colorNormal="#27ae60"
+            fab:fab_colorPressed="@color/ColorPrimary"
+            fab:fab_icon="@drawable/atm"
             fab:fab_size="mini"
             fab:fab_title="ATM" />
 
         <com.ritesh.spardha.maps.FloatingActionButton
             android:id="@+id/button_hostel"
+            fab:fab_icon="@drawable/hostel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="#2979ff"
-            fab:fab_colorPressed="#448aff"
+            fab:fab_colorNormal="#27ae60"
+            fab:fab_colorPressed="@color/ColorPrimary"
             fab:fab_size="mini"
             fab:fab_title="Hostel" />
 
@@ -74,9 +77,10 @@
             android:id="@+id/button_miscellaneous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="#2979ff"
-            fab:fab_colorPressed="#448aff"
+            fab:fab_colorNormal="#27ae60"
+            fab:fab_colorPressed="@color/ColorPrimary"
             fab:fab_size="mini"
+            fab:fab_icon="@drawable/miscelanious_places"
             fab:fab_title="Miscellaneous" />
 
 
