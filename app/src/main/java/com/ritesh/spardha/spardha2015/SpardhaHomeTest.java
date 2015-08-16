@@ -103,10 +103,11 @@ public class SpardhaHomeTest extends AppCompatActivity {
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
                             break;
                         case 6:
-                            Toast.makeText(context, "you clicked feedback ", Toast.LENGTH_SHORT).show();
+                            Intent k2 = new Intent(SpardhaHomeTest.this, FeedbackActivty.class);
+                            startActivity(k2);
                             break;
                         case 7:startActivity(new Intent(SpardhaHomeTest.this,AboutUsActivity.class));
-                            Toast.makeText(context, "you clicked about us ", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(context, "you clicked about us ", Toast.LENGTH_SHORT).show();
                             break;
                     }
                     return true;
