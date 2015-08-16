@@ -2,8 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/light_green_bkg">
 
+    <include
+        android:elevation="10dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar">
+    </include>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,24 +35,25 @@
 
             <Spinner
                 android:id="@+id/spinnerFromPlaceCategory"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="false"
                 android:layout_alignParentTop="true"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                android:layout_margin="5dp" />
 
             <Spinner
                 android:id="@+id/spinnerFromPlaceName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spinnerFromPlaceCategory"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
                 android:paddingLeft="5dp"
-                android:paddingRight="5dp" />
+                android:paddingRight="5dp"
+                android:layout_margin="5dp" />
         </RelativeLayout>
 
 
@@ -79,23 +86,24 @@
 
             <Spinner
                 android:id="@+id/spinnerToPlaceCategory"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="false"
                 android:layout_alignParentTop="true"
                 android:paddingLeft="5dp"
-                android:paddingRight="5dp" />
+                android:paddingRight="5dp"
+                android:layout_margin="5dp" />
 
             <Spinner
                 android:id="@+id/spinnerToPlaceName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spinnerToPlaceCategory"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
                 android:paddingLeft="5dp"
-                android:paddingRight="5dp" />
+                android:paddingRight="5dp"
+                android:layout_margin="5dp" />
         </RelativeLayout>
 
 
@@ -107,6 +115,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="onClickNavigate"
-        android:text="NAVIGATE" />
+        android:text="NAVIGATE"
+        android:background="@color/ColorPrimary"
+        android:textColor="@color/white" />
 
 </LinearLayout>

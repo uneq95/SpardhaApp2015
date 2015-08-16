@@ -5,5 +5,5 @@
         android:title="Navigate"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/ic_action"/>
+        android:icon="@drawable/ic_navigate"/>
 </menu>

@@ -116,7 +116,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Selection for Female Teams"
-                    android:id="@+id/btFemaleSelection" />
+                    android:id="@+id/btFemaleSelection"
+                    android:textColor="@color/white"
+                    android:background="@color/ColorPrimary"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -132,7 +136,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Selection for Male Teams"
-                    android:id="@+id/btMaleSelection" />
+                    android:id="@+id/btMaleSelection"
+                    android:textColor="@color/white"
+                    android:background="@color/ColorPrimary"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
             </LinearLayout>
 
             <Button
@@ -140,7 +148,10 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Register"
-                android:id="@+id/btRegister" />
+                android:id="@+id/btRegister"
+                android:textColor="@color/white"
+                android:background="@color/ColorPrimary"
+                android:layout_marginTop="5dp" />
         </LinearLayout>
 
     </ScrollView>

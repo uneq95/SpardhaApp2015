@@ -6,6 +6,11 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by ritesh_kumar on 17-May-15.
  */
-public class LocationActivity extends Activity {
+public class LocationActivity extends AppCompatActivity {
 
     IITPlacesOfInterest iitPlacesOfInterest;
     ArrayList<SinglePlaceLocation> IITPlaces,startingLocationsListWRTCategory,destinationLocationListWRTCategory;
@@ -28,13 +33,23 @@ public class LocationActivity extends Activity {
     String[] Category;
     boolean[] spinnerCheck = {false, false, false, false};
     SinglePlaceLocation destination, startingPoint;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iit_bhu_navigator_layout);
         loadLocationData();
         initViews();
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setElevation(10);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         loadLocationLists();
         setCategorySpinners();
         setLocationSpinners();
@@ -190,6 +205,14 @@ public class LocationActivity extends Activity {
             Toast.makeText(getBaseContext(), "Please set all fields properly and try again!", Toast.LENGTH_SHORT).show();
         }
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

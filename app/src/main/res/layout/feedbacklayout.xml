@@ -9,32 +9,28 @@
         layout="@layout/tool_bar">
     </include>
 
-    <TextView
-        android:layout_margin="20dp"
-        android:textSize="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Feedback "
-        android:elevation="10dp"
-        android:layout_gravity="center_horizontal" />
+
 
     <EditText
+        android:background="@android:drawable/editbox_dropdown_light_frame"
         android:layout_margin="20dp"
-        android:hint="Drop Your Suggestion/Feedback Here"
+        android:hint="Drop Your Suggestions / Feedback Here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etsuggestion"
-        android:layout_gravity="center_horizontal" />
+        android:lines="4"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp" />
 
     <Button
-        android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send"
-        android:textSize="25dp"
-        android:background="@drawable/buttonshape"
+        android:background="@color/ColorPrimary"
         android:elevation="10dp"
         android:id="@+id/bsendsuggestion"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 </LinearLayout>

@@ -2,8 +2,9 @@ package com.ritesh.spardha.maps;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.R;
 
-public class MapsActivity extends ActionBarActivity {
+public class MapsActivity extends AppCompatActivity {
 
 
     private GoogleMap mMap;
@@ -43,11 +44,20 @@ public class MapsActivity extends ActionBarActivity {
     private final String[] OTHER_NAMES = {"DG Corner","Limbdi Corner","Vishvanath Temple","Swatantrata Bhawan"};
     private final double[] OTHER_LATITUDE = {25.263023,25.260777,25.265676,25.260636};
     private final double[] OTHER_LONGITUDE = {82.986498,82.986884,82.989475,82.993676};
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_fragment_layout);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setElevation(10);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         setUpMapIfNeeded();
         addMarker(HOSTEL_LATITUDE, HOSTEL_LONGITUDE, HOSTEL_NAME);
@@ -188,6 +198,9 @@ public class MapsActivity extends ActionBarActivity {
             return true;
         }
 
+        if (item.getItemId() == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+        }
         return super.onOptionsItemSelected(item);
     }
 }
