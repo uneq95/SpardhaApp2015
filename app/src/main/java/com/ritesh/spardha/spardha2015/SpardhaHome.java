@@ -145,7 +145,8 @@ public class SpardhaHome extends AppCompatActivity {
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
                             break;
                         case 7:toolbar.setTitle("Feedback");
-                            Toast.makeText(context, "you clicked feedback ", Toast.LENGTH_SHORT).show();
+                            Intent k2 = new Intent(SpardhaHome.this, FeedbackActivty.class);
+                            startActivity(k2);
                             break;
                         case 8:toolbar.setTitle("About Us");
                             startActivity(new Intent(SpardhaHome.this,AboutUsActivity.class));

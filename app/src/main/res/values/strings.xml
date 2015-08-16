@@ -116,4 +116,13 @@
         <item>110 Hurdles</item>
         <item>400 Hurdles</item>
     </string-array>
+    <string-array name="categories_left">
+        <item>Inauguration</item>
+        <item>Sponsors</item>
+        <item>Closing Ceremony</item>
+    </string-array>
+    <string-array name="categories_right">
+        <item>Gallery</item>
+        <item>Informal</item>
+    </string-array>
 </resources>
