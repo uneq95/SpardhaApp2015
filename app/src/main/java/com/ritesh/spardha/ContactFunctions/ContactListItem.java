@@ -6,8 +6,8 @@ package com.ritesh.spardha.ContactFunctions;
 public class ContactListItem {
 
     //for contacts
-    public String name, email, phoneNumber;
-    int photoResId;
+    public String name, email, phoneNumber,picLink;
+    int photoResId=-1;
     //for contact header
     public String contactHeader;
     // flag
@@ -19,6 +19,13 @@ public class ContactListItem {
         this.email = desg;
         this.phoneNumber = phn;
         this.photoResId = photoRes;
+        this.isHeader = false;
+    }
+    public ContactListItem(String name, String desg, String phn, String picLink) {
+        this.name = name;
+        this.email = desg;
+        this.phoneNumber = phn;
+        this.picLink = picLink;
         this.isHeader = false;
     }
 
@@ -51,6 +58,8 @@ public class ContactListItem {
     public boolean isHeader() {
         return isHeader;
     }
+
+    public String getPicLink(){return picLink;}
 
 
 }

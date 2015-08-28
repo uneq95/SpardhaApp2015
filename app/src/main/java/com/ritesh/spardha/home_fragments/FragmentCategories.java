@@ -30,9 +30,10 @@ public class FragmentCategories extends Fragment implements AdapterView.OnItemCl
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        int[] ids={R.drawable.bkg1};
         Context activityContext=getActivity();
         String[] categoriesArray=activityContext.getResources().getStringArray(R.array.categories_array);
-        categoriesGridAdapter= new CategoriesGridAdapter(activityContext,categoriesArray,R.drawable.bkg1);
+        categoriesGridAdapter= new CategoriesGridAdapter(activityContext,categoriesArray,ids);
 
         View rootView =inflater.inflate(R.layout.categories_grid_layout,container,false);
         GridView gridView=(GridView)rootView.findViewById(R.id.gridView);

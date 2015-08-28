@@ -125,4 +125,25 @@
         <item>Gallery</item>
         <item>Informal</item>
     </string-array>
+    <string-array name="sponsers">
+        <item>http://www.spardha.co.in/img/sponsors/hp.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/ucobank.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/pepsi.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/bob.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/paytm.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/nokia.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/baskin.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/amul.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/dominos.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/mahindra.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/godrej.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/sail.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/intel.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/peta.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/long/bsa.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/long/her.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/long/jabong.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/long/reebok.png</item>
+        <item>http://www.spardha.co.in/img/sponsors/long/ht.png</item>
+    </string-array>
 </resources>

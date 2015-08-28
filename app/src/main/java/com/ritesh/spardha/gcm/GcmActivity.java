@@ -47,6 +47,7 @@ public class GcmActivity extends AppCompatActivity {
                 } else {
                     mInformationTextView.setText(getString(R.string.token_error_message));
                 }
+
             }
         };
         mInformationTextView = (TextView) findViewById(R.id.informationTextView);

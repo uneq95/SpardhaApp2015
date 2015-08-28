@@ -16,16 +16,14 @@ import com.ritesh.spardha.spardha2015.R;
  */
 public class CategoriesGridAdapter extends BaseAdapter {
 
+    int[] iconResId;
     Context context;
     String[] categories;
-    int ImageResId;
-    private static LayoutInflater inflater = null;
 
-    public CategoriesGridAdapter(Context c, String[] categories_array, int imageResId) {
+    public CategoriesGridAdapter(Context c, String[] categories_array, int[] imageResId) {
         this.context = c;
         this.categories = categories_array;
-        this.ImageResId = imageResId;
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.iconResId = imageResId;
     }
 
     @Override
@@ -51,19 +49,19 @@ public class CategoriesGridAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        ViewHolder holder = null;
+        ViewHolder holder ;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.grid_item_layout, parent, false);
+            convertView = inflater.inflate(R.layout.tab_2singleitem, parent, false);
             holder = new ViewHolder();
-            holder.gridItemImage = (ImageView) convertView.findViewById(R.id.ibGridImage);
-            holder.gridItemTitle = (TextView) convertView.findViewById(R.id.tvGridTitle);
+            holder.gridItemImage = (ImageView) convertView.findViewById(R.id.imageView1);
+            holder.gridItemTitle = (TextView) convertView.findViewById(R.id.textView1);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.gridItemTitle.setText(categories[position]);
-        holder.gridItemImage.setImageResource(R.drawable.bkg1);
+        holder.gridItemImage.setImageResource(iconResId[position]);
         return convertView;
     }
 }

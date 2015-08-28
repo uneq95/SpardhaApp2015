@@ -5,20 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ritesh.spardha.custom_views.RoundedImageView;
 import com.ritesh.spardha.spardha2015.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by ritesh_kumar on 23-Jun-15.
  */
 public class SportsGridAdapter extends BaseAdapter {
     Context context;
-    String[] sportsNames = {"Athletics", "Cricket", "Badminton", "Basketball", "Volleyball", "Table Tennis", "Football", "Hockey", "Taekwondo", "Lawn Tennis"};
+    String[] sportsNames;
     int[] sportsIcons = {R.drawable.athletics, R.drawable.cricket, R.drawable.badminton, R.drawable.basketball, R.drawable.volleyball, R.drawable.tabletennis, R.drawable.football, R.drawable.hockey, R.drawable.taekwandoe, R.drawable.tennis};
 
     public SportsGridAdapter(Context context) {
         this.context = context;
+        this.sportsNames=context.getResources().getStringArray(R.array.male_sports);
     }
 
     @Override
@@ -42,18 +47,20 @@ public class SportsGridAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.sports_grid_item, parent, false);
-            holder.ivSportsIcon = (RoundedImageView) convertView.findViewById(R.id.ivSportsIcon);
-
+            convertView = inflater.inflate(R.layout.tab_2singleitem, parent, false);
+            holder.sportsIcon = (ImageView) convertView.findViewById(R.id.imageView1);
+            holder.sportName=(TextView) convertView.findViewById(R.id.textView1);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.ivSportsIcon.setImageResource(sportsIcons[position]);
+        holder.sportsIcon.setImageResource(sportsIcons[position]);
+        holder.sportName.setText(sportsNames[position]);
         return convertView;
     }
 
     class ViewHolder {
-        RoundedImageView ivSportsIcon;
+        ImageView sportsIcon;
+        TextView sportName;
     }
 }

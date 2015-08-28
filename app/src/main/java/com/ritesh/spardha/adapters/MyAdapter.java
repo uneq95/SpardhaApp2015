@@ -56,13 +56,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             if (ViewType == TYPE_ITEM) {
                 textView = (TextView) itemView.findViewById(R.id.rowText); // Creating TextView object with the id of textView from item_row.xml
                 imageView = (ImageView) itemView.findViewById(R.id.rowIcon);// Creating ImageView object with the id of ImageView from item_row.xml
-                Holderid = 1;                                               // setting holder id as 1 as the object being populated are of type item row
+                Holderid = 1;
+                // setting holder id as 1 as the object being populated are of type item row
             } else {
 
-
-                Name = (TextView) itemView.findViewById(R.id.name);         // Creating Text View object from header.xml for name
-                email = (TextView) itemView.findViewById(R.id.email);       // Creating Text View object from header.xml for email
-                profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
+//                Name = (TextView) itemView.findViewById(R.id.name);         // Creating Text View object from header.xml for name
+//                email = (TextView) itemView.findViewById(R.id.email);       // Creating Text View object from header.xml for email
+//                profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
                 Holderid = 0;                                                // Setting holder id = 0 as the object being populated are of type header view
             }
         }
@@ -159,9 +159,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             holder.imageView.setImageResource(mIcons[position - 1]);// Settimg the image with array of our icons
         } else {
 
-            holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
+            /*holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
             holder.Name.setText(name);
-            holder.email.setText(email);
+            holder.email.setText(email);*/
         }
     }
 

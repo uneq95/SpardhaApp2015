@@ -22,6 +22,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -52,10 +53,11 @@ public class RegistrationIntentService extends IntentService {
     public RegistrationIntentService() {
         super(TAG);
     }
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         try {
             // In the (unlikely) event that multiple refresh operations occur simultaneously,
@@ -65,14 +67,23 @@ public class RegistrationIntentService extends IntentService {
                 // Initially this call goes out to the network to retrieve the token, subsequent calls
                 // are local.
                 // [START get_token]
-                InstanceID instanceID = InstanceID.getInstance(this);
-                String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
-                        GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-                // [END get_token]
-                Log.i(TAG, "GCM Registration Token: " + token);
+                String token=sharedPreferences.getString(QuickstartPreferences.GCM_TOKEN, "");
+                if(TextUtils.isEmpty(token)){
+                    InstanceID instanceID = InstanceID.getInstance(this);
+                     token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
+                            GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+                    // [END get_token]
+                    //Log.i(TAG, "GCM Registration Token: " + token);
 
-                // TODO: Implement this method to send any registration to your app's servers.
-                sendRegistrationToServer(token);
+                    // save gcm token in shared preferences
+                    sharedPreferences.edit().putString(QuickstartPreferences.GCM_TOKEN,token).apply();
+                    // TODO: Implement this method to send any registration to your app's servers.
+                }
+                Log.i(TAG, "GCM Registration Token: " + token);
+                if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false)){
+                    sendRegistrationToServer(token);
+                }
+                Log.i(TAG, "token sent ot server " +sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false) );
 
                 // Subscribe to topic channels
                 subscribeTopics(token);
@@ -80,7 +91,10 @@ public class RegistrationIntentService extends IntentService {
                 // You should store a boolean that indicates whether the generated token has been
                 // sent to your server. If the boolean is false, send the token to your server,
                 // otherwise your server should have already received the token.
-                sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
+
+                //sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
+
+
                 // [END register_for_gcm]
             }
         } catch (Exception e) {
@@ -147,7 +161,6 @@ public class RegistrationIntentService extends IntentService {
                 } catch (IOException e) {
                     e.printStackTrace();
                     SUCCESS=false;
-
                 }
             }
 
@@ -157,6 +170,8 @@ public class RegistrationIntentService extends IntentService {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            // parse the response from server and accordin to it save the sent to server shared preference
+            //sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
             Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
 
         }

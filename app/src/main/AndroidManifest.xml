@@ -153,6 +153,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.ritesh.spardha.spardha2015.SponsersActivity"
+            android:label="Sponsers" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
+        </activity>
 
     </application>
 

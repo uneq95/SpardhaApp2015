@@ -20,12 +20,9 @@ import android.widget.Toast;
 import com.ritesh.spardha.CustomizeGallery.GalleryMainActivity;
 import com.ritesh.spardha.adapters.MyAdapter;
 import com.ritesh.spardha.adapters.ViewPagerAdapter;
-import com.ritesh.spardha.home_fragments.AboutUsFragment;
-import com.ritesh.spardha.home_fragments.ContactFragment;
 import com.ritesh.spardha.home_fragments.SpardhaHomeFragment;
 import com.ritesh.spardha.home_fragments.SportsFragment;
 import com.ritesh.spardha.maps.MapsActivity;
-import com.ritesh.spardha.registration.RegistrationFragment;
 import com.ritesh.spardha.sliding_tabs.SlidingTabLayout;
 
 
