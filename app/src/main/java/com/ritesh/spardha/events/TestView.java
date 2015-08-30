@@ -23,6 +23,13 @@ public class TestView extends Activity{
         brow = (WebView) findViewById(R.id.webView);
         Bundle b = getIntent().getExtras();
         int urln = b.getInt("url_no");
+        brow.getSettings().getDatabaseEnabled();
+        brow.getSettings().getAllowFileAccess();
+        brow.getSettings().getBuiltInZoomControls();
+        brow.getSettings().setSupportZoom(true);
+        brow.getSettings().setBuiltInZoomControls(true);
+        brow.getSettings().setDisplayZoomControls(true);
+        brow.setDownloadListener(null);
         brow.setWebViewClient(new clientweb());
         brow.getSettings().setJavaScriptEnabled(true);
         brow.getSettings().setLoadWithOverviewMode(true);
@@ -32,7 +39,7 @@ public class TestView extends Activity{
         String final_url = address+RuleBookUrl[urln];
 
         try{
-            brow.loadUrl(final_url);
+            brow.loadUrl("https://docs.google.com/viewer?url="+final_url);
         }catch (Exception e){
             Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
         }
