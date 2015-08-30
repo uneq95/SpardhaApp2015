@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.ritesh.spardha.adapters.CategoriesGridAdapter;
+import com.ritesh.spardha.events.Event_List;
 import com.ritesh.spardha.spardha2015.R;
 import com.ritesh.spardha.spardha2015.SponsersActivity;
 
@@ -35,6 +36,7 @@ public class Tab2 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
+                    case 1: startActivity(new Intent(getActivity(), Event_List.class));break;
                     case 3: startActivity(new Intent(getActivity(), SponsersActivity.class));break;
                 }
             }

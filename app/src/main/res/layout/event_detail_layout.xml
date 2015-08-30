@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include
+        android:elevation="10dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar">   </include>
+
+    <TextView
+        android:id="@+id/tvsportsname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="6dp"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:background="#12ffff"
+        android:layout_gravity="center"
+        android:text="Sports Name"
+        android:gravity="center"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/buttonshape">
+
+                <TextView
+                    android:id="@+id/tvhalloffame"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:background="#ffff23"
+                    android:text="Hall Of Fame"/>
+
+                <TextView
+                    android:id="@+id/tvwinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:background="#ffffff"
+                    android:text="Winner : " />
+
+                <TextView
+                    android:id="@+id/tvrunnerup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:textSize="20dp"
+                    android:clickable="true"
+                    android:background="#ffffff"
+                    android:text="Runner Up :"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                android:background="@drawable/buttonshape"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_weight="8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:background="#ffffff"
+                    android:text="Rule Book"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:id="@+id/tvrulebook" />
+              <!--  <Button
+                    android:layout_weight="2"
+                    android:layout_margin="15dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/buttondownload"/>-->
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/buttonshape">
+
+                <TextView
+                    android:layout_weight="8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:background="#ffff3f"
+                    android:text="Contacts"
+                    android:gravity="center"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_weight="8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:id="@+id/tvcontact"
+                        android:background="#ffffff"
+                        android:text="Contact"
+                        android:gravity="center"/>
+                    <Button
+                        android:layout_weight="2"
+                        android:layout_margin="15dp"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:background="@drawable/button_call"/>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
