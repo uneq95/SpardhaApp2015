@@ -19,6 +19,7 @@ import com.ritesh.spardha.events.Event_List;
 import com.ritesh.spardha.pinterest.MainActivity;
 import com.ritesh.spardha.spardha2015.R;
 import com.ritesh.spardha.spardha2015.SponsersActivity;
+import com.ritesh.spardha.spardha2015.TestimonialActivity;
 
 public class Tab2 extends Fragment {
 
@@ -40,6 +41,7 @@ public class Tab2 extends Fragment {
                     case 1: startActivity(new Intent(getActivity(), Event_List.class));break;
                     case 3: startActivity(new Intent(getActivity(), SponsersActivity.class));break;
                     case 0: startActivity(new Intent(getActivity(),MainActivity.class));break;
+                    case 6: startActivity(new Intent(getActivity(),TestimonialActivity.class));break;
                 }
             }
         });

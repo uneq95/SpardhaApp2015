@@ -37,4 +37,8 @@
     <color name="yellow">#fffffbae</color>
     <color name="red">#fff10800</color>
     <color name="list_item_pressed">#1A000000</color>
+
+
+    <color name="testiColor">#dd3c04</color>
+
 </resources>
