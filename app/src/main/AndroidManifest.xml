@@ -171,6 +171,8 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
         </activity>
 
+        <activity android:name="com.ritesh.spardha.pinterest.MainActivity"
+            android:label ="pin cat"/>
     </application>
 
 </manifest>

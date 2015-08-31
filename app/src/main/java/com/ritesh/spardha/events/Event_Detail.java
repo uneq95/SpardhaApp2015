@@ -28,7 +28,7 @@ public class Event_Detail extends Activity {
         Bundle b= getIntent().getExtras();
        final long req_no = b.getInt("req_no");
          final int url_no = b.getInt("req_no")-1;
-        Toast.makeText(this,"req no is "+req_no,Toast.LENGTH_LONG);
+        Toast.makeText(this,"req no is "+req_no,Toast.LENGTH_LONG).show();
 
         EventsDb eventsDb = new EventsDb(this);
         try {
