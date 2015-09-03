@@ -6,22 +6,52 @@ package com.ritesh.spardha.CustomizeGallery;
 public class ImagesUrls {
 
     public final static String[] imageUrls_left = new String[]{
-            "http://4.bp.blogspot.com/-8qiOClI5gOo/UwmwFj0E6AI/AAAAAAAAJBE/QEwi_Hmmkes/s1600/DSC_0085+as+Smart+Object-1.jpg",
-            "http://1.bp.blogspot.com/-TqlXzNJTIzA/Uwmvut3s_PI/AAAAAAAAJAw/dSXOjrGQehE/s1600/DSC_0033+as+Smart+Object-1.jpg",
-            "http://3.bp.blogspot.com/-mdyui8OMOdQ/Uwm3REFedFI/AAAAAAAAJCs/KAjJR7LXwEw/s1600/DSC_0049.jpg",
-            "http://1.bp.blogspot.com/-0ZHGf56JfKU/Uwm2t7X_GMI/AAAAAAAAJCc/qKgQ0kpEsQU/s1600/DSC_0027.jpg",
-            "http://1.bp.blogspot.com/-Fm2tbqvhiiU/Uwm2jdwr7KI/AAAAAAAAJCM/CmaS3tamYQs/s1600/DSC_0020.jpg",
-            "http://2.bp.blogspot.com/-gZzptSCTMWA/Uwm6a3wTY7I/AAAAAAAAJDY/L3xV2VTp9tA/s1600/spardha+volley.JPG",
-            "http://1.bp.blogspot.com/-542IwC-fOrY/Uwm6Q8pK9XI/AAAAAAAAJDQ/TuYxGZhQ2O0/s1600/spardha+volley3.JPG"
-    };
+            "http://www.spardha.co.in/img/gallery/9s.jpg",
+            "http://www.spardha.co.in/img/gallery/39.jpg",
+            "http://www.spardha.co.in/img/gallery/10s.jpg",
+            "http://www.spardha.co.in/img/gallery/7s.jpg",
+            "http://www.spardha.co.in/img/gallery/5s.jpg",
+            "http://www.spardha.co.in/img/gallery/60s.jpg",
+            "http://www.spardha.co.in/img/gallery/2s.jpg",
+            "http://www.spardha.co.in/img/gallery/4s.jpg",
+            "http://www.spardha.co.in/img/gallery/53s.jpg",
+            "http://www.spardha.co.in/img/gallery/52s.jpg",
+            "http://www.spardha.co.in/img/gallery/11s.jpg",
+            "http://www.spardha.co.in/img/gallery/12s.jpg",
+            "http://www.spardha.co.in/img/gallery/13s.jpg",
+            "http://www.spardha.co.in/img/gallery/14s.jpg",
+            "http://www.spardha.co.in/img/gallery/19s.jpg",
+            "http://www.spardha.co.in/img/gallery/59s.jpg",
+            "http://www.spardha.co.in/img/gallery/56.jpg",
+            "http://www.spardha.co.in/img/gallery/17.jpg",
+            "http://www.spardha.co.in/img/gallery/16.jpg",
+            "http://www.spardha.co.in/img/gallery/20.jpg",
+            "http://www.spardha.co.in/img/gallery/21.jpg"
+
+};
 
     public final static String[] imageUrls_right = new String[]{
-            "https://iitbhulife.files.wordpress.com/2014/06/1800480_239410046182759_443186619_n.jpg",
-            "https://iitbhulife.files.wordpress.com/2014/06/1391686_225848230872274_866539299_n.jpg?w=1200&h=&crop=1",
-            "https://iitbhulife.files.wordpress.com/2014/06/1781798_615128801914390_574402820_o.jpg",
-            "https://iitbhulife.files.wordpress.com/2014/06/329759_4495105466170_1033146978_o.jpg",
-            "http://i.ytimg.com/vi/Bc_ytl8ogmA/maxresdefault.jpg",
-            "http://iitbhu.ac.in/slider/images/4.jpg"
+            "http://www.spardha.co.in/img/gallery/25.jpg",
+            "http://www.spardha.co.in/img/gallery/22s.jpg",
+            "http://www.spardha.co.in/img/gallery/23s.jpg",
+            "http://www.spardha.co.in/img/gallery/26s.jpg",
+            "http://www.spardha.co.in/img/gallery/36s.jpg",
+            "http://www.spardha.co.in/img/gallery/27s.jpg",
+            "http://www.spardha.co.in/img/gallery/54s.jpg",
+            "http://www.spardha.co.in/img/gallery/28s.jpg",
+            "http://www.spardha.co.in/img/gallery/29s.jpg",
+            "http://www.spardha.co.in/img/gallery/6s.jpg",
+            "http://www.spardha.co.in/img/gallery/31s.jpg",
+            "http://www.spardha.co.in/img/gallery/32s.jpg",
+            "http://www.spardha.co.in/img/gallery/34s.jpg",
+            "http://www.spardha.co.in/img/gallery/37.jpg",
+            "http://www.spardha.co.in/img/gallery/61s.jpg",
+            "http://www.spardha.co.in/img/gallery/38s.jpg",
+            "http://www.spardha.co.in/img/gallery/45s.jpg",
+            "http://www.spardha.co.in/img/gallery/57s.jpg",
+            "http://www.spardha.co.in/img/gallery/40s.jpg",
+            "http://www.spardha.co.in/img/gallery/1s.jpg",
+            "http://www.spardha.co.in/img/gallery/43s.jpg"
 
     };
 }

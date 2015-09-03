@@ -52,7 +52,7 @@ public class CircularAdapter extends CircularLoopAdapter {
         }
         holder.image.setMinimumHeight(mRowHeight);
 
-        Picasso.with(mContext).load(getItem(position)).transform(new ScaleToFitWidhtHeigthTransform(mRowHeight, true)).skipMemoryCache().into(holder.image);
+        Picasso.with(mContext).load(getItem(position)).transform(new ScaleToFitWidhtHeigthTransform(mRowHeight, true)).into(holder.image);
 
         return convertView;
     }

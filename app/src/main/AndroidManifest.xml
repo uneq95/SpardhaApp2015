@@ -177,6 +177,15 @@
             android:label="Testimonials">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
         </activity>
+        <activity android:name="com.ritesh.spardha.youtube.YtpChannel"
+            android:label="YouTube">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
+        </activity>
+        <activity android:name="com.ritesh.spardha.youtube.YoutubePlayer"
+            android:label="Spardha">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.ritesh.spardha.youtube.YtpChannel"/>
+        </activity>
+        <activity android:name=".Sportcard" android:label="sportcard"/>
     </application>
 
 </manifest>
