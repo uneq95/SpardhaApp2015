@@ -25,7 +25,12 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -37,7 +42,7 @@ import android.widget.Toast;
 import com.ritesh.spardha.spardha2015.R;
 
 
-public class YtpChannel extends Activity {
+public class YtpChannel extends AppCompatActivity {
 	
 
     ListView channelVideoList;
@@ -45,13 +50,20 @@ public class YtpChannel extends Activity {
     String[] videoId;
     String[] thumbnailUrl;
     List<RowItem> rowItem;
-
+	Toolbar toolbar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ytpchannel);
-		
+		toolbar = (Toolbar) findViewById(R.id.tool_bar);
+		setSupportActionBar(toolbar);
+		ActionBar actionBar = getSupportActionBar();
+		if (actionBar != null) {
+			getSupportActionBar().setElevation(10);
+			getSupportActionBar().setHomeButtonEnabled(true);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 		
 		channelVideoList =(ListView)findViewById(R.id.lvChannelVideoList);
 		
@@ -86,14 +98,16 @@ public class YtpChannel extends Activity {
 			try {
 				HttpClient client = new DefaultHttpClient();
 				Log.d("http","http request set");
-				HttpUriRequest request = new HttpGet("https://gdata.youtube.com/feeds/api/videos?author=technexiitbhu&v=2&alt=jsonc");
+				HttpUriRequest request = new HttpGet("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAAJfgyG3JQ0jm-uYUdx4BD-06MezIIVSI&channelId=UCA8-Lv8lTufkY507CUonbDQ&part=snippet,id&order=date&maxResults=20&type=video");
+				//HttpUriRequest request = new HttpGet("https://gdata.youtube.com/feeds/api/videos?author=technexiitbhu&v=2&alt=jsonc");
 				HttpResponse response = client.execute(request);
 				Log.d("http response","http request executed");
 				HttpEntity entity = response.getEntity();
 				String result = EntityUtils.toString(entity);
 				Log.d("json object", "going to initialize object");
 				JSONObject json = new JSONObject(result);
-				 final JSONArray jsonArray = json.getJSONObject("data").getJSONArray("items");
+				System.out.println("json : "+json);
+				 final JSONArray jsonArray = json.getJSONArray("items");
 				 int length= jsonArray.length();
 				 String [] array = new String[length];
 				 String[] channelId = new String[length] ;
@@ -101,11 +115,11 @@ public class YtpChannel extends Activity {
 				
 				for(int i=0;i<jsonArray.length();i++){
 					JSONObject jsonObject = jsonArray.getJSONObject(i);
-					String title = jsonObject.getString("title");
+					String title = jsonObject.getJSONObject("snippet").getString("title");
 					array[i]=title;
-					String id = jsonObject.getString("id");
+					String id = jsonObject.getJSONObject("id").getString("videoId");
 					channelId[i]=id;
-					String url = jsonObject.getJSONObject("thumbnail").getString("sqDefault");
+					String url = jsonObject.getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("medium").getString("url");
 					thumbId[i]=url;
 					
 				    
@@ -182,7 +196,13 @@ public class YtpChannel extends Activity {
 		return (cm.getActiveNetworkInfo()!=null);
 		
 	}
-	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			NavUtils.navigateUpFromSameTask(this);
+		}
+		return super.onOptionsItemSelected(item);
+	}
 	
 	
 	

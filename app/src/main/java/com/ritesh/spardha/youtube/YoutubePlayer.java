@@ -41,7 +41,7 @@ import android.widget.Toast;
 public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener,YouTubePlayer.OnFullscreenListener {
 
 	
-	public static final String API_KEY ="AIzaSyAWy_ytEHNJnJB5xeLDwHi1ndB3mYuqq0k";
+	public static final String API_KEY ="AIzaSyAAJfgyG3JQ0jm-uYUdx4BD-06MezIIVSI";
 	String VIDEO_ID	;
 	String[] vidList;
     String[] videoId;

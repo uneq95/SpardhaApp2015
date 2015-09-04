@@ -83,7 +83,7 @@ public class RegistrationIntentService extends IntentService {
                 if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false)){
                     sendRegistrationToServer(token);
                 }
-                Log.i(TAG, "token sent ot server " +sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false) );
+                Log.i(TAG, "token sent to server " +sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false) );
 
                 // Subscribe to topic channels
                 subscribeTopics(token);
@@ -171,7 +171,8 @@ public class RegistrationIntentService extends IntentService {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             // parse the response from server and accordin to it save the sent to server shared preference
-            //sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
+            if(SUCCESS)
+            sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
             Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
 
         }
