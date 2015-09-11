@@ -7,8 +7,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.RectF;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class GallerBaseActivity extends AppCompatActivity {
@@ -38,6 +41,10 @@ public class GallerBaseActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         overridePendingTransition(0, 0);
         super.onCreate(savedInstanceState);
+        if(isNetworkConnected()){
+        }else{
+            Toast.makeText(getBaseContext(), "No Internet Access!",  Toast.LENGTH_LONG).show();
+        }
     }
 
     protected void moveBackground() {
@@ -99,6 +106,12 @@ public class GallerBaseActivity extends AppCompatActivity {
             }
         });
         mCurrentAnimator.start();
+    }
+
+    boolean isNetworkConnected(){
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        return (cm.getActiveNetworkInfo()!=null);
+
     }
 }
 

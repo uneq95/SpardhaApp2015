@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pinterst_cat);
 
-        setTitle("Pinterest Layout Demo");
+        //setTitle("Pinterest Layout Demo");
         mGridView = (StaggeredGridView) findViewById(R.id.grid_view);
         genData();
 

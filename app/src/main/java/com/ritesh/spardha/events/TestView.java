@@ -1,8 +1,13 @@
 package com.ritesh.spardha.events;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ritesh.spardha.spardha2015.R;
@@ -14,7 +19,7 @@ public class TestView extends Activity{
     WebView brow;
     String address = "http://www.spardha.co.in/file/";
     String[] RuleBookUrl = {"athletics.pdf","badminton.pdf","basketball.pdf","boxing.pdf","carrom.pdf","chess.pdf","cricket.pdf","football.pdf","handball.pdf","hockey.pdf",
-                            "kabaddi.pdf","kho-kho.pdf","squash.pdf","tae-kwon-do.pdf","tennis.pdf","table-tennis.pdf","volleyball.pdf","lifting.pdf","winner-athletics.pdf","winner-tae-kwon-do.pdf"};
+            "kabaddi.pdf","kho-kho.pdf","squash.pdf","tae-kwon-do.pdf","tennis.pdf","table-tennis.pdf","volleyball.pdf","lifting.pdf","winner-athletics.pdf","winner-tae-kwon-do.pdf"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +42,22 @@ public class TestView extends Activity{
 
 
         String final_url = address+RuleBookUrl[urln];
+        if(isNetworkConnected()){
+            try{
+                brow.loadUrl("https://docs.google.com/viewer?url="+final_url);
+            }catch (Exception e){
+                Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+            }
 
-        try{
-            brow.loadUrl("https://docs.google.com/viewer?url="+final_url);
-        }catch (Exception e){
-            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(getBaseContext(), "No Internet Access!",  Toast.LENGTH_LONG).show();
         }
+
+
+    }
+    boolean isNetworkConnected(){
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        return (cm.getActiveNetworkInfo()!=null);
+
     }
 }

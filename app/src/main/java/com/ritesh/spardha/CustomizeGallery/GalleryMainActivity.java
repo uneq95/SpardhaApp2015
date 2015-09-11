@@ -4,6 +4,8 @@ package com.ritesh.spardha.CustomizeGallery;
  * Created by Abhishek on 06-06-2015.
  */
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.ritesh.spardha.spardha2015.R;
 
@@ -29,6 +32,10 @@ public class GalleryMainActivity extends AppCompatActivity{
         setContentView(R.layout.gallery_activity_main);
         if (savedInstanceState == null) {
             manageFragment(MainFragment.newInstance(isOpenActivitiesActivated), FragmentTags.LIST_BUDDIES, false);
+        }
+        if(isNetworkConnected()){
+        }else{
+            Toast.makeText(getBaseContext(), "No Internet Access!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -60,6 +67,11 @@ public class GalleryMainActivity extends AppCompatActivity{
     protected void onPause() {
         super.onPause();
         overridePendingTransition(0, 0);
+    }
+    boolean isNetworkConnected(){
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        return (cm.getActiveNetworkInfo()!=null);
+
     }
 }
 

@@ -48,12 +48,12 @@ public class Event_List extends AppCompatActivity{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                    b = new Bundle();
-                    b.putInt("req_no",position+1);
-                    intent = new Intent(Event_List.this, Event_Detail.class);
-                    intent.putExtras(b);
-                    startActivity(intent);
-                }
+                b = new Bundle();
+                b.putInt("req_no",position+1);
+                intent = new Intent(Event_List.this, Event_Detail.class);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
 
 
         });

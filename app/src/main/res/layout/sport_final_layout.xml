@@ -3,7 +3,6 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
     android:orientation="vertical">
 
 
@@ -11,6 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <include
+            android:elevation="10dp"
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar">   </include>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="HALL OF FAME"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -41,7 +45,7 @@
                         android:id="@+id/boyHeader"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Medium Text"
+                        android:text="Winner"
                         android:textStyle="bold" />
 
                     <View
@@ -55,7 +59,8 @@
 
 
                     <TextView
-                        android:id="@+id/tvWinnerBoys"
+                        android:id="@+id/tvwinner"
+                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/line1"
@@ -65,7 +70,8 @@
                         android:id="@+id/tvRunnerUpBoys"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tvWinnerBoys"
+                        android:layout_below="@id/tvwinner"
+                        android:visibility="gone"
                         android:text="Medium Text" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -86,7 +92,7 @@
                         android:id="@+id/girlHeader"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Medium Text"
+                        android:text="Runner up"
                         android:textStyle="bold" />
 
                     <View
@@ -100,7 +106,8 @@
 
 
                     <TextView
-                        android:id="@+id/tvWinnerGirl"
+                        android:clickable="true"
+                        android:id="@+id/tvrunnerup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/line2"
@@ -108,10 +115,11 @@
                         android:text="Medium Text" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/tvRunnerUpGirl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tvWinnerGirl"
+                        android:layout_below="@id/tvrunnerup"
                         android:text="Medium Text" />
                 </RelativeLayout>
 
@@ -140,10 +148,11 @@
 
 
                     <TextView
+                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="RULE BOOK"
-                        android:id="@+id/tvRuleBook"
+                        android:id="@+id/tvrulebook"
                         android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
@@ -173,6 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="CONTACTS"
+                android:textSize="20dp"
                 android:textStyle="bold" />
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view_contact1"
@@ -194,8 +204,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rohit Dixit"
-                        android:id="@+id/tvSportContactName1" />
+                        android:text="contact1"
+                        android:id="@+id/tvcontact" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -216,6 +226,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:clickable="true"
+                android:visibility="gone"
                 android:foreground="?android:attr/selectableItemBackground">
 
                 <RelativeLayout
@@ -228,7 +239,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shubham Chaudhary"
+                        android:text="contact 2"
                         android:id="@+id/tvSportContactName2" />
 
                     <ImageView

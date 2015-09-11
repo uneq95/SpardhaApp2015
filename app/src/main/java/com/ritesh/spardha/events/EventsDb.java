@@ -19,22 +19,23 @@ public class EventsDb {
     public static final String KEY_RUNNERUP = "runnerup";
     public static final String KEY_RULEBOOK = "rulebook";
     public static final String KEY_CONTACTA = "contacta";
+    public static final String KEY_CONTACTB = "contactb";
 
 
     public static final String DATABASE_NAME  = "sports_detail";
     public static final String DATABASE_TABLE = "eventdetail";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private  final Context context;
     private SQLiteDatabase sportsdatabase;
     public DBHelper dbhelperobject;
 
     String[] categorysportsname = {"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
-    String[] categorywinner = {"Click to Download","IIT Kharagpur","BRCM CET(Boys),\nMITS(Girls)","---","UGI(Boys),\nKIT(Girls)","IIT BHU","IIT BHU","IIT BHU","IIT BHU","MERI Kolkatta","IIT BHU","IIT BHU","GEC Ajmer","Click To Download","Shiv Nadar","IIT Roorkee","Shri Ram College","---"};
-    String[] categoryrunnerup = {"Click to Download","IIT BHU","IIT BHU(Boys),\nIIT BHU(Girls)","---","BBD Lucknow(Boys),\nUGI(Girls)","IET Lucknow","BBD Lucknow","---","NIT Raipur","IIT BHU","YMCA Faridabad","IIT Mumbai","IIT BHU","Click to download","IIT BHU","SNU Delhi","IIT BHU","--"};
+    String[] categorywinner = {"Click to Download","IIT Kharagpur","BRCM CET(Boys),\n\nMITS(Girls)","---","UGI(Boys),\n\nKIT(Girls)","IIT BHU","IIT BHU","IIT BHU","IIT BHU","MERI Kolkatta","IIT BHU","IIT BHU","GEC Ajmer","Click To Download","Shiv Nadar","IIT Roorkee","Shri Ram College","---"};
+    String[] categoryrunnerup = {"Click to Download","IIT BHU","IIT BHU(Boys),\n\nIIT BHU(Girls)","---","BBD Lucknow(Boys),\n\nUGI(Girls)","IET Lucknow","BBD Lucknow","---","NIT Raipur","IIT BHU","YMCA Faridabad","IIT Mumbai","IIT BHU","Click to download","IIT BHU","SNU Delhi","IIT BHU","--"};
     String[] categoryrulebook = {"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
     String[] categorycontacta = {"Gaurav  Sharma - 7860561883","Abhishek Dhananjaya - 9532892608","Mohammad Shahbaz - 8601546468","---","---","Gopal Garg - 9897232528 ","Venkat Subhash -  8953723461","Mayank kumar Morya - 9919546976","---","Suyash Tripathi - 8953880553","---","Nilabh Nandan - 7752957824","Siddhartha bhargava - 7275588982","Prabhat Srivastava - 9450675543","Samar Khan - 9889203242","Dhaval Dalia - 7753069418","Shivam jaiswal - 9795637067","---"};
-
+    String[] categorycontactb = {"---","---","Abhishek Dhayal - 9473791571","---","---","---","Dhruv Shikhar - 7376306960","Satyanand Tiwari - 8960999789","---","Prashant Kumar Singh - 9616036867","---","Prashanth Sai - 9492992254","---","---","---","---","Abhijit Mondal - 9454240708","---"};
     public EventsDb(Context context) {
         this.context = context;
         createentry();
@@ -51,7 +52,7 @@ public class EventsDb {
         public void onCreate(SQLiteDatabase db) {
 
             db.execSQL("CREATE TABLE " + DATABASE_TABLE +" (" + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_SPORTSNAME + " TEXT NOT NULL, "
-                    +KEY_WINNER + " TEXT NOT NULL, "+KEY_RUNNERUP + " TEXT NOT NULL, "+KEY_RULEBOOK + " TEXT NOT NULL, "+KEY_CONTACTA + " TEXT NOT NULL);");
+                    +KEY_WINNER + " TEXT NOT NULL, "+KEY_RUNNERUP + " TEXT NOT NULL, "+KEY_RULEBOOK + " TEXT NOT NULL, "+KEY_CONTACTA + " TEXT NOT NULL, "+KEY_CONTACTB + " TEXT NOT NULL);");
 
         }
 
@@ -76,6 +77,7 @@ public class EventsDb {
             cv.put(KEY_RUNNERUP, categoryrunnerup[i]);
             cv.put(KEY_RULEBOOK, categoryrulebook[i]);
             cv.put(KEY_CONTACTA, categorycontacta[i]);
+            cv.put(KEY_CONTACTB, categorycontactb[i]);
             sportsdatabase.insert(DATABASE_TABLE, null, cv);
         }
         dbhelperobject.close();
@@ -87,17 +89,18 @@ public class EventsDb {
         dbhelperobject = new DBHelper(context);
         sportsdatabase = dbhelperobject.getWritableDatabase();
 
-        String[] toprow = new String[]{KEY_ROWID,KEY_SPORTSNAME,KEY_WINNER,KEY_RUNNERUP,KEY_RULEBOOK,KEY_CONTACTA};
+        String[] toprow = new String[]{KEY_ROWID,KEY_SPORTSNAME,KEY_WINNER,KEY_RUNNERUP,KEY_RULEBOOK,KEY_CONTACTA,KEY_CONTACTB};
         Cursor cr = sportsdatabase.query(DATABASE_TABLE, toprow, KEY_ROWID + "=" +l,null,null,null,null);
-        String[] data = new String[5];
+        String[] data = new String[6];
 
         if(cr!=null){
             cr.moveToFirst();
-           data[0] = cr.getString(1);
+            data[0] = cr.getString(1);
             data[1] = cr.getString(2);
             data[2] = cr.getString(3);
             data[3] = cr.getString(4);
             data[4] = cr.getString(5);
+            data[5] = cr.getString(6);
 
             return data;
         }
