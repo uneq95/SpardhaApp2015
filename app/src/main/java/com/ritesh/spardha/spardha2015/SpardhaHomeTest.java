@@ -1,12 +1,14 @@
 package com.ritesh.spardha.spardha2015;
 
-import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -36,8 +38,8 @@ public class SpardhaHomeTest extends AppCompatActivity {
 //First We Declare Titles And Icons For Our Navigation Drawer List View
     //This Icons And Titles Are holded in an Array as you can see
 
-    String TITLES[] = { "Contacts", "Get Directions", "Gallery", "Register", "Settings", "Feedback", "About Us"};
-    int ICONS[] = { R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_register, R.drawable.ic_settings, R.drawable.ic_feedback, R.drawable.ic_aboutus};
+    String TITLES[] = {"Contacts", "Get Directions", "Gallery", "Register", "Settings", "Feedback", "About Us"};
+    int ICONS[] = {R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_register, R.drawable.ic_settings, R.drawable.ic_feedback, R.drawable.ic_aboutus};
 //    int ICONS[] = {R.drawable.ic_home,R.drawable.ic_events,R.drawable.ic_mail,R.drawable.ic_shop,R.drawable.ic_travel};
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
@@ -56,7 +58,7 @@ public class SpardhaHomeTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.saprdhahometest);
-        context=getApplicationContext();
+        context = getApplicationContext();
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
@@ -74,7 +76,8 @@ public class SpardhaHomeTest extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
         final GestureDetector mGestureDetector = new GestureDetector(SpardhaHomeTest.this, new GestureDetector.SimpleOnGestureListener() {
 
-            @Override public boolean onSingleTapUp(MotionEvent e) {
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
                 return true;
             }
 
@@ -84,30 +87,37 @@ public class SpardhaHomeTest extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
 
 
-
-                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                     Drawer.closeDrawers();
-                    switch(recyclerView.getChildPosition(child)){
+                    switch (recyclerView.getChildPosition(child)) {
+                        /*case 0:switch(child.getId()){
+                            case R.id.ib_fblink:startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Spardha.IIT.BHU")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));break;
+                            case R.id.ib_twitter:startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/spardha_iitbhu")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));break;
+                            case R.id.ib_webLink:startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://spardha.co.in/")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));break;
+                        }break;*/
                         case 1:
                             startActivity(new Intent(SpardhaHomeTest.this, ContactActivity.class));
                             break;
-                        case 2:startActivity(new Intent(SpardhaHomeTest.this, MapsActivity.class));break;
-                        case 3:startActivity(new Intent(SpardhaHomeTest.this, GalleryMainActivity.class));
+                        case 2:
+                            startActivity(new Intent(SpardhaHomeTest.this, MapsActivity.class));
                             break;
-                        case 4:startActivity(new Intent(SpardhaHomeTest.this, RegisterActivity.class));
+                        case 3:
+                            startActivity(new Intent(SpardhaHomeTest.this, GalleryMainActivity.class));
+                            break;
+                        case 4:
+                            startActivity(new Intent(SpardhaHomeTest.this, RegisterActivity.class));
                             break;
                         case 5:
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
                             break;
                         case 6:
-                            Intent k2 = new Intent(SpardhaHomeTest.this, FeedbackActivty.class);
-                            startActivity(k2);
+                            startActivity(new Intent(SpardhaHomeTest.this, FeedbackActivty.class));
                             break;
-                        case 7:startActivity(new Intent(SpardhaHomeTest.this,AboutUsActivity.class));
-                           // Toast.makeText(context, "you clicked about us ", Toast.LENGTH_SHORT).show();
+                        case 7:
+                            startActivity(new Intent(SpardhaHomeTest.this, AboutUsActivity.class));
                             break;
                     }
                     return true;
@@ -179,7 +189,8 @@ public class SpardhaHomeTest extends AppCompatActivity {
 
 
     }
-//    @Override
+
+    //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
 //        getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -200,6 +211,7 @@ public class SpardhaHomeTest extends AppCompatActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
 
 
 }

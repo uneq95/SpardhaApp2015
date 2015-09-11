@@ -221,7 +221,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected Void doInBackground(Void... params) {
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://spardusers.host56.com/zyro/Registeration.php");
+            //HttpPost httppost = new HttpPost("http://spardha.co.in/spardhareg.php");
+            //HttpPost httppost = new HttpPost("http://spardusers.host56.com/zyro/Registeration.php");
+            HttpPost httppost = new HttpPost("http://spardusers.host56.com/spardhagcmfinal/spardhareg.php");
             try {
                 JSONObject formData= JsonEncode();
                 String jsonToStringFormData= formData.toString();
@@ -234,7 +236,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "Response: " + response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "reg Response: " + response, Toast.LENGTH_SHORT).show();
                     }
                 });
             } catch (IOException e) {

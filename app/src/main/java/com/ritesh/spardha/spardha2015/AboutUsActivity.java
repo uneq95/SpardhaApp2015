@@ -62,7 +62,7 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void openGPlusIntent(String userId) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Intent intent;// = new Intent(Intent.ACTION_VIEW);
 //        try{
 //            intent.setClassName("com.google.android.apps.plus",
 //                    "com.google.android.apps.plus.phone.UrlGatewayActivity");

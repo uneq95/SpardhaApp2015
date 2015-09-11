@@ -64,7 +64,9 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ytp);
+
 		ytpView = (YouTubePlayerView)findViewById(R.id.ytpView);
+		ytpView.initialize(API_KEY, this);
 		baseLayout=(LinearLayout)findViewById(R.id.layout);
 		otherViews = findViewById(R.id.otherViews);
 		Intent i=getIntent();
@@ -77,6 +79,7 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
 			RowItem item =new RowItem(vidList[x], videoId[x], ThumbnailsUrl[x]);
 			rowItem.add(item);
 		}
+
 		CustomListAdapter adapter= new CustomListAdapter(this, rowItem, ThumbnailsUrl);
 		vidListView=(ListView)findViewById(R.id.channelVidList);
 		vidListView.setAdapter(adapter);

@@ -5,8 +5,11 @@ package com.ritesh.spardha.adapters;
  */
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -43,6 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ImageView profile;
         TextView Name;
         TextView email;
+        ImageView fb,website,twitter;
 
         Context context;
 
@@ -59,7 +63,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 Holderid = 1;
                 // setting holder id as 1 as the object being populated are of type item row
             } else {
-
+                fb = (ImageView) itemView.findViewById(R.id.ib_fblink);
+                twitter = (ImageView) itemView.findViewById(R.id.ib_twitter);
+                website = (ImageView) itemView.findViewById(R.id.ib_webLink);
 //                Name = (TextView) itemView.findViewById(R.id.name);         // Creating Text View object from header.xml for name
 //                email = (TextView) itemView.findViewById(R.id.email);       // Creating Text View object from header.xml for email
 //                profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
@@ -162,6 +168,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             /*holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
             holder.Name.setText(name);
             holder.email.setText(email);*/
+            holder.fb.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    ctx.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Spardha.IIT.BHU")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+                    return false;
+                }
+            });
+            holder.twitter.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    ctx.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/spardha_iitbhu")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+                    return false;
+                }
+            });
+            holder.website.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    ctx.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.spardha.co.in/")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+                    return false;
+                }
+            });
+
         }
     }
 

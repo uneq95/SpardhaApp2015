@@ -47,8 +47,9 @@ public class RegistrationIntentService extends IntentService {
 
     private static final String TAG = "RegIntentService";
     private static final String[] TOPICS = {"global"};
-
+    String TOKEN;
     private static final String SERVER_URL="http://spardusers.host56.com/gcmregister.php";
+    //private static final String SERVER_URL="http://spardha.co.in/gcmregister.php";
 
     public RegistrationIntentService() {
         super(TAG);
@@ -72,17 +73,24 @@ public class RegistrationIntentService extends IntentService {
                     InstanceID instanceID = InstanceID.getInstance(this);
                      token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
                             GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+
                     // [END get_token]
                     //Log.i(TAG, "GCM Registration Token: " + token);
 
                     // save gcm token in shared preferences
                     sharedPreferences.edit().putString(QuickstartPreferences.GCM_TOKEN,token).apply();
                     // TODO: Implement this method to send any registration to your app's servers.
+                    if(!TextUtils.isEmpty(token))
+                    if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false)){
+                        sendRegistrationToServer(token);
+                    }
                 }
+                TOKEN=token;
                 Log.i(TAG, "GCM Registration Token: " + token);
-                if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false)){
+                Toast.makeText(getApplicationContext(),"token: "+token,Toast.LENGTH_LONG).show();
+                /*if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false)){
                     sendRegistrationToServer(token);
-                }
+                }*/
                 Log.i(TAG, "token sent to server " +sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false) );
 
                 // Subscribe to topic channels
@@ -170,10 +178,10 @@ public class RegistrationIntentService extends IntentService {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            // parse the response from server and accordin to it save the sent to server shared preference
-            if(SUCCESS)
+            //parse the response from server and accordin to it save the sent to server shared preference
+            if(SUCCESS&&!TextUtils.isEmpty(TOKEN))
             sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
-            Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"response : "+s,Toast.LENGTH_LONG).show();
 
         }
     }

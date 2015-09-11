@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -30,6 +31,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -39,6 +41,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.R;
 
 
@@ -51,11 +54,14 @@ public class YtpChannel extends AppCompatActivity {
     String[] thumbnailUrl;
     List<RowItem> rowItem;
 	Toolbar toolbar;
+	ProgressDialog progressDialog;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ytpchannel);
+		progressDialog= new ProgressDialog(this);
 		toolbar = (Toolbar) findViewById(R.id.tool_bar);
 		setSupportActionBar(toolbar);
 		ActionBar actionBar = getSupportActionBar();
@@ -74,8 +80,8 @@ public class YtpChannel extends AppCompatActivity {
 	     	
 	     	
 		}else{
-			LinearLayout ytpLayout=(LinearLayout)findViewById(R.id.ytpchannelLayout);
-	     	ytpLayout.setVisibility(View.GONE);
+			/*LinearLayout ytpLayout=(LinearLayout)findViewById(R.id.ytpchannelLayout);
+	     	ytpLayout.setVisibility(View.GONE);*/
 
 			Toast.makeText(getBaseContext(), "No Internet Access!",  Toast.LENGTH_LONG).show();
 		}
@@ -91,7 +97,18 @@ public class YtpChannel extends AppCompatActivity {
 		// TODO Auto-generated constructor stub
     	   
     	   this.context=c;
-	} 
+	   }
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			if(!progressDialog.isShowing()){
+				progressDialog.setMessage("Retrieving videos from Spardha YouTube Channel ...");
+				progressDialog.setCancelable(false);
+				progressDialog.show();
+			}
+		}
+
 		@Override
 		protected Void doInBackground(Void... params) {
 			// TODO Auto-generated method stub
@@ -131,20 +148,15 @@ public class YtpChannel extends AppCompatActivity {
 				
 				
 				
-			} catch (ClientProtocolException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch(NullPointerException e){
-				e.printStackTrace();
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(getApplicationContext(),"Connection Error! Please try again!",Toast.LENGTH_SHORT).show();
+					}
+				});
 			}
 			
 			return null;
@@ -152,11 +164,12 @@ public class YtpChannel extends AppCompatActivity {
 		
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
+
 			
 			try {
-				LinearLayout ll =(LinearLayout)((Activity) context)
+				/*LinearLayout ll =(LinearLayout)((Activity) context)
 						.findViewById(R.id.progressLayout);
-				ll.setVisibility(View.GONE);
+				ll.setVisibility(View.GONE);*/
 				rowItem = new ArrayList<RowItem>();
 				for(int i=0;i<vidList.length;i++){
 					RowItem item =new RowItem(vidList[i], videoId[i], thumbnailUrl[i]);
@@ -181,12 +194,15 @@ public class YtpChannel extends AppCompatActivity {
 						
 					}
 				});
-				getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+				//getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 				super.onPostExecute(result);
 			} catch (Exception e) {
 				
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			if(progressDialog.isShowing()){
+				progressDialog.dismiss();
 			}
 		}
 		
@@ -201,9 +217,21 @@ public class YtpChannel extends AppCompatActivity {
 		if (item.getItemId() == android.R.id.home) {
 			NavUtils.navigateUpFromSameTask(this);
 		}
+		if (item.getItemId() == R.id.action_refresh) {
+			DownloadChannelList download =new DownloadChannelList(this);
+			download.execute();
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
-	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_refresh, menu);
+		return true;
+	}
+
+
 }

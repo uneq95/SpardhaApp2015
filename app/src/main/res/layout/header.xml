@@ -15,18 +15,21 @@
         android:gravity="right">
 
         <ImageButton
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ib_webLink"
             android:background="@drawable/spardha_button"/>
 
         <ImageButton
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/fb_button"
             android:id="@+id/ib_fblink"/>
 
         <ImageButton
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/twitter_button"
