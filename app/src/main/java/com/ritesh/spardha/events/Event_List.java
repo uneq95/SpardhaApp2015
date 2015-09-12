@@ -30,7 +30,7 @@ public class Event_List extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categories_grid_sports);
         String[] categories={"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
-        int[] resId={R.drawable.athletics,R.drawable.badminton,R.drawable.basket_ball,R.drawable.boxing,R.drawable.carrom,R.drawable.chess,R.drawable.cricket,R.drawable.football,R.drawable.handball,R.drawable.hockey,R.drawable.kabaddi,R.drawable.kho_kho,R.drawable.squash,R.drawable.tae_kwon_do,R.drawable.tennis,R.drawable.tt,R.drawable.volley_ball,R.drawable.weight_lifting};
+        int[] resId={R.drawable.athletics,R.drawable.badminton,R.drawable.basketball,R.drawable.boxing,R.drawable.carrom,R.drawable.chess,R.drawable.cricket,R.drawable.football,R.drawable.handball,R.drawable.hockey,R.drawable.kabaddi,R.drawable.khokho,R.drawable.squash,R.drawable.taekwondo,R.drawable.tennis,R.drawable.tt,R.drawable.volleyball,R.drawable.weightlifting};
         gridView = (GridView) findViewById(R.id.gridViewSportsCategory);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
 

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">@android:color/white</color>
-    <color name="blue1">#7733B5E5</color>
-    <color name="black">#000000</color>
     <color name="frame">@android:color/black</color>
     <color name="apptheme_color">#33b5e5</color>
     <color name="inset">#9000</color>
-    <!--<color name="ColorPrimary">#3F51B5</color>-->
     <color name="ColorPrimary">#1B5E20</color>
     <color name="ColorPrimaryDark">#303F9F</color>
-    <!--<color name="tabsScrollColor">#FFFFFF</color>-->
-    <!--<color name="tabsScrollColor">#FF4081</color>-->
     <color name="tabsScrollColor">@android:color/white</color>
     <color name="whiteColor">#FFFFFF</color>
     <color name="whitePressed">#d9d9d9</color>
@@ -19,24 +14,13 @@
 
     <!-- For floating action button-->
     <color name="black_semi_transparent">#B2000000</color>
-    <color name="background">#e5e5e5</color>
     <color name="half_black">#808080</color>
-    <color name="white_pressed">#f1f1f1</color>
     <color name="pink">#e91e63</color>
-    <color name="pink_pressed">#ec407a</color>
-    <color name="blue_semi_transparent">#805677fc</color>
-    <color name="blue_semi_transparent_pressed">#80738ffe</color>
 
     <color name="light_green_bkg">#C8E6C9</color>
 
     <!-- for pinterest -->
-    <color name="orange">#ffffdc7e</color>
-    <color name="grey">#ffd3d3d3</color>
-    <color name="green">#ff8dd304</color>
     <color name="blue">#ff82e0ff</color>
-    <color name="yellow">#fffffbae</color>
-    <color name="red">#fff10800</color>
-    <color name="list_item_pressed">#1A000000</color>
 
 
     <color name="testiColor">#dd3c04</color>

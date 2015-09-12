@@ -36,15 +36,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".SpardhaHome"
-            android:label="Spardha Home" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-        <activity
             android:name="com.ritesh.spardha.CustomizeGallery.GalleryMainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
@@ -97,15 +88,7 @@
             android:label="IIT-BHU Map" >
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
         </activity>
-        <activity
-            android:name="com.ritesh.spardha.gcm.GcmActivity"
-            android:label="@string/title_activity_gcm" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
 
         <!-- [START gcm_receiver] -->
         <receiver
@@ -157,7 +140,7 @@
             android:label="Feedback" >
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
         </activity>
-        <activity android:name=".SpardhaHomeTest" android:label="SpardhaHomeTest">
+        <activity android:name=".SpardhaHomeTest" android:label="Spardha">
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -197,15 +180,6 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.ritesh.spardha.youtube.YtpChannel"/>
         </activity>
         <activity android:name=".Sportcard" android:label="sportcard"/>
-        <activity
-            android:label="fullscreen demo"
-            android:name="com.ritesh.spardha.youtube.FullscreenDemoActivity"
-            android:screenOrientation="sensor"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/BlackNoTitleBarTheme">
-            <meta-data android:name="@string/minVersion" android:value="8"/>
-            <meta-data android:name="@string/isLaunchableActivity" android:value="true"/>
-        </activity>
     </application>
 
 </manifest>

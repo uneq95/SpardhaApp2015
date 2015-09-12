@@ -87,7 +87,7 @@ public class RegistrationIntentService extends IntentService {
                 }
                 TOKEN=token;
                 Log.i(TAG, "GCM Registration Token: " + token);
-                Toast.makeText(getApplicationContext(),"token: "+token,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"token: "+token,Toast.LENGTH_LONG).show();
                 /*if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER,false)){
                     sendRegistrationToServer(token);
                 }*/

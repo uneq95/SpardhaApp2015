@@ -18,7 +18,7 @@ public class MainActivity extends Activity implements AbsListView.OnItemClickLis
     private DataAdapter mAdapter;
     ArrayList<Data> eventsObjects;
     String[] categories = {"Inaugration", "Events", "Informals", "Sponsers", "Gallery", "Closing", "Testimonials"};
-    int[] resId = {R.drawable.inauguration, R.drawable.informal, R.drawable.informal, R.drawable.sponsors, R.drawable.gallery, R.drawable.clsoing_ceremony, R.drawable.clsoing_ceremony};
+    int[] resId = {R.drawable.inauguration, R.drawable.informal, R.drawable.informal, R.drawable.sponsors, R.drawable.gallery, R.drawable.closing_ceremony, R.drawable.closing_ceremony};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

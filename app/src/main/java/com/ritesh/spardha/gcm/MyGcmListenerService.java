@@ -27,7 +27,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.gcm.GcmListenerService;
 import com.ritesh.spardha.spardha2015.R;
-import com.ritesh.spardha.spardha2015.SpardhaHome;
+import com.ritesh.spardha.spardha2015.SpardhaHomeTest;
 
 public class MyGcmListenerService extends GcmListenerService {
 
@@ -95,7 +95,7 @@ public class MyGcmListenerService extends GcmListenerService {
         System.out.println();
         String match = String.format("%s : %s", msg.getSport(), msg.getTime());
         String title = String.format("%s VS %s", msg.getTeam1(), msg.getTeam2());
-        Intent intent = new Intent(this, SpardhaHome.class);
+        Intent intent = new Intent(this, SpardhaHomeTest.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -116,7 +116,7 @@ public class MyGcmListenerService extends GcmListenerService {
     }
 
     private void sendNotification2(GcmMessage msg) {
-        Intent intent = new Intent(this, SpardhaHome.class);
+        Intent intent = new Intent(this, SpardhaHomeTest.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -136,7 +136,7 @@ public class MyGcmListenerService extends GcmListenerService {
     }
 
     private void sendNotification3(GcmMessage msg) {
-        Intent intent = new Intent(this, SpardhaHome.class);
+        Intent intent = new Intent(this, SpardhaHomeTest.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);

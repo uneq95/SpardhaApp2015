@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.ritesh.spardha.Utils.StorageDirs;
 import com.ritesh.spardha.adapters.SponserListAdapter;
 import com.ritesh.spardha.sponsers.Sponser;
 
@@ -29,9 +28,6 @@ import java.util.ArrayList;
 public class SponsersActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    ListView lvSponserList;
-    SponserListAdapter adapter;
-    ArrayList<Sponser> sponserArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

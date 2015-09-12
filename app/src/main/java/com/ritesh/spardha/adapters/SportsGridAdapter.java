@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class SportsGridAdapter extends BaseAdapter {
     Context context;
     String[] sportsNames;
-    int[] sportsIcons = {R.drawable.athletics, R.drawable.cricket, R.drawable.badminton, R.drawable.basketball, R.drawable.volleyball, R.drawable.tabletennis, R.drawable.football, R.drawable.hockey, R.drawable.taekwandoe, R.drawable.tennis};
+    int[] sportsIcons = {R.drawable.athletics, R.drawable.cricket, R.drawable.badminton, R.drawable.basketball, R.drawable.volleyball, R.drawable.tt, R.drawable.football, R.drawable.hockey, R.drawable.taekwondo, R.drawable.tennis};
 
     public SportsGridAdapter(Context context) {
         this.context = context;

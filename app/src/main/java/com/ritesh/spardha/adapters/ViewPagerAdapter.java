@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.ritesh.spardha.home_fragments.MapsFragment;
 import com.ritesh.spardha.home_fragments.Tab1;
 import com.ritesh.spardha.home_fragments.Tab2;
 
@@ -19,9 +18,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     CharSequence Titles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
     int NumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
-    int FragmentPicker=0;
-    Fragment[] tab3Framgents={new MapsFragment()};
-    String[] tab3Titles ={"Recents","Maps"};
 
     // Build a Constructor and assign the passed Values to appropriate values in the class
     public ViewPagerAdapter(FragmentManager fm, CharSequence mTitles[], int mNumbOfTabsumb) {
@@ -31,9 +27,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
-    public void setFragmentPicker(int FragmentPicker){
-        this.FragmentPicker=FragmentPicker;
-    }
+
 
     //This method return the fragment for the every position in the View Pager
     @Override
@@ -44,7 +38,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new Tab1();
             case 1:
                 return new Tab2();
-            case 2: return tab3Framgents[FragmentPicker];
 
         }
         return null;
@@ -54,12 +47,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        if(position==2){
-            return tab3Titles[FragmentPicker];
-        }else{
             return Titles[position];
-        }
-
     }
 
     // This method return the Number of tabs for the tabs Strip

@@ -47,62 +47,16 @@ public class SpardhaHomeFragment extends Fragment {
         tabs.setViewPager(pager);
         return superView;
     }
-    public void shiftToTab3(int FragmentPicker) {
-        adapter.setFragmentPicker(FragmentPicker);
-//        adapter.setTitle3(FragmentPicker);
-        //pager.setAdapter(adapter);
 
 
-        //title needs to be changed on changing 3rd tab
-        adapter.notifyDataSetChanged();
 
-
-        if (pager.getCurrentItem() == 2) {
-            pager.setAdapter(adapter);
-
-        }
-        pager.setCurrentItem(2, true);
-
-    }
-
-    public void allInOne(ViewPagerAdapter adapter){
-//        this.pager = (ViewPager) superView.findViewById(R.id.pager);
-        this.pager.setAdapter(adapter);
-//        this.tabs = (SlidingTabLayout) superView.findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true);
-        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
-            }
-        });
-
-        // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);
-    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
-    public void setViewPagerAdapter(ViewPagerAdapter adapter){
-        pager.setAdapter(adapter);
-    }
 
-    public void setTabs(){
-        tabs = (SlidingTabLayout) superView.findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true);
-        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
-            }
-        });
-
-        // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);
-    }
 
 
 }

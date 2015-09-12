@@ -26,7 +26,6 @@ import com.ritesh.spardha.spardha2015.R;
 import com.ritesh.spardha.spardha2015.SponsersActivity;
 import com.ritesh.spardha.spardha2015.Sportcard;
 import com.ritesh.spardha.spardha2015.TestimonialActivity;
-import com.ritesh.spardha.youtube.FullscreenDemoActivity;
 import com.ritesh.spardha.youtube.YtpChannel;
 
 import java.util.ArrayList;
@@ -39,8 +38,8 @@ public class Tab2 extends Fragment implements AdapterView.OnItemClickListener {
     private DataAdapter mAdapter;
     ArrayList<Data> eventsObjects;
 
-    String[] categories = {"Inaugration", "Events", "Informals", "Sponsers", "Gallery", "Closing", "Testimonials"};
-    int[] resId = {R.drawable.inauguration, R.drawable.informal, R.drawable.informal, R.drawable.sponsors, R.drawable.gallery, R.drawable.clsoing_ceremony, R.drawable.clsoing_ceremony};
+    String[] categories = {"About Spardha","Inaugration", "Events", "Sponsers", "Gallery","Youtube", "Testimonials"};
+    int[] resId = {R.drawable.about_us,R.drawable.inauguration, R.drawable.informal, R.drawable.sponsors, R.drawable.gallery,R.drawable.youtube , R.drawable.testimonials};
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -98,16 +97,11 @@ public class Tab2 extends Fragment implements AdapterView.OnItemClickListener {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch(position){
 
-
-            case 0:
-                Toast.makeText(superView.getContext(),"TO be uploaded soon",Toast.LENGTH_SHORT).show();
-                break;
-            case 1: startActivity(new Intent(getActivity(), Event_List.class));break;
-            case 2:
-                Toast.makeText(superView.getContext(),"TO be uploaded soon",Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(getActivity(), Sportcard.class));
-                break;
-            case 3: startActivity(new Intent(getActivity(), SponsersActivity.class));break;
+            case 0 :break;
+            case 1:Toast.makeText(superView.getContext(),"TO be uploaded soon",Toast.LENGTH_SHORT).show();break;
+            case 2: startActivity(new Intent(getActivity(), Event_List.class));break;
+           // case 3:Toast.makeText(superView.getContext(),"TO be uploaded soon",Toast.LENGTH_SHORT).show();break;
+            case 3:startActivity(new Intent(getActivity(), SponsersActivity.class));break;
             case 4:startActivity(new Intent(getActivity(), GalleryMainActivity.class));break;
             case 5: startActivity(new Intent(getActivity(), YtpChannel.class));break;
             case 6: startActivity(new Intent(getActivity(),TestimonialActivity.class));break;

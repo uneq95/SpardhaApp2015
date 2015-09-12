@@ -2,64 +2,11 @@
 <resources>
 
     <string name="app_name">Spardha 2015</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_act2">Act2</string>
-    <string name="position">Position</string>
-    <string name="list">List</string>
-    <string name="customize">Customize</string>
-    <string name="open_activities">Open activities</string>
-    <string name="fillgap">Fill gap</string>
-    <string name="manual_fast_scroll">Faster manual scroll</string>
-    <string name="auto_fast_scroll">Faster auto scroll</string>
-    <string name="dividers">Dividers</string>
-    <string name="black">Black</string>
-    <string name="transparency">Transparency</string>
-    <string name="empty">Empty</string>
-    <string name="right">Right</string>
-    <string name="left">Left</string>
-    <string name="reset">Reset</string>
-    <string name="about">About</string>
-    <string name="detail">Gallery</string>
-
-    <string-array name="categories_array">
-        <item name="Inaugration">Inaugration</item>
-        <item name="sports">Sports</item>
-        <item name="informals">Informals</item>
-        <item name="maps">Maps</item>
-        <item name="gallery">Gallery</item>
-        <item name="youtube">YouTube</item>
-        <item name="closing">Closing Ceremony</item>
-        <item name="sponsers">Sponsers</item>
-    </string-array>
-    <string-array name="itemslist">
-        <item>Home</item>
-        <item>Contacts</item>
-        <item>Get Directions</item>
-        <item>Gallery</item>
-        <item>Register</item>
-        <item>Settings</item>
-        <item>FeedBack</item>
-        <item>About Us</item>
-    </string-array>
-    <string name="title_activity_spardha_gallery">SpardhaGallery</string>
-    <string name="hello_world">Hello world!</string>
     <string name="openDrawer">Drawer Opened</string>
     <string name="closeDrawer">Drawer Closed</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_gcm">GcmActivity</string>
-
-    <string name="gcm_send_message">Token retrieved and sent to server! You can now use gcmsender to
-        send downstream messages to this app.</string>
-    <string name="registering_message">Generating InstanceID token...</string>
-    <string name="token_error_message">An error occurred while either fetching the InstanceID token,
-        sending the fetched token to the server or subscribing to the PubSub topic. Please try
-        running the sample again.</string>
+    <string name="detail">Gallery</string>
 
     <string-array name="male_sports">
         <item>Athletics</item>
@@ -115,32 +62,4 @@
         <item>110 Hurdles</item>
         <item>400 Hurdles</item>
     </string-array>
-    <string-array name="sponsers">
-        <item>http://www.spardha.co.in/img/sponsors/hp.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/ucobank.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/pepsi.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/bob.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/paytm.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/nokia.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/baskin.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/amul.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/dominos.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/mahindra.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/godrej.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/sail.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/intel.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/peta.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/long/bsa.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/long/her.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/long/jabong.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/long/reebok.png</item>
-        <item>http://www.spardha.co.in/img/sponsors/long/ht.png</item>
-    </string-array>
-    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
-    <string name="fullscreen_tutorial">This is a demo which shows how to handle fullscreen behaviour. This activity has differents layouts for portrait, landscape and fullscreen. The user can enter fullscreen either by using the player controller or programmatically by the programmer (here using a button). If your activity does not have a landscape layout, you can choose to automatically enter fullscreen when the device is rotated to landscape orientation.</string>
-    <string name="enter_fullscreen">Enter Fullscreen</string>
-    <string name="landscape_fullscreen">Always fullscreen in landscape</string>
-    <string name="playerview_text">This is a YouTubePlayerView!</string>
-    <string name="minVersion">minVersion</string>
-    <string name="isLaunchableActivity">isLaunchableActivity</string>
 </resources>
