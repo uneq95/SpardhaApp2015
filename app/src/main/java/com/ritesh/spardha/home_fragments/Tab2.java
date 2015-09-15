@@ -22,6 +22,7 @@ import com.ritesh.spardha.events.Event_List;
 import com.ritesh.spardha.pinterest.Data;
 import com.ritesh.spardha.pinterest.DataAdapter;
 import com.ritesh.spardha.pinterest.MainActivity;
+import com.ritesh.spardha.spardha2015.AboutSpardha;
 import com.ritesh.spardha.spardha2015.R;
 import com.ritesh.spardha.spardha2015.SponsersActivity;
 import com.ritesh.spardha.spardha2015.Sportcard;
@@ -97,10 +98,9 @@ public class Tab2 extends Fragment implements AdapterView.OnItemClickListener {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch(position){
 
-            case 0 :break;
-            case 1:Toast.makeText(superView.getContext(),"TO be uploaded soon",Toast.LENGTH_SHORT).show();break;
+            case 0 :startActivity(new Intent(getActivity(), AboutSpardha.class));break;
+            case 1:Toast.makeText(superView.getContext(),"To be uploaded soon",Toast.LENGTH_SHORT).show();break;
             case 2: startActivity(new Intent(getActivity(), Event_List.class));break;
-           // case 3:Toast.makeText(superView.getContext(),"TO be uploaded soon",Toast.LENGTH_SHORT).show();break;
             case 3:startActivity(new Intent(getActivity(), SponsersActivity.class));break;
             case 4:startActivity(new Intent(getActivity(), GalleryMainActivity.class));break;
             case 5: startActivity(new Intent(getActivity(), YtpChannel.class));break;

@@ -224,7 +224,7 @@ public class Event_Detail extends ActionBarActivity {
 
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
-                OutputStream output = new FileOutputStream("/sdcard/"+RuleBookUrl[url_no]);
+                OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory().getPath()+"/Spardha/"+RuleBookUrl[url_no]);
 
                 byte data[] = new byte[1024];
 
@@ -260,9 +260,9 @@ public class Event_Detail extends ActionBarActivity {
         @Override
         protected void onPostExecute(String file_url) {
             dismissDialog(progress_bar_type);
-            File filefile = new File(Environment.getExternalStorageDirectory()+"/"+RuleBookUrl[url_no]);
+            File filefile = new File(Environment.getExternalStorageDirectory()+"/Spardha/"+RuleBookUrl[url_no]);
             final Uri uri = Uri.fromFile(filefile);
-            String imagePath = Environment.getExternalStorageDirectory().toString() + "/"+RuleBookUrl[url_no];
+            String imagePath = Environment.getExternalStorageDirectory().toString() + "/Spardha/"+RuleBookUrl[url_no];
 
            if(filefile.exists()) {
                try {

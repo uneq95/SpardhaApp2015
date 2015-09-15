@@ -3,6 +3,7 @@ package com.ritesh.spardha.spardha2015;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -20,15 +21,16 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ritesh_kumar on 06-Aug-15.
@@ -41,8 +43,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     String fullName, email, college, city, contactNum, designation;
     ArrayList<String> selectedSports;
     ArrayAdapter<String> adapter;
-    String maleOrFemale="male";
+    String maleOrFemale = "male";
     ProgressDialog pg;
+    boolean regDataSentToserver = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,14 +70,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         etCollege = (EditText) findViewById(R.id.etCollege);
         etCity = (EditText) findViewById(R.id.etCity);
         etContactNo = (EditText) findViewById(R.id.etContactNumber);
-        etDesignation = (EditText) findViewById(R.id.etCity);
+        etDesignation = (EditText) findViewById(R.id.etDesignation);
         btMaleSelections = (Button) findViewById(R.id.btMaleSelection);
         btFemaleSelections = (Button) findViewById(R.id.btFemaleSelection);
         btregister = (Button) findViewById(R.id.btRegister);
         btMaleSelections.setOnClickListener(this);
         btFemaleSelections.setOnClickListener(this);
         btregister.setOnClickListener(this);
-        pg= new ProgressDialog(this);
+        pg = new ProgressDialog(this);
     }
 
     @Override
@@ -82,10 +85,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         switch (v.getId()) {
             case R.id.btMaleSelection:
-                maleOrFemale="male";
+                maleOrFemale = "male";
                 showAlertDialog(R.array.male_sports);
                 break;
-            case R.id.btFemaleSelection:maleOrFemale="female";
+            case R.id.btFemaleSelection:
+                maleOrFemale = "female";
                 showAlertDialog(R.array.female_sports);
                 break;
             case R.id.btRegister:
@@ -157,13 +161,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void eventCheck() {
         adapter = new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_list_item_1);
-        if(selectedSports!=null){
-            for(int i=0;i<selectedSports.size();i++){
+        if (selectedSports != null) {
+            for (int i = 0; i < selectedSports.size(); i++) {
                 adapter.add(selectedSports.get(i));
             }
             register();
-        }else{
-            Toast.makeText(this,"Please select at least one sport!",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Please select at least one sport!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -172,13 +176,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         email = etEmail.getText().toString();
         college = etCollege.getText().toString();
         city = etCity.getText().toString();
-        designation=etDesignation.getText().toString();
+        designation = etDesignation.getText().toString();
         contactNum = etContactNo.getText().toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setPositiveButton("Register", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                new RegisterUserAsyncTask().execute();
+                if(isNetworkConnected()){
+                    new RegisterUserAsyncTask().execute();
+                }else{
+                    Toast.makeText(getBaseContext(),"Please connect to the internet!",Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });
@@ -195,52 +204,56 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    boolean isNetworkConnected(){
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        return (cm.getActiveNetworkInfo()!=null);
+
+    }
     class RegisterUserAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        ProgressDialog progressDialog;
-        // ArrayList<NameValuePair> formData;
-//        RegisterUserAsyncTask(ArrayList<NameValuePair> formData){
-//            this.formData=formData;
-//
-//        }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if(!pg.isShowing()){
+            if (!pg.isShowing()) {
                 pg.show();
                 pg.setCancelable(false);
                 pg.setMessage("Registering you for Spardha'15... Please wait!");
                 pg.show();
             }
-//            progressDialog.setMessage("Registering you! Please wait...");
-//            progressDialog.setCancelable(false);
-//            progressDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... params) {
+            List<NameValuePair> nameValuePairs;
             HttpClient httpclient = new DefaultHttpClient();
-            //HttpPost httppost = new HttpPost("http://spardha.co.in/spardhareg.php");
+            HttpPost httppost = new HttpPost("http://spardha.co.in/android_recoded_twice.php");
             //HttpPost httppost = new HttpPost("http://spardusers.host56.com/zyro/Registeration.php");
-            HttpPost httppost = new HttpPost("http://spardusers.host56.com/spardhagcmfinal/spardhareg.php");
+            //HttpPost httppost = new HttpPost("http://spardusers.host56.com/spardhagcmfinal/android_recoded_twice.php");
             try {
-                JSONObject formData= JsonEncode();
-                String jsonToStringFormData= formData.toString();
+               /*JSONObject formData= JsonEncode();
+                BasicNameValuePair json = new BasicNameValuePair("json",formData.toString());
+                nameValuePairs.add(json);*/
+                nameValuePairs = regDataEncoder();
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                /*String jsonToStringFormData= formData.toString();
                 StringEntity stringEntity= new StringEntity(jsonToStringFormData);
                 httppost.setEntity(stringEntity);
                 httppost.setHeader("Accept", "application/json");
-                httppost.setHeader("Content-type", "application/json");
+                httppost.setHeader("Content-type", "application/json");*/
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
                 final String response = httpclient.execute(httppost, responseHandler);
+                regDataSentToserver = Integer.parseInt(response) == 200;
+
+            } catch (IOException e) {
+                e.printStackTrace();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "reg Response: " + response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Connection Error! Please try again!", Toast.LENGTH_SHORT).show();
+                        regDataSentToserver = false;
                     }
                 });
-            } catch (IOException e) {
-                e.printStackTrace();
             }
             return null;
         }
@@ -248,31 +261,45 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if(pg.isShowing()){
+            if (pg.isShowing()) {
 
                 pg.dismiss();
-                Toast.makeText(context, "You are successfully registered for Spardha'15", Toast.LENGTH_LONG).show();
+                if (regDataSentToserver) {
+                    Toast.makeText(context, "You are successfully registered for Spardha'15", Toast.LENGTH_LONG).show();
+                    clearData();
+                }
+
 
             }
         }
+    }
+
+    private void clearData() {
+        etFullName.setText("");
+        etEmail.setText("");
+        etCollege.setText("");
+        etCity.setText("");
+        etDesignation.setText("");
+        etContactNo.setText("");
+        selectedSports = null;
     }
 
     private JSONObject JsonEncode() {
         JSONObject registrationData = new JSONObject();
 
         try {
-            registrationData.put("full_name",fullName);
-            registrationData.put("email",email);
-            registrationData.put("college",college);
-            registrationData.put("city",city);
-            registrationData.put("designation",designation);
-            registrationData.put("contact_num",contactNum);
-            registrationData.put("male_or_female",maleOrFemale);
-            JSONArray sportsArray=new JSONArray();
-            for(int i=0;i<selectedSports.size();i++){
-                sportsArray.put(i,selectedSports.get(i));
+            registrationData.put("full_name", fullName);
+            registrationData.put("email", email);
+            registrationData.put("college", college);
+            registrationData.put("city", city);
+            registrationData.put("designation", designation);
+            registrationData.put("contact_num", contactNum);
+            registrationData.put("male_or_female", maleOrFemale);
+            JSONArray sportsArray = new JSONArray();
+            for (int i = 0; i < selectedSports.size(); i++) {
+                sportsArray.put(i, selectedSports.get(i));
             }
-            registrationData.put("sports",sportsArray);
+            registrationData.put("sports", sportsArray);
 
 
         } catch (JSONException e) {
@@ -280,6 +307,29 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
         return registrationData;
+    }
+
+    private ArrayList<NameValuePair> regDataEncoder() {
+        ArrayList<NameValuePair> regData = new ArrayList<>();
+        regData.add(new BasicNameValuePair("full_name", fullName));
+        regData.add(new BasicNameValuePair("email", email));
+        regData.add(new BasicNameValuePair("college", college));
+        regData.add(new BasicNameValuePair("city", city));
+        regData.add(new BasicNameValuePair("designation", designation));
+        regData.add(new BasicNameValuePair("contact_num", contactNum));
+        regData.add(new BasicNameValuePair("male_or_female", maleOrFemale));
+        regData.add(new BasicNameValuePair("sports", generateSportsList()));
+        return regData;
+    }
+
+    private String generateSportsList() {
+        StringBuilder sb = new StringBuilder(selectedSports.get(0));
+        String allSportList;
+        for (int i = 1; i < selectedSports.size(); i++) {
+            sb.append(String.format(" , %s", selectedSports.get(i)));
+        }
+        allSportList = sb.toString();
+        return allSportList;
     }
 
 }

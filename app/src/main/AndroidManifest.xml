@@ -180,6 +180,11 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.ritesh.spardha.youtube.YtpChannel"/>
         </activity>
         <activity android:name=".Sportcard" android:label="sportcard"/>
+        <activity android:name=".AboutSpardha"
+            android:label="About Spardha">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
+        </activity>
     </application>
+
 
 </manifest>

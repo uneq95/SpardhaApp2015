@@ -33,9 +33,8 @@ public class GalleryMainActivity extends AppCompatActivity{
         if (savedInstanceState == null) {
             manageFragment(MainFragment.newInstance(isOpenActivitiesActivated), FragmentTags.LIST_BUDDIES, false);
         }
-        if(isNetworkConnected()){
-        }else{
-            Toast.makeText(getBaseContext(), "No Internet Access!", Toast.LENGTH_LONG).show();
+        if(!isNetworkConnected()){
+            Toast.makeText(getBaseContext(), "Please connect to the internet!", Toast.LENGTH_LONG).show();
         }
     }
 

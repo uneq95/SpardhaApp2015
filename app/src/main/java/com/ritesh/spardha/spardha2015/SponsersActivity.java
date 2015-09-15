@@ -3,6 +3,7 @@ package com.ritesh.spardha.spardha2015;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.database.DataSetObserver;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ritesh.spardha.adapters.SponserListAdapter;
 import com.ritesh.spardha.sponsers.Sponser;
@@ -40,6 +42,9 @@ public class SponsersActivity extends AppCompatActivity {
             getSupportActionBar().setElevation(10);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        if(!isNetworkConnected()){
+            Toast.makeText(getBaseContext(),"Please connect to the internet!",Toast.LENGTH_LONG).show();
         }
         ListView lv = (ListView) findViewById(R.id.lvSponsers);
 //        String[] sponsers = this.getResources().getStringArray(R.array.sponsers);
@@ -82,6 +87,11 @@ public class SponsersActivity extends AppCompatActivity {
             NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);
+    }
+    boolean isNetworkConnected(){
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        return (cm.getActiveNetworkInfo()!=null);
+
     }
 
 }

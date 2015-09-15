@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -38,8 +39,8 @@ public class SpardhaHomeTest extends AppCompatActivity {
 //First We Declare Titles And Icons For Our Navigation Drawer List View
     //This Icons And Titles Are holded in an Array as you can see
 
-    String TITLES[] = {"Contacts", "Get Directions", "Gallery", "Register", "Settings", "Feedback", "About Us"};
-    int ICONS[] = {R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_register, R.drawable.ic_settings, R.drawable.ic_feedback, R.drawable.ic_aboutus};
+    String TITLES[] = {"Contacts", "Get Directions", "Gallery", "Register", "Feedback", "About Us"};
+    int ICONS[] = {R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_register, R.drawable.ic_feedback, R.drawable.ic_aboutus};
 //    int ICONS[] = {R.drawable.ic_home,R.drawable.ic_events,R.drawable.ic_mail,R.drawable.ic_shop,R.drawable.ic_travel};
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
@@ -64,6 +65,12 @@ public class SpardhaHomeTest extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setElevation(10);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
 
@@ -110,13 +117,13 @@ public class SpardhaHomeTest extends AppCompatActivity {
                         case 4:
                             startActivity(new Intent(SpardhaHomeTest.this, RegisterActivity.class));
                             break;
-                        case 5:
+                       /* case 5:
                             Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 6:
+                            break;*/
+                        case 5:
                             startActivity(new Intent(SpardhaHomeTest.this, FeedbackActivty.class));
                             break;
-                        case 7:
+                        case 6:
                             startActivity(new Intent(SpardhaHomeTest.this, AboutUsActivity.class));
                             break;
                     }
@@ -176,6 +183,8 @@ public class SpardhaHomeTest extends AppCompatActivity {
         tabs = (SlidingTabLayout) findViewById(R.id.tabs);
         tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
+        //tabs.setSelectedIndicatorColors(getResources().getColor(R.color.white));
+        tabs.setSelectedIndicatorColors(R.color.white);
         // Setting Custom Color for the Scroll bar indicator of the Tab View
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
