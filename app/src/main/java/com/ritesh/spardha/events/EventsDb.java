@@ -20,11 +20,13 @@ public class EventsDb {
     public static final String KEY_RULEBOOK = "rulebook";
     public static final String KEY_CONTACTA = "contacta";
     public static final String KEY_CONTACTB = "contactb";
+    public static final String KEY_NO_A = "no_a";
+    public static final String KEY_NO_B = "no_b";
 
 
     public static final String DATABASE_NAME  = "sports_detail";
     public static final String DATABASE_TABLE = "eventdetail";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private  final Context context;
     private SQLiteDatabase sportsdatabase;
@@ -34,8 +36,11 @@ public class EventsDb {
     String[] categorywinner = {"Click to Download","IIT Kharagpur","BRCM CET(Boys),\n\nMITS(Girls)","---","UGI(Boys),\n\nKIT(Girls)","IIT BHU","IIT BHU","IIT BHU","IIT BHU","MERI Kolkatta","IIT BHU","IIT BHU","GEC Ajmer","Click To Download","Shiv Nadar","IIT Roorkee","Shri Ram College","---"};
     String[] categoryrunnerup = {"Click to Download","IIT BHU","IIT BHU(Boys),\n\nIIT BHU(Girls)","---","BBD Lucknow(Boys),\n\nUGI(Girls)","IET Lucknow","BBD Lucknow","---","NIT Raipur","IIT BHU","YMCA Faridabad","IIT Mumbai","IIT BHU","Click to download","IIT BHU","SNU Delhi","IIT BHU","--"};
     String[] categoryrulebook = {"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
-    String[] categorycontacta = {"Gaurav  Sharma - 7860561883","Abhishek Dhananjaya - 9532892608","Mohammad Shahbaz - 8601546468","---","---","Gopal Garg - 9897232528 ","Venkat Subhash -  8953723461","Mayank kumar Morya - 9919546976","---","Suyash Tripathi - 8953880553","---","Nilabh Nandan - 7752957824","Siddhartha bhargava - 7275588982","Prabhat Srivastava - 9450675543","Samar Khan - 9889203242","Dhaval Dalia - 7753069418","Shivam jaiswal - 9795637067","---"};
-    String[] categorycontactb = {"---","---","Abhishek Dhayal - 9473791571","---","---","---","Dhruv Shikhar - 7376306960","Satyanand Tiwari - 8960999789","---","Prashant Kumar Singh - 9616036867","---","Prashanth Sai - 9492992254","---","---","---","---","Abhijit Mondal - 9454240708","---"};
+    String[] categorycontacta = {"Gaurav  Sharma","Abhishek Dhananjaya","Mohammad Shahbaz","---","---","Gopal Garg ","Venkat Subhash ","Mayank kumar Morya","---","Suyash Tripathi","---","Nilabh Nandan","Siddhartha bhargava","Prabhat Srivastava","Samar Khan","Dhaval Dalia","Shivam jaiswal","---"};
+    String[] categorycontactb = {"---","---","Abhishek Dhayal","---","---","---","Dhruv Shikhar","Satyanand Tiwari","---","Prashant Kumar Singh","---","Prashanth Sai","---","---","---","---","Abhijit Mondal","---"};
+    String[] contacta = {"+917860561883","+919532892608","+918601546468","---","---","+919897232528","+918953723461","+919919546976","---","+918953880553","---","+917752957824","+917275588982","+919450675543","+919889203242","+917753069418","+919795637067","---"};
+    String[] contactb = {"---","---","+919473791571","---","---","---","+917376306960","+918960999789","---","+919616036867","---","+919492992254","---","---","---","---","+919454240708","---"};
+
     public EventsDb(Context context) {
         this.context = context;
         createentry();
@@ -52,7 +57,7 @@ public class EventsDb {
         public void onCreate(SQLiteDatabase db) {
 
             db.execSQL("CREATE TABLE " + DATABASE_TABLE +" (" + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_SPORTSNAME + " TEXT NOT NULL, "
-                    +KEY_WINNER + " TEXT NOT NULL, "+KEY_RUNNERUP + " TEXT NOT NULL, "+KEY_RULEBOOK + " TEXT NOT NULL, "+KEY_CONTACTA + " TEXT NOT NULL, "+KEY_CONTACTB + " TEXT NOT NULL);");
+                    +KEY_WINNER + " TEXT NOT NULL, "+KEY_RUNNERUP + " TEXT NOT NULL, "+KEY_RULEBOOK + " TEXT NOT NULL, "+KEY_CONTACTA + " TEXT NOT NULL, "+KEY_CONTACTB + " TEXT NOT NULL, "+KEY_NO_A+ " TEXT NOT NULL, "+KEY_NO_B+ " TEXT NOT NULL);");
 
         }
 
@@ -78,6 +83,8 @@ public class EventsDb {
             cv.put(KEY_RULEBOOK, categoryrulebook[i]);
             cv.put(KEY_CONTACTA, categorycontacta[i]);
             cv.put(KEY_CONTACTB, categorycontactb[i]);
+            cv.put(KEY_NO_A, contacta[i]);
+            cv.put(KEY_NO_B, contactb[i]);
             sportsdatabase.insert(DATABASE_TABLE, null, cv);
         }
         dbhelperobject.close();
@@ -89,9 +96,9 @@ public class EventsDb {
         dbhelperobject = new DBHelper(context);
         sportsdatabase = dbhelperobject.getWritableDatabase();
 
-        String[] toprow = new String[]{KEY_ROWID,KEY_SPORTSNAME,KEY_WINNER,KEY_RUNNERUP,KEY_RULEBOOK,KEY_CONTACTA,KEY_CONTACTB};
+        String[] toprow = new String[]{KEY_ROWID,KEY_SPORTSNAME,KEY_WINNER,KEY_RUNNERUP,KEY_RULEBOOK,KEY_CONTACTA,KEY_CONTACTB,KEY_NO_A,KEY_NO_B};
         Cursor cr = sportsdatabase.query(DATABASE_TABLE, toprow, KEY_ROWID + "=" +l,null,null,null,null);
-        String[] data = new String[6];
+        String[] data = new String[8];
 
         if(cr!=null){
             cr.moveToFirst();
@@ -101,6 +108,8 @@ public class EventsDb {
             data[3] = cr.getString(4);
             data[4] = cr.getString(5);
             data[5] = cr.getString(6);
+            data[6] = cr.getString(7);
+            data[7] = cr.getString(8);
 
             return data;
         }

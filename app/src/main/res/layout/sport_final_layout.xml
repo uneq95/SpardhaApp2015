@@ -211,6 +211,8 @@
                         android:id="@+id/tvcontact" />
 
                     <ImageView
+                        android:id="@+id/b_call_contact1"
+                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_call_black_18dp"
@@ -246,7 +248,8 @@
                         android:id="@+id/tvSportContactName2" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/b_call_contact2"
+                        android:clickable="true"                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_call_black_18dp"
                         android:layout_centerVertical="true"

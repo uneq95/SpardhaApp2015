@@ -34,7 +34,7 @@ public class SpardhaHomeTest extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[] = {"Upcomings", "Categories"};
+    CharSequence Titles[] = {"Upcoming", "Categories"};
     int Numboftabs = 2;
 //First We Declare Titles And Icons For Our Navigation Drawer List View
     //This Icons And Titles Are holded in an Array as you can see

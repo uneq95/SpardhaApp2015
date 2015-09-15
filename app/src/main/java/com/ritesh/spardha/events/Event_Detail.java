@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -37,7 +38,8 @@ public class Event_Detail extends ActionBarActivity {
     TextView winner,runnerup,contacta,contactb,rulebook;
     String[] details;
     Bundle bundle;
-    CardView cardview;
+    CardView cardview,contact1_cardview,contact2_cardview;
+    ImageView call_1,call_2;
     private ProgressDialog pDialog;
     String error;
     public static final int progress_bar_type = 0;
@@ -127,12 +129,41 @@ public class Event_Detail extends ActionBarActivity {
         });
         contacta.setText(details[4]);
 
+        contact1_cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(details[6].equals("---")){
+                    Toast.makeText(getBaseContext(),"Number not found",Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    intent.setData(Uri.parse(String.format("tel:%s", details[6])));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getBaseContext().startActivity(intent);
+                }
+            }
+        });
+
+
         if(details[5].equals("---")) {
         }else {
             cardview.setVisibility(View.VISIBLE);
             contactb.setText(details[5]);
         }
+        contact2_cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(details[6].equals("---")){
+                    Toast.makeText(getBaseContext(),"Number not found",Toast.LENGTH_SHORT).show();
+                }else {
+                    //Toast.makeText(getBaseContext(),details[7],Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    intent.setData(Uri.parse(String.format("tel:%s", details[7])));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getBaseContext().startActivity(intent);
 
+                }
+            }
+        });
         rulebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +205,8 @@ public class Event_Detail extends ActionBarActivity {
     }
 
     private void initialize() {
-
+        call_1 = (ImageView) findViewById(R.id.b_call_contact1);
+        call_2 = (ImageView) findViewById(R.id.b_call_contact2);
         cardview = (CardView) findViewById(R.id.card_view_contact2);
         contacta = (TextView) findViewById(R.id.tvcontact);
         contactb = (TextView) findViewById(R.id.tvSportContactName2);
@@ -182,6 +214,8 @@ public class Event_Detail extends ActionBarActivity {
         winner = (TextView) findViewById(R.id.tvwinner);
         runnerup = (TextView) findViewById(R.id.tvrunnerup);
         rulebook = (TextView) findViewById(R.id.tvrulebook);
+        contact1_cardview = (CardView) findViewById(R.id.card_view_contact1);
+        contact2_cardview = (CardView) findViewById(R.id.card_view_contact2);
 
     }
 

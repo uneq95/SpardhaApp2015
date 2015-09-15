@@ -39,7 +39,7 @@ public class Tab2 extends Fragment implements AdapterView.OnItemClickListener {
     private DataAdapter mAdapter;
     ArrayList<Data> eventsObjects;
 
-    String[] categories = {"About Spardha","Inaugration", "Events", "Sponsers", "Gallery","Youtube", "Testimonials"};
+    String[] categories = {"About Spardha","Inauguration", "Events", "Sponsors", "Gallery","Youtube", "Testimonials"};
     int[] resId = {R.drawable.about_us,R.drawable.inauguration, R.drawable.informal, R.drawable.sponsors, R.drawable.gallery,R.drawable.youtube , R.drawable.testimonials};
 
     @Override
