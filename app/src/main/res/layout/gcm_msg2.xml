@@ -9,6 +9,7 @@
     android:clickable="true"
     >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="10dp"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- This layout simply displays a GCM message photo and the message associated with it-->
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Mesage Body"
+        android:layout_margin="3dp"
         android:id="@+id/tv_gcm2_msgbody"
         android:layout_gravity="center_horizontal" />
 </LinearLayout></android.support.v7.widget.CardView>

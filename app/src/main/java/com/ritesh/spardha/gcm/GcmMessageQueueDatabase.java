@@ -146,9 +146,9 @@ public class GcmMessageQueueDatabase {
 
     public GcmMessage fetchMessageType1(int foreignKey) {
         GcmMessage msg = null;
-        String sport, location, date, time, team1, team2;
+        String sport, location, date, time, team1, team2,team1ImgLink,team2ImgLink;
         Cursor c;
-        String[] columns = new String[]{Db_Constants.KEY_SPORT, Db_Constants.KEY_LOCATION, Db_Constants.KEY_DATE, Db_Constants.KEY_TIME, Db_Constants.KEY_TEAM1, Db_Constants.KEY_TEAM2};
+        String[] columns = new String[]{Db_Constants.KEY_SPORT, Db_Constants.KEY_LOCATION, Db_Constants.KEY_DATE, Db_Constants.KEY_TIME, Db_Constants.KEY_TEAM1, Db_Constants.KEY_TEAM2,Db_Constants.KEY_TEAM1_IMGLINK,Db_Constants.KEY_TEAM2_IMGLINK};
         String condition = String.format(" %s = %d", Db_Constants.KEY_ROWID, foreignKey);
         c = db.query(Db_Constants.MSG_TYPE_1_TABLE, columns, condition, null, null, null, null);
         if (c.getCount()>0) {
@@ -159,8 +159,9 @@ public class GcmMessageQueueDatabase {
             time = c.getString(c.getColumnIndex(Db_Constants.KEY_TIME));
             team1 = c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM1));
             team2 = c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM2));
-
-            msg = new GcmMessage(1, sport, location, date, time, team1, team2);
+            team1ImgLink =c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM1_IMGLINK));
+            team2ImgLink =c.getString(c.getColumnIndex(Db_Constants.KEY_TEAM2_IMGLINK));
+            msg = new GcmMessage(1, sport, location, date, time, team1, team2,team1ImgLink,team2ImgLink);
         }
         return msg;
 

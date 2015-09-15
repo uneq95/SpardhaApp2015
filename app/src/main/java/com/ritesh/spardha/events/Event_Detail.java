@@ -54,13 +54,14 @@ public class Event_Detail extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sport_final_layout);
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
-
+        String activityTitle = getIntent().getStringExtra("sportTitle");
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             getSupportActionBar().setElevation(10);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(activityTitle);
         }
 
 
@@ -144,8 +145,7 @@ public class Event_Detail extends ActionBarActivity {
         });
 
 
-        if(details[5].equals("---")) {
-        }else {
+        if(!details[5].equals("---")){
             cardview.setVisibility(View.VISIBLE);
             contactb.setText(details[5]);
         }

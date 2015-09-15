@@ -159,8 +159,10 @@ public class MyGcmListenerService extends GcmListenerService {
 
     private GcmMessage parseGcmMessage(Bundle data) {
         GcmMessage msg = null;
-        int msgType = Integer.parseInt(data.getString("msg_type"));
+        System.out.println("bundle data : "+data);
         System.out.println(data.getString("msg_type"));
+        int msgType = Integer.parseInt(data.getString("msg_type"));
+
         switch (msgType) {
             case 1:
                 String sport = data.getString("sport");
@@ -169,7 +171,9 @@ public class MyGcmListenerService extends GcmListenerService {
                 String time = data.getString("time");
                 String team1 = data.getString("team1");
                 String team2 = data.getString("team2");
-                msg = new GcmMessage(1, sport, location, date, time, team1, team2);
+                String team1ImgLink =data.getString("team1ImgLink");
+                String team2ImgLink =data.getString("team2ImgLink");
+                msg = new GcmMessage(1, sport, location, date, time, team1, team2,team1ImgLink,team2ImgLink);
                 break;
             case 2:
                 String imageLink = data.getString("imageLink");

@@ -57,7 +57,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/iitbhu_logo" />
 
             <TextView
@@ -94,7 +94,7 @@
                 android:id="@+id/ivTeam2"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/iitd_logo" />
 
             <TextView

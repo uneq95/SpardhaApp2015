@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.ritesh.spardha.gcm.GcmMessage;
 import com.ritesh.spardha.spardha2015.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,14 @@ public class GcmUpdatesListAdapter extends BaseAdapter {
                 holder.tvMatchGenre = (TextView) convertView.findViewById(R.id.tvMatchGenre);
                 holder.tvVenue = (TextView) convertView.findViewById(R.id.tvVenue);
                 holder.tvDateTime = (TextView) convertView.findViewById(R.id.tvDateTime);
+                holder.team1Image=(ImageView) convertView.findViewById(R.id.ivTeam1);
+                holder.team2Image=(ImageView) convertView.findViewById(R.id.ivTeam2);
+                holder.tvTeam1=(TextView)convertView.findViewById(R.id.tvTeam1);
+                holder.tvTeam2=(TextView)convertView.findViewById(R.id.tvTeam2);
+                holder.tvTeam1.setText(msg.getTeam1());
+                holder.tvTeam2.setText(msg.getTeam2());
+                Picasso.with(context).load(msg.getTeam1ImgLink()).into(holder.team1Image);
+                Picasso.with(context).load(msg.getTeam2ImgLink()).into(holder.team2Image);
                 holder.tvMatchGenre.setText(msg.getSport());
                 holder.tvVenue.setText(msg.getLocation());
                 holder.tvDateTime.setText(String.format("%s , %s",msg.getTime(),msg.getDate()));break;
@@ -60,6 +69,7 @@ public class GcmUpdatesListAdapter extends BaseAdapter {
                 holder.iv_gcm2_pic = (ImageView) convertView.findViewById(R.id.iv_gcm2_pic);
                 holder.tv_gcm2_msgbody = (TextView) convertView.findViewById(R.id.tv_gcm2_msgbody);
                 //set image resource using picassa
+                Picasso.with(context).load(msg.getPhotoLink()).into(holder.iv_gcm2_pic);
                 holder.tv_gcm2_msgbody.setText(msg.getImageLinkedMsg());break;
 
             case 3:
@@ -74,7 +84,8 @@ public class GcmUpdatesListAdapter extends BaseAdapter {
 
     class ViewHolder {
         //for msg type1
-        TextView tvMatchGenre, tvVenue, tvDateTime;
+        TextView tvMatchGenre, tvVenue, tvDateTime,tvTeam1,tvTeam2;
+        ImageView team1Image,team2Image;
         //for msg type3
         TextView tv_gcm1_title, tv_gcm1_msg_body;
         //for msg type2

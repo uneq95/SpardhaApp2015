@@ -6,6 +6,7 @@ package com.ritesh.spardha.gcm;
 public class GcmMessage {
 
     private int msgType;
+
     // elements for message type 1
     private String sport;
     private String location;
@@ -13,6 +14,8 @@ public class GcmMessage {
     private String time;
     private String team1;
     private String team2;
+    private String team1ImgLink;
+    private String team2ImgLink;
 
     //elements for message type 2
     private String photoLink;
@@ -23,7 +26,7 @@ public class GcmMessage {
     private String msgBody;
 
 
-    public GcmMessage(int msgType, String sport, String location, String date, String time, String team1, String team2) {
+    public GcmMessage(int msgType, String sport, String location, String date, String time, String team1, String team2, String team1ImgLink, String team2ImgLink) {
         this.sport = sport;
         this.msgType = msgType;
         this.location = location;
@@ -31,6 +34,8 @@ public class GcmMessage {
         this.time = time;
         this.team1 = team1;
         this.team2 = team2;
+        this.team1ImgLink = team1ImgLink;
+        this.team2ImgLink = team2ImgLink;
     }
 
     public GcmMessage(int msgType, String photoLink, String imageLinkedMsg) {
@@ -50,49 +55,34 @@ public class GcmMessage {
         return sport;
     }
 
-    public void setSport(String sport) {
-        this.sport = sport;
-    }
-
     public String getLocation() {
         return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getTime() {
         return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getTeam1() {
         return team1;
     }
 
-    public void setTeam1(String team1) {
-        this.team1 = team1;
-    }
-
     public String getTeam2() {
         return team2;
     }
 
-    public void setTeam2(String team2) {
-        this.team2 = team2;
+    public String getTeam1ImgLink() {
+        return team1ImgLink;
     }
+
+    public String getTeam2ImgLink() {
+        return team2ImgLink;
+    }
+
 
     /* Message type 1    END  */
 
@@ -102,16 +92,8 @@ public class GcmMessage {
         return photoLink;
     }
 
-    public void setPhotoLink(String photoLink) {
-        this.photoLink = photoLink;
-    }
-
     public String getImageLinkedMsg() {
         return imageLinkedMsg;
-    }
-
-    public void setImageLinkedMsg(String imageLinkedMsg) {
-        this.imageLinkedMsg = imageLinkedMsg;
     }
 
     /* Message type 2    END  */
@@ -121,20 +103,11 @@ public class GcmMessage {
         return msgTitle;
     }
 
-    public void setMsgTitle(String msgTitle) {
-        this.msgTitle = msgTitle;
-    }
-
     public String getMsgBody() {
         return msgBody;
     }
-
-    public void setMsgBody(String msgBody) {
-        this.msgBody = msgBody;
-    }
-
-
     /* Message type 3    END  */
+
     public int getMsgType() {
         return msgType;
     }
