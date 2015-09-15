@@ -76,7 +76,7 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void openLinkedIn(String userId) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://in.linkedin.com/in/" + userId)));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://in.linkedin.com" + userId)));
     }
 
     @Override
@@ -89,7 +89,7 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
                 openGPlusIntent("102953458218354109367");
                 break;
             case R.id.inRitesh:
-                openLinkedIn("riteshkumarece13iitbhu");
+                openLinkedIn("/in/riteshkumarece13iitbhu");
                 break;
             case R.id.fbAbhishek:startActivity(getOpenFacebookIntent(this, "abhishek.pandey.100483").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
