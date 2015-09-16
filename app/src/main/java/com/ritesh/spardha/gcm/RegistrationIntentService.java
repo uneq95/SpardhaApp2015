@@ -160,7 +160,8 @@ public class RegistrationIntentService extends IntentService {
         protected String doInBackground(Void... params) {
             httpClient = new DefaultHttpClient();
             httpPost = new HttpPost(SERVER_URL);
-            while(!SUCCESS){
+            for(int i=0;i<5;i++){
+
                 try {
                     httpPost.setEntity(new UrlEncodedFormEntity(regData));
                     ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -170,6 +171,7 @@ public class RegistrationIntentService extends IntentService {
                     e.printStackTrace();
                     SUCCESS=false;
                 }
+                if(SUCCESS) break;
             }
 
             return response;
@@ -181,7 +183,7 @@ public class RegistrationIntentService extends IntentService {
             //parse the response from server and accordin to it save the sent to server shared preference
             if(SUCCESS&&!TextUtils.isEmpty(TOKEN))
             sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
-            Toast.makeText(getApplicationContext(),"response : "+s,Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"response : "+s,Toast.LENGTH_LONG).show();
 
         }
     }
