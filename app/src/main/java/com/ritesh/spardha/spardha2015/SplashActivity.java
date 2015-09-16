@@ -83,7 +83,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }, SPLASH_TIME_OUT);
         }
-        if (checkPlayServices() && !sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
+        if (!isNetworkConnected() && checkPlayServices() && !sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
             // Start IntentService to register this application with GCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
