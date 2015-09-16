@@ -44,10 +44,11 @@ public class SplashActivity extends AppCompatActivity {
         if (!isNetworkConnected() && !sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
             //showDialog();
             Toast.makeText(getApplicationContext(), "Please restart the app with Internet Connection to enable live notifications!", Toast.LENGTH_LONG).show();
+
         }
 
-        if (!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
-
+        if (isNetworkConnected() &&!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
+            System.out.println("inside broadcast receiver");
 
 
             mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -69,6 +70,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
             };
         }else{
+            System.out.println("else conditiojn broadcast receive");
             mRegistrationProgressBar.setVisibility(ProgressBar.GONE);
             new Handler().postDelayed(new Runnable() {
 
@@ -83,7 +85,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }, SPLASH_TIME_OUT);
         }
-        if (!isNetworkConnected() && checkPlayServices() && !sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
+        if (isNetworkConnected() && checkPlayServices() && !sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
             // Start IntentService to register this application with GCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
