@@ -3,17 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="178dp"
     android:orientation="vertical"
-    android:background="@drawable/spardha2"
+    android:background="@drawable/spardha_rise_n_shine"
     android:weightSum="1">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="right"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginRight="10dp"
-        android:gravity="right">
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp">
 
         <ImageButton
             android:layout_marginLeft="10dp"
@@ -35,6 +35,12 @@
             android:layout_height="wrap_content"
             android:background="@drawable/twitter_button"
             android:id="@+id/ib_twitter" />
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/insta_button"
+            android:id="@+id/ib_instagram" />
     </LinearLayout>
 
 </RelativeLayout>

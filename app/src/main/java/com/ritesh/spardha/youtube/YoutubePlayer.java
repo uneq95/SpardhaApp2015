@@ -103,7 +103,7 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
 	public void onInitializationFailure(Provider arg0,
 			YouTubeInitializationResult arg1) {
 		// TODO Auto-generated method stub
-		Toast.makeText(this, "Failed to Initialize!", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "Connection Error!", Toast.LENGTH_SHORT).show();
 		
 	}
 	@Override
@@ -123,7 +123,7 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
 		}
 		youtubeplayer.setFullscreenControlFlags(controlFlags);
 		
-		Toast.makeText(this, "Successfully Initialized!", Toast.LENGTH_LONG).show();
+		//Toast.makeText(this, "Successfully Initialized!", Toast.LENGTH_LONG).show();
 		
 	}
 

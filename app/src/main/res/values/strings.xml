@@ -40,6 +40,7 @@
         <item>Kho-Kho</item>
         <item>Taekwondo</item>
         <item>Carrom</item>
+        <item>Kabaddi</item>
         <item>Chess</item>
     </string-array>
     <string-array name="athletics">

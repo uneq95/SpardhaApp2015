@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ImageView profile;
         TextView Name;
         TextView email;
-        ImageView fb,website,twitter;
+        ImageButton fb,website,twitter,instagram;
 
         Context context;
 
@@ -63,49 +64,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 Holderid = 1;
                 // setting holder id as 1 as the object being populated are of type item row
             } else {
-                fb = (ImageView) itemView.findViewById(R.id.ib_fblink);
-                twitter = (ImageView) itemView.findViewById(R.id.ib_twitter);
-                website = (ImageView) itemView.findViewById(R.id.ib_webLink);
+                fb = (ImageButton) itemView.findViewById(R.id.ib_fblink);
+                twitter = (ImageButton) itemView.findViewById(R.id.ib_twitter);
+                website = (ImageButton) itemView.findViewById(R.id.ib_webLink);
+                instagram=(ImageButton) itemView.findViewById(R.id.ib_instagram);
 //                Name = (TextView) itemView.findViewById(R.id.name);         // Creating Text View object from header.xml for name
 //                email = (TextView) itemView.findViewById(R.id.email);       // Creating Text View object from header.xml for email
 //                profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
                 Holderid = 0;                                                // Setting holder id = 0 as the object being populated are of type header view
             }
         }
-
-
-//        @Override
-//        public void onClick(View v) {
-//
-//            switch (getPosition()) {
-//                case 1:
-//                    Toast.makeText(context, "you clicked home ", Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 2:
-//                    Toast.makeText(context, "you clicked contacts ", Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 3:
-//                    Toast.makeText(context, "you clicked maps ", Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 4:
-//                    Toast.makeText(context, "you clicked gallery ", Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 5:
-//                    Toast.makeText(context, "you clicked register ", Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 6:
-//                    Toast.makeText(context, "you clicked settings ", Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 7:
-//                    Toast.makeText(context, "you clicked feedback ", Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 8:
-//                    Toast.makeText(context, "you clicked about us ", Toast.LENGTH_SHORT).show();
-//                    break;
-//
-//            }
-//
-//        }
     }
 
 
@@ -188,6 +156,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     ctx.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.spardha.co.in/")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+                    return false;
+                }
+            });
+            holder.instagram.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    ctx.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://instagram.com/spardha_iitbhu/")).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
                     return false;
                 }

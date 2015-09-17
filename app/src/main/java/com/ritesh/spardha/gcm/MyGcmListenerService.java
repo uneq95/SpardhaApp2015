@@ -102,7 +102,7 @@ public class MyGcmListenerService extends GcmListenerService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.app_icon)
                 .setContentTitle(title)
                 .setContentText(match)
                 .setAutoCancel(true)
@@ -123,7 +123,7 @@ public class MyGcmListenerService extends GcmListenerService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.app_icon)
                 .setContentText(msg.getImageLinkedMsg())
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
@@ -143,7 +143,7 @@ public class MyGcmListenerService extends GcmListenerService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.app_icon)
                 .setContentTitle(msg.getMsgTitle())
                 .setContentText(msg.getMsgBody())
                 .setAutoCancel(true)
@@ -172,6 +172,7 @@ public class MyGcmListenerService extends GcmListenerService {
                 String team1 = data.getString("team1");
                 String team2 = data.getString("team2");
                 String team1ImgLink =data.getString("team1ImgLink");
+                System.out.println("link 1 : "+data.getString("team1ImgLink"));
                 String team2ImgLink =data.getString("team2ImgLink");
                 msg = new GcmMessage(1, sport, location, date, time, team1, team2,team1ImgLink,team2ImgLink);
                 break;

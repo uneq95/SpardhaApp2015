@@ -78,6 +78,8 @@ public class GcmMessageQueueDatabase {
         cv.put(Db_Constants.KEY_TIME, gcmMsgType1.getTime());
         cv.put(Db_Constants.KEY_TEAM1, gcmMsgType1.getTeam1());
         cv.put(Db_Constants.KEY_TEAM2, gcmMsgType1.getTeam2());
+        cv.put(Db_Constants.KEY_TEAM1_IMGLINK, gcmMsgType1.getTeam1ImgLink());
+        cv.put(Db_Constants.KEY_TEAM2_IMGLINK, gcmMsgType1.getTeam2ImgLink());
         long foreignKey = db.insert(Db_Constants.MSG_TYPE_1_TABLE, null, cv);
         insertInMainGcmQueue(foreignKey, 1);
     }

@@ -29,6 +29,7 @@ public class Event_List extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categories_grid_sports);
+
         final String[] categories={"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","Football","HandBall","Hockey","Kabaddi","KhoKho","Squash","Taekwondo","Tennis","Table Tennis","Volleyball","WeightLifting"};
         int[] resId={R.drawable.athletics,R.drawable.badminton,R.drawable.basketball,R.drawable.boxing,R.drawable.carrom,R.drawable.chess,R.drawable.cricket,R.drawable.football,R.drawable.handball,R.drawable.hockey,R.drawable.kabaddi,R.drawable.khokho,R.drawable.squash,R.drawable.taekwondo,R.drawable.tennis,R.drawable.tt,R.drawable.volleyball,R.drawable.weightlifting};
         gridView = (GridView) findViewById(R.id.gridViewSportsCategory);
@@ -37,9 +38,10 @@ public class Event_List extends AppCompatActivity{
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            getSupportActionBar().setElevation(10);
-            getSupportActionBar().setHomeButtonEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            actionBar.setElevation(10);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("Events");
         }
         adapter= new CategoriesGridAdapter(this.getBaseContext(),categories,resId);
         gridView.setAdapter(adapter);

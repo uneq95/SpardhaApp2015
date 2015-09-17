@@ -64,9 +64,14 @@ public class ContactActivity extends AppCompatActivity {
         contacts.add(new ContactListItem("CORE TEAM"));
         contacts.add(new ContactListItem("Rohit Dixit","rohit.dixit.mst12@iitbhu.ac.in","+917607048644", "http://www.spardha.co.in/img/team/dixit.jpg"));
         contacts.add(new ContactListItem("Shubham Chaudhary","shubham.chaudhary.phe12@iitbhu.ac.in","+917860383824", "http://www.spardha.co.in/img/team/choudhary.jpg"));
-        contacts.add(new ContactListItem("Hardik Wadwa",null,null, R.drawable.ic_no_pic));
-        contacts.add(new ContactListItem("Shubham Mittal",null,null, R.drawable.ic_no_pic));
+        contacts.add(new ContactListItem("Hardik Wadhwa",null,"+918295117656", R.drawable.ic_no_pic));
+        contacts.add(new ContactListItem("Shubham Mittal",null,"+917309601775", R.drawable.ic_no_pic));
 
+
+        contacts.add(new ContactListItem("EVENT MANAGEMENT TEAM"));
+        contacts.add(new ContactListItem("Rajneesh Pujani","rajneesh.mec13@iitbhu.ac.in","+918127544547", "http://www.spardha.co.in/img/team/rajneesh.jpg"));
+        contacts.add(new ContactListItem("Rohan Gupta","rohan.gupta.cer13@iitbhu.ac.in","+919548230119", "http://www.spardha.co.in/img/team/rohan.jpg"));
+        contacts.add(new ContactListItem("Sunith Singh",null,null, R.drawable.ic_no_pic));
 
         contacts.add(new ContactListItem("PUBLICITY TEAM"));
         contacts.add(new ContactListItem("Satish Kumar","satish.kumar.cer13@itbhu.ac.in","+917754941979", "http://www.spardha.co.in/img/team/satish.jpg"));
@@ -76,29 +81,28 @@ public class ContactActivity extends AppCompatActivity {
 
         contacts.add(new ContactListItem("MARKETING TEAM"));
         contacts.add(new ContactListItem("Harsh Rohan","harsh.rohan.mec13@iitbhu.ac.in","+919619561484", "http://www.spardha.co.in/img/team/harsh.jpg"));
-        contacts.add(new ContactListItem("Raghav Gautam","raghav1408@gmail.com","+917275418410", R.drawable.ic_no_pic));
+        contacts.add(new ContactListItem("Rahul Dendor","rahul.dendor.cer13@iitbhu.ac.in","+918953882045", R.drawable.ic_no_pic));
 
         contacts.add(new ContactListItem("HOSPITALITY TEAM"));
         contacts.add(new ContactListItem("Sagar Verma","sagar.verma.cer13@iitbhu.ac.in","+917275419847", "http://www.spardha.co.in/img/team/sagar.jpg"));
-        contacts.add(new ContactListItem("Abhinav Vaid",null,null, R.drawable.ic_no_pic));
         contacts.add(new ContactListItem("Abhishek Tomar",null,null, R.drawable.ic_no_pic));
 
-        contacts.add(new ContactListItem("EVENT MANAGEMENT TEAM"));
-        contacts.add(new ContactListItem("Rajneesh Pujani","rajneesh.mec13@iitbhu.ac.in","+918127544547", R.drawable.ic_no_pic));
-        contacts.add(new ContactListItem("Rohan Gupta","rohan.gupta.cer13@iitbhu.ac.in","+919548230119", R.drawable.ic_no_pic));
-        contacts.add(new ContactListItem("Sunith Singh",null,null, R.drawable.ic_no_pic));
+
 
 
         contacts.add(new ContactListItem("TECH TEAM"));
+        contacts.add(new ContactListItem("Saurav Shekhar","saurav.shekhar.phe13@itbhu.ac.in","+919026829525", "http://www.spardha.co.in/img/team/saurav.jpg"));
         contacts.add(new ContactListItem("Ritesh Kumar","ritesh.kumar.ece13@iitbhu.ac.in","+918953839075", R.drawable.face_rit));
-        contacts.add(new ContactListItem("Abhishek Pandey","abhishek.ramakant.che14@iitbhu.ac.in","+919616078405", R.drawable.face_abhishek));
         contacts.add(new ContactListItem("Rajat Sharda","rajat.sharda.cer13@iitbhu.ac.in","+917754941979","http://www.spardha.co.in/img/team/rajat.jpg"));
         contacts.add(new ContactListItem("Gaurav Yadav",null,"9453888178", "http://www.spardha.co.in/img/team/gaurav.jpg"));
+        contacts.add(new ContactListItem("Abhishek Pandey","abhishek.ramakant.che14@iitbhu.ac.in","+919616078405", R.drawable.face_abhishek));
+
 
         contacts.add(new ContactListItem("DESIGNING TEAM"));
         contacts.add(new ContactListItem("Yogesh Mahor","yogesh.mahor.cer13@iitbhu.ac.in","+918303073529","http://www.spardha.co.in/img/team/mahor.jpg"));
         contacts.add(new ContactListItem("Suraj",null,null,R.drawable.ic_no_pic));
         contacts.add(new ContactListItem("Akshay","takshaya.kumar.civ13@iitbhu.ac.in",null,R.drawable.ic_no_pic));
+        contacts.add(new ContactListItem("Sandeep Yadav",null,null,R.drawable.ic_no_pic));
 
 
     }

@@ -184,7 +184,7 @@ public class YtpChannel extends AppCompatActivity {
 					public void onItemClick(AdapterView<?> parent, View v, int position,
 							long id) {
 						// TODO Auto-generated method stub
-						Toast.makeText(getBaseContext(), "video id "+position+"="+videoId[position], Toast.LENGTH_SHORT).show();
+						//Toast.makeText(getBaseContext(), "video id "+position+"="+videoId[position], Toast.LENGTH_SHORT).show();
 						Intent intentToPlayer= new Intent(YtpChannel.this,YoutubePlayer.class);
 						intentToPlayer.putExtra("selected video id",videoId[position]);
 						intentToPlayer.putExtra("video list", vidList);
