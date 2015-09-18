@@ -1,6 +1,5 @@
 package com.ritesh.spardha.events;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -10,14 +9,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.ritesh.spardha.spardha2015.R;
 
@@ -33,27 +32,28 @@ import java.sql.SQLException;
 /**
  * Created by Abhishek on 8/29/2015.
  */
-public class Event_Detail extends ActionBarActivity {
+public class Event_Detail extends AppCompatActivity {
 
-    TextView winner,runnerup,contacta,contactb,rulebook;
+    TextView winner, runnerup, contacta, contactb, rulebook;
     String[] details;
     Bundle bundle;
-    CardView cardview,contact1_cardview,contact2_cardview;
-    ImageView call_1,call_2;
+    CardView cardview, contact1_cardview, contact2_cardview;
+    ImageView call_1, call_2;
     private ProgressDialog pDialog;
     String error;
     public static final int progress_bar_type = 0;
-     int url_no;
+    int url_no;
     String address = "http://www.spardha.co.in/file/";
-    String[] RuleBookUrl = {"athletics.pdf","badminton.pdf","basketball.pdf","boxing.pdf","carrom.pdf","chess.pdf","cricket.pdf","football.pdf","handball.pdf","hockey.pdf",
-            "kabaddi.pdf","kho-kho.pdf","squash.pdf","tae-kwon-do.pdf","tennis.pdf","table-tennis.pdf","volleyball.pdf","lifting.pdf","winner-athletics.pdf","winner-tae-kwon-do.pdf"};
+    String[] RuleBookUrl = {"athletics.pdf", "badminton.pdf", "basketball.pdf", "boxing.pdf", "carrom.pdf", "chess.pdf", "cricket.pdf", "football.pdf", "handball.pdf", "hockey.pdf",
+            "kabaddi.pdf", "kho-kho.pdf", "squash.pdf", "tae-kwon-do.pdf", "tennis.pdf", "table-tennis.pdf", "volleyball.pdf", "lifting.pdf", "winner-athletics.pdf", "winner-tae-kwon-do.pdf"};
 
-    android.support.v7.widget.Toolbar toolbar;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sport_final_layout);
-        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
         String activityTitle = getIntent().getStringExtra("sportTitle");
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -65,12 +65,10 @@ public class Event_Detail extends ActionBarActivity {
         }
 
 
-
-
         initialize();
-        Bundle b= getIntent().getExtras();
+        Bundle b = getIntent().getExtras();
         final long req_no = b.getInt("req_no");
-        url_no = b.getInt("req_no")-1;
+        url_no = b.getInt("req_no") - 1;
         //Toast.makeText(this,"req no is "+req_no,Toast.LENGTH_LONG).show();
 
         EventsDb eventsDb = new EventsDb(this);
@@ -133,9 +131,9 @@ public class Event_Detail extends ActionBarActivity {
         contact1_cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(details[6].equals("---")){
-                    Toast.makeText(getBaseContext(),"Number not found",Toast.LENGTH_SHORT).show();
-                }else {
+                if (details[6].equals("---")) {
+                    Toast.makeText(getBaseContext(), "Number not found", Toast.LENGTH_SHORT).show();
+                } else {
                     Intent intent = new Intent(Intent.ACTION_CALL);
                     intent.setData(Uri.parse(String.format("tel:%s", details[6])));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -145,16 +143,16 @@ public class Event_Detail extends ActionBarActivity {
         });
 
 
-        if(!details[5].equals("---")){
+        if (!details[5].equals("---")) {
             cardview.setVisibility(View.VISIBLE);
             contactb.setText(details[5]);
         }
         contact2_cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(details[6].equals("---")){
-                    Toast.makeText(getBaseContext(),"Number not found",Toast.LENGTH_SHORT).show();
-                }else {
+                if (details[6].equals("---")) {
+                    Toast.makeText(getBaseContext(), "Number not found", Toast.LENGTH_SHORT).show();
+                } else {
                     //Toast.makeText(getBaseContext(),details[7],Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Intent.ACTION_CALL);
                     intent.setData(Uri.parse(String.format("tel:%s", details[7])));
@@ -168,26 +166,25 @@ public class Event_Detail extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                String final_url = address+RuleBookUrl[url_no];
+                String final_url = address + RuleBookUrl[url_no];
 
                 if (req_no == 4 || req_no == 5 || req_no == 18) {
                     Toast.makeText(getBaseContext(), "Will be Uploaded Soon", Toast.LENGTH_LONG).show();
                 } else {
 
 
-
-                    File filefile = new File(Environment.getExternalStorageDirectory()+"/"+RuleBookUrl[url_no]);
-                    if(filefile.exists()){
-                        try{
+                    File filefile = new File(Environment.getExternalStorageDirectory() + "/" + RuleBookUrl[url_no]);
+                    if (filefile.exists()) {
+                        try {
                             final Uri uri = Uri.fromFile(filefile);
                             Intent intenturl = new Intent(Intent.ACTION_VIEW);
-                            intenturl.setDataAndType(uri,"application/pdf");
+                            intenturl.setDataAndType(uri, "application/pdf");
                             intenturl.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intenturl);
-                        }catch (ActivityNotFoundException e){
-                            Toast.makeText(getBaseContext(),e.toString(),Toast.LENGTH_LONG).show();
+                        } catch (ActivityNotFoundException e) {
+                            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
                         }
-                    }else{
+                    } else {
                         new DownloadFileFromURL().execute(final_url);
                     }
 
@@ -257,8 +254,7 @@ public class Event_Detail extends ActionBarActivity {
                 int lenghtOfFile = conection.getContentLength();
 
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
-
-                OutputStream output = new FileOutputStream("/sdcard/"+RuleBookUrl[url_no]);
+                OutputStream output = new FileOutputStream("/sdcard/" + RuleBookUrl[url_no]);
 
                 byte data[] = new byte[1024];
 
@@ -272,8 +268,9 @@ public class Event_Detail extends ActionBarActivity {
                     }
 
                     output.flush();
-                }catch (Exception e){
+                } catch (Exception e) {
                     error = e.toString();
+
                 }
                 output.close();
                 input.close();
@@ -293,28 +290,26 @@ public class Event_Detail extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(String file_url) {
-            if(pDialog.isShowing()){
+            if (pDialog.isShowing()) {
                 dismissDialog(progress_bar_type);
             }
-            File filefile = new File(Environment.getExternalStorageDirectory()+"/"+RuleBookUrl[url_no]);
+            File filefile = new File(Environment.getExternalStorageDirectory() + "/" + RuleBookUrl[url_no]);
             final Uri uri = Uri.fromFile(filefile);
-            String imagePath = Environment.getExternalStorageDirectory().toString() + "/"+RuleBookUrl[url_no];
+            String imagePath = Environment.getExternalStorageDirectory().toString() + "/" + RuleBookUrl[url_no];
 
-           if(filefile.exists()) {
-               try {
-                   Toast.makeText(getBaseContext(),"Downloaded to "+imagePath,Toast.LENGTH_LONG).show();
-                   Intent intenturl = new Intent(Intent.ACTION_VIEW);
-                   intenturl.setDataAndType(uri, "application/pdf");
-                   intenturl.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                   startActivity(intenturl);
-               } catch (ActivityNotFoundException e) {
-                   Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
-               }
-           }else {
-               Toast.makeText(getBaseContext(), "Download Failed", Toast.LENGTH_LONG).show();
-           }
-
-
+            if (filefile.exists()) {
+                try {
+                    Toast.makeText(getBaseContext(), "Downloaded to " + imagePath, Toast.LENGTH_LONG).show();
+                    Intent intenturl = new Intent(Intent.ACTION_VIEW);
+                    intenturl.setDataAndType(uri, "application/pdf");
+                    intenturl.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intenturl);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getBaseContext(), "Download Failed", Toast.LENGTH_LONG).show();
+            }
 
 
         }
