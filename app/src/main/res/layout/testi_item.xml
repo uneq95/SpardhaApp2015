@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
+    card_view:cardBackgroundColor="#DAA520"
     card_view:cardCornerRadius="4dp"
     android:clickable="true"
     >
@@ -12,6 +13,7 @@
     android:orientation="vertical"
     android:layout_margin="5dp" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:padding="5dp">
 
     <com.ritesh.spardha.custom_views.RoundedImageView
@@ -55,7 +57,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:textColor="@color/ColorPrimary"
+                android:textColor="#1B5E20"
                 android:textStyle="bold"
                 android:layout_marginRight="5dp" />
 

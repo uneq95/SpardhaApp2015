@@ -180,6 +180,13 @@
             android:label="About Spardha">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
         </activity>
+        <activity android:name="com.ritesh.spardha.adapters.CattestActivity" android:label="Categories">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
     </application>
 
 

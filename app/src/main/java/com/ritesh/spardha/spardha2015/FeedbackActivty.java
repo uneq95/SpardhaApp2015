@@ -18,7 +18,7 @@ public class FeedbackActivty extends AppCompatActivity implements View.OnClickLi
     Toolbar toolbar;
     Button send;
     EditText suggestion;
-    String emailadd[] = { "abhishek.ramakant.che14@iitbhu.ac.in", "ritesh.kumar.ece13@iitbhu.ac.in"};
+    String emailadd[] = { "abhishek.ramakant.che14@iitbhu.ac.in", "ritesh.kumar.ece13@iitbhu.ac.in","publicity.spardha@iitbhu.ac.in"};
 
 
     @Override

@@ -11,10 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <include
-            android:elevation="10dp"
             android:id="@+id/tool_bar"
-            layout="@layout/tool_bar">   </include>
+            layout="@layout/tool_bar"
+            android:elevation="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                card_view:cardBackgroundColor="#FFD700"
                 card_view:cardCornerRadius="4dp">
 
                 <RelativeLayout
@@ -61,10 +63,10 @@
 
                     <TextView
                         android:id="@+id/tvwinner"
-                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/line1"
+                        android:clickable="true"
                         android:text="Medium Text" />
 
                     <TextView
@@ -72,8 +74,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tvwinner"
-                        android:visibility="gone"
-                        android:text="Medium Text" />
+                        android:text="Medium Text"
+                        android:visibility="gone" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
@@ -82,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                card_view:cardBackgroundColor="#C0C0C0"
                 card_view:cardCornerRadius="4dp">
 
                 <RelativeLayout
@@ -107,21 +110,21 @@
 
 
                     <TextView
-                        android:clickable="true"
                         android:id="@+id/tvrunnerup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/line2"
+                        android:clickable="true"
 
                         android:text="Medium Text" />
 
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/tvRunnerUpGirl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tvrunnerup"
-                        android:text="Medium Text" />
+                        android:text="Medium Text"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -138,9 +141,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                card_view:cardCornerRadius="4dp"
                 android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                android:foreground="?android:attr/selectableItemBackground"
+                card_view:cardCornerRadius="4dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -149,26 +152,26 @@
 
 
                     <TextView
-                        android:clickable="true"
+                        android:id="@+id/tvrulebook"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="RULE BOOK"
-                        android:id="@+id/tvrulebook"
-                        android:gravity="center"
-                        android:textSize="17dp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:layout_marginLeft="5dp"
+                        android:text="Rulebook"
+                        android:textSize="17dp"
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/ivDownload"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_download"
-                        android:id="@+id/ivDownload"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true" />
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_download" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -187,16 +190,17 @@
                 android:text="CONTACTS"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view_contact1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                card_view:cardCornerRadius="4dp"
-                android:clickable="true"
-                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:foreground="?android:attr/selectableItemBackground">
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                card_view:cardCornerRadius="4dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -205,56 +209,57 @@
 
 
                     <TextView
+                        android:id="@+id/tvcontact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="contact1"
-                        android:id="@+id/tvcontact" />
+                        android:text="contact1" />
 
                     <ImageView
                         android:id="@+id/b_call_contact1"
-                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_call_black_18dp"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true" />
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:src="@drawable/ic_call_black_18dp" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view_contact2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                card_view:cardCornerRadius="4dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
                 android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:visibility="gone"
-                android:foreground="?android:attr/selectableItemBackground">
+                card_view:cardCornerRadius="4dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    >
+                    android:layout_margin="5dp">
 
 
                     <TextView
+                        android:id="@+id/tvSportContactName2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="contact 2"
-                        android:id="@+id/tvSportContactName2" />
+                        android:text="contact 2" />
 
                     <ImageView
                         android:id="@+id/b_call_contact2"
-                        android:clickable="true"                        android:layout_width="wrap_content"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_call_black_18dp"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true" />
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:src="@drawable/ic_call_black_18dp" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>

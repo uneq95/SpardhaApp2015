@@ -24,7 +24,6 @@ import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -160,7 +159,7 @@ public class RegistrationIntentService extends IntentService {
         protected String doInBackground(Void... params) {
             httpClient = new DefaultHttpClient();
             httpPost = new HttpPost(SERVER_URL);
-            for(int i=0;i<5;i++){
+            while(true){
 
                 try {
                     httpPost.setEntity(new UrlEncodedFormEntity(regData));

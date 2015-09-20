@@ -43,6 +43,7 @@ public class TestView extends Activity{
 
         String final_url = address+RuleBookUrl[urln];
         if(isNetworkConnected()){
+            Toast.makeText(getBaseContext(),"Loading file... Please Wait!!",Toast.LENGTH_LONG).show();
             try{
                 brow.loadUrl("https://docs.google.com/viewer?url="+final_url);
             }catch (Exception e){

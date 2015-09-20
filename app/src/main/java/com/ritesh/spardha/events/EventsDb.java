@@ -32,14 +32,14 @@ public class EventsDb {
     private SQLiteDatabase sportsdatabase;
     public DBHelper dbhelperobject;
 
-    String[] categorysportsname = {"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
-    String[] categorywinner = {"Click to Download","IIT Kharagpur","BRCM CET(Boys),\n\nMITS(Girls)","---","UGI(Boys),\n\nKIT(Girls)","IIT BHU","IIT BHU","IIT BHU","IIT BHU","MERI Kolkatta","IIT BHU","IIT BHU","GEC Ajmer","Click To Download","Shiv Nadar","IIT Roorkee","Shri Ram College","---"};
-    String[] categoryrunnerup = {"Click to Download","IIT BHU","IIT BHU(Boys),\n\nIIT BHU(Girls)","---","BBD Lucknow(Boys),\n\nUGI(Girls)","IET Lucknow","BBD Lucknow","---","NIT Raipur","IIT BHU","YMCA Faridabad","IIT Mumbai","IIT BHU","Click to download","IIT BHU","SNU Delhi","IIT BHU","--"};
-    String[] categoryrulebook = {"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
-    String[] categorycontacta = {"Gaurav  Sharma","Abhishek Dhananjaya","Mohammad Shahbaz","---","---","Gopal Garg ","Venkat Subhash ","Mayank kumar Morya","---","Suyash Tripathi","---","Nilabh Nandan","Siddhartha bhargava","Prabhat Srivastava","Samar Khan","Dhaval Dalia","Shivam jaiswal","---"};
-    String[] categorycontactb = {"---","---","Abhishek Dhayal","---","---","---","Dhruv Shikhar","Satyanand Tiwari","---","Prashant Kumar Singh","---","Prashanth Sai","---","---","---","---","Abhijit Mondal","---"};
-    String[] contacta = {"+917860561883","+919532892608","+918601546468","---","---","+919897232528","+918953723461","+919919546976","---","+918953880553","---","+917752957824","+917275588982","+919450675543","+919889203242","+917753069418","+919795637067","---"};
-    String[] contactb = {"---","---","+919473791571","---","---","---","+917376306960","+918960999789","---","+919616036867","---","+919492992254","---","---","---","---","+919454240708","---"};
+    String[] categorysportsname = {"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Power Lifting","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
+    String[] categorywinner = {"Click to Download","IIT Kharagpur","BRCM CET(Boys),\n\nMITS(Girls)","---","UGI(Boys),\n\nKIT(Girls)","IIT BHU","IIT BHU","IIT BHU","IIT BHU","MERI Kolkatta","IIT BHU","IIT BHU","---","GEC Ajmer","Click To Download","Shiv Nadar","IIT Roorkee","Shri Ram College","---"};
+    String[] categoryrunnerup = {"Click to Download","IIT BHU","IIT BHU(Boys),\n\nIIT BHU(Girls)","---","BBD Lucknow(Boys),\n\nUGI(Girls)","IET Lucknow","BBD Lucknow","---","NIT Raipur","IIT BHU","YMCA Faridabad","IIT Mumbai","---","IIT BHU","Click to download","IIT BHU","SNU Delhi","IIT BHU","--"};
+    String[] categoryrulebook = {"Athletics","Badminton","BasketBall","Boxing","Carrom","Chess","Cricket","FootBall","HandBall","Hockey","Kabaddi","KhoKho","Powerlifting","Squash","TaeKwonDo","Tennis","TableTennis","VolleyBall","WeightLifting"};
+    String[] categorycontacta = {"Gaurav  Sharma","Abhishek Dhananjaya","Mohammad Shahbaz","---","---","Gopal Garg ","Venkat Subhash ","Mayank kumar Morya","---","Suyash Tripathi","---","Nilabh Nandan","--","Siddhartha bhargava","Prabhat Srivastava","Samar Khan","Dhaval Dalia","Shivam jaiswal","---"};
+    String[] categorycontactb = {"---","---","Abhishek Dhayal","---","---","---","Dhruv Shikhar","Satyanand Tiwari","---","Prashant Kumar Singh","---","Prashanth Sai","---","---","---","---","---","Abhijit Mondal","---"};
+    String[] contacta = {"+917860561883","+919532892608","+918601546468","---","---","+919897232528","+918953723461","+919919546976","---","+918953880553","---","+917752957824","---","+917275588982","+919450675543","+919889203242","+917753069418","+919795637067","---"};
+    String[] contactb = {"---","---","+919473791571","---","---","---","+917376306960","+918960999789","---","+919616036867","---","+919492992254","---","---","---","---","---","+919454240708","---"};
 
     public EventsDb(Context context) {
         this.context = context;
@@ -75,7 +75,7 @@ public class EventsDb {
         dbhelperobject = new DBHelper(context);
         sportsdatabase = dbhelperobject.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        for(int i=0;i<18;i++){
+        for(int i=0;i<19;i++){
 
             cv.put(KEY_SPORTSNAME, categorysportsname[i]);
             cv.put(KEY_WINNER, categorywinner[i]);

@@ -98,7 +98,7 @@ public class ContactActivity extends AppCompatActivity {
         contacts.add(new ContactListItem("DESIGNING TEAM"));
         contacts.add(new ContactListItem("Yogesh Mahor","yogesh.mahor.cer13@iitbhu.ac.in","+918303073529","http://www.spardha.co.in/img/team/mahor.jpg"));
         contacts.add(new ContactListItem("Suraj",null,null,R.drawable.ic_no_pic));
-        contacts.add(new ContactListItem("Akshay","takshaya.kumar.civ13@iitbhu.ac.in",null,R.drawable.ic_no_pic));
+        contacts.add(new ContactListItem("Akshaya Kumar T","takshaya.kumar.civ13@iitbhu.ac.in",null,"http://www.spardha.co.in/img/team/akshay.jpg"));
         contacts.add(new ContactListItem("Sandeep Yadav",null,null,R.drawable.ic_no_pic));
 
 

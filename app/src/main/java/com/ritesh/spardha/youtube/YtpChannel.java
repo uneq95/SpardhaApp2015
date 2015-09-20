@@ -55,6 +55,7 @@ public class YtpChannel extends AppCompatActivity {
     List<RowItem> rowItem;
 	Toolbar toolbar;
 	ProgressDialog progressDialog;
+	DownloadChannelList download;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -74,7 +75,7 @@ public class YtpChannel extends AppCompatActivity {
 		channelVideoList =(ListView)findViewById(R.id.lvChannelVideoList);
 		
 		if(isNetworkConnected()){
-			DownloadChannelList download =new DownloadChannelList(this);
+			download =new DownloadChannelList(this);
 	     	download.execute();
 	     	getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	     	
@@ -104,7 +105,7 @@ public class YtpChannel extends AppCompatActivity {
 			super.onPreExecute();
 			if(!progressDialog.isShowing()){
 				progressDialog.setMessage("Retrieving videos from Spardha YouTube Channel ...");
-				progressDialog.setCancelable(false);
+				progressDialog.setCancelable(true);
 				progressDialog.show();
 			}
 		}

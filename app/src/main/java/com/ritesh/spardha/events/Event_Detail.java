@@ -92,7 +92,7 @@ public class Event_Detail extends AppCompatActivity {
                     startActivity(i);
 
                 }
-                if (req_no == 14) {
+                if (req_no == 15) {
                     bundle = new Bundle();
                     bundle.putInt("url_no", 19);
                     Intent i = new Intent(Event_Detail.this, TestView.class);
@@ -116,7 +116,7 @@ public class Event_Detail extends AppCompatActivity {
                     startActivity(i);
 
                 }
-                if (req_no == 14) {
+                if (req_no == 15) {
                     bundle = new Bundle();
                     bundle.putInt("url_no", 19);
                     Intent i = new Intent(Event_Detail.this, TestView.class);
@@ -168,7 +168,7 @@ public class Event_Detail extends AppCompatActivity {
 
                 String final_url = address + RuleBookUrl[url_no];
 
-                if (req_no == 4 || req_no == 5 || req_no == 18) {
+                if (req_no == 4 || req_no == 5 || req_no == 13||req_no==19) {
                     Toast.makeText(getBaseContext(), "Will be Uploaded Soon", Toast.LENGTH_LONG).show();
                 } else {
 

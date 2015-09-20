@@ -4,7 +4,8 @@
     <color name="frame">@android:color/black</color>
     <color name="apptheme_color">#33b5e5</color>
     <color name="inset">#9000</color>
-    <color name="ColorPrimary">#1B5E20</color>
+    <!--<color name="ColorPrimary">#1B5E20</color>-->
+    <color name="ColorPrimary">#4CAF50</color>
     <color name="ColorPrimaryDark">#303F9F</color>
     <color name="tabsScrollColor">@android:color/white</color>
     <color name="whiteColor">#FFFFFF</color>
@@ -16,7 +17,6 @@
     <color name="black_semi_transparent">#B2000000</color>
     <color name="half_black">#808080</color>
     <color name="pink">#e91e63</color>
-
     <color name="light_green_bkg">#C8E6C9</color>
 
     <!-- for pinterest -->

@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 /**
  * Created by ritesh_kumar on 12-Sep-15.
@@ -16,7 +17,7 @@ public class AboutSpardha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.about_spardha);
+        setContentView(R.layout.aboutspardha2);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -25,6 +26,15 @@ public class AboutSpardha extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        WebView mWebView = (WebView) findViewById(R.id.webView2);
+
+               String text = "<html><body>"
+                        + "<p align=\"justify\">"
+                        + getString(R.string.about_spardha)
+                         + "</p> "
+                         + "</body></html>";
+
+                 mWebView.loadData(text, "text/html", "utf-8");
 
     }
     @Override

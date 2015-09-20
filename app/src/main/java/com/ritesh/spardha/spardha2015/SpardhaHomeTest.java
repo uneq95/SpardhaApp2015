@@ -192,7 +192,8 @@ public class SpardhaHomeTest extends AppCompatActivity {
                 return getResources().getColor(R.color.tabsScrollColor);
             }
         });
-
+        tabs.setSoundEffectsEnabled(true);
+        tabs.setSmoothScrollingEnabled(true);
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
 
