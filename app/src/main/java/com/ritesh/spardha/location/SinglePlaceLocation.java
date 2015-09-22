@@ -15,20 +15,6 @@ public class SinglePlaceLocation {
         this.categoryInt=category;
     }
 
-
-    public void setPlaceName(String placeName){
-        this.placeName=placeName;
-    }
-    public void setPlaceLongitude(String placeLongitude){
-        this.placeLongitude=placeLongitude;
-    }
-    public void setPlaceLatitude(String placeLatitude){
-        this.placeLatitude=placeLatitude;
-    }
-    public void setPlaceCategory(int category){
-        this.categoryInt=category;
-    }
-
     public String getPlaceName(){
         return placeName;
     }

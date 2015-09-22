@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.ritesh.spardha.gcm.GCMStarter;
+
 /**
  * Created by nikhil on 8/16/2015.
  */
@@ -25,6 +27,7 @@ public class FeedbackActivty extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feedbacklayout);
+        new GCMStarter(this).GCMEnable();
         send = (Button) findViewById(R.id.bsendsuggestion);
         suggestion = (EditText) findViewById(R.id.etsuggestion);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);

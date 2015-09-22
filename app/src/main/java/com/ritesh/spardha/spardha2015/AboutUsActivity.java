@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.ritesh.spardha.gcm.GCMStarter;
+
 /**
  * Created by ritesh_kumar on 11-Aug-15.
  */
@@ -23,6 +25,7 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
+        new GCMStarter(this).GCMEnable();
         initViews();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);

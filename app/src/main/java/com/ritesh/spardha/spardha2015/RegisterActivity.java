@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ritesh.spardha.gcm.GCMStarter;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -53,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         context = getBaseContext();
 
         setContentView(R.layout.registration_layout_new);
+        new GCMStarter(this).GCMEnable();
         initView();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);

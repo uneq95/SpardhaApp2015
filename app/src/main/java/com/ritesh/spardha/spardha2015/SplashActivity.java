@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
 
         }
 
-       /* if (isNetworkConnected() &&!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
+        /*if (isNetworkConnected() &&!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
             System.out.println("inside broadcast receiver");
 
 
@@ -69,8 +69,8 @@ public class SplashActivity extends AppCompatActivity {
                     }, SPLASH_TIME_OUT);
                 }
             };
-        }else{*/
-            System.out.println("else conditiojn broadcast receive");
+        }else{
+            System.out.println("else conditiojn broadcast receive");*/
             mRegistrationProgressBar.setVisibility(ProgressBar.GONE);
             new Handler().postDelayed(new Runnable() {
 
@@ -84,7 +84,7 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 }
             }, SPLASH_TIME_OUT);
-        //}
+//        }
         if (checkPlayServices() && !sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
             // Start IntentService to register this application with GCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);
@@ -96,13 +96,13 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-                new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
+//        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+//                new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
     }
 
     @Override
     protected void onPause() {
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+//        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
         super.onPause();
     }
 

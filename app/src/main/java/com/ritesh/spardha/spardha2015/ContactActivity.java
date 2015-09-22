@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import com.ritesh.spardha.ContactFunctions.ContactListItem;
 import com.ritesh.spardha.adapters.ContactAdapter;
+import com.ritesh.spardha.gcm.GCMStarter;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,7 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contacts_layout);
+        new GCMStarter(this).GCMEnable();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();

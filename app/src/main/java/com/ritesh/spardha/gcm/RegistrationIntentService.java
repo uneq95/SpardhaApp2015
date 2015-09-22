@@ -24,6 +24,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -182,7 +183,7 @@ public class RegistrationIntentService extends IntentService {
             //parse the response from server and accordin to it save the sent to server shared preference
             if(SUCCESS&&!TextUtils.isEmpty(TOKEN))
             sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
-            //Toast.makeText(getApplicationContext(),"response : "+s,Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "response : " + s, Toast.LENGTH_LONG).show();
 
         }
     }

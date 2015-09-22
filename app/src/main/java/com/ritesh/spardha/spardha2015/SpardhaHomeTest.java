@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.ritesh.spardha.CustomizeGallery.GalleryMainActivity;
 import com.ritesh.spardha.adapters.MyAdapter;
 import com.ritesh.spardha.adapters.ViewPagerAdapter;
+import com.ritesh.spardha.gcm.GCMStarter;
 import com.ritesh.spardha.maps.MapsActivity;
 import com.ritesh.spardha.sliding_tabs.SlidingTabLayout;
 
@@ -60,7 +61,7 @@ public class SpardhaHomeTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.saprdhahometest);
         context = getApplicationContext();
-
+        new GCMStarter(this).GCMEnable();
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);

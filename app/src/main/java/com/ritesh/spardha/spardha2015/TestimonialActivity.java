@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.ritesh.spardha.adapters.TestimonialsAdapter;
+import com.ritesh.spardha.gcm.GCMStarter;
 
 /**
  * Created by ritesh_kumar on 01-Sep-15.
@@ -20,6 +21,7 @@ public class TestimonialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.testimonials);
+        new GCMStarter(this).GCMEnable();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

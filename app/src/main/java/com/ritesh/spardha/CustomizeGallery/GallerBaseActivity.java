@@ -20,6 +20,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.ritesh.spardha.gcm.GCMStarter;
+
 
 public class GallerBaseActivity extends AppCompatActivity {
 
@@ -41,6 +43,7 @@ public class GallerBaseActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         overridePendingTransition(0, 0);
         super.onCreate(savedInstanceState);
+        new GCMStarter(this).GCMEnable();
         if(isNetworkConnected()){
         }else{
             Toast.makeText(getBaseContext(), "No Internet Access!",  Toast.LENGTH_LONG).show();

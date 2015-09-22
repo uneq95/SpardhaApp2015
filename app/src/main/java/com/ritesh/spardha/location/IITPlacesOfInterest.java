@@ -37,6 +37,8 @@ public class IITPlacesOfInterest {
         IITPlaces.add(new SinglePlaceLocation(1, "SBI Hyderabad Gate", "25.261717", "82.981647"));
         IITPlaces.add(new SinglePlaceLocation(1, "Axis Bank Hyderabad Gate", "25.261593", "82.981642"));
         IITPlaces.add(new SinglePlaceLocation(1, "SBI-BHU", "25.263738", "82.994762"));
+        IITPlaces.add(new SinglePlaceLocation(1, "SBI VT", "25.265331", "82.989635"));
+        IITPlaces.add(new SinglePlaceLocation(1, "Bank of Baroda", "25.265386", "82.989643"));
         IITPlaces.add(new SinglePlaceLocation(2, "IIT-BHU Gymkhana", "25.259176", "82.989229"));
         IITPlaces.add(new SinglePlaceLocation(2, "Rajputana Ground", "25.262499", "82.986691"));
         IITPlaces.add(new SinglePlaceLocation(2, "Amphitheatre", "25.265730", "82.995231"));

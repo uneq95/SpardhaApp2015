@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ritesh.spardha.gcm.GCMStarter;
 import com.ritesh.spardha.spardha2015.R;
 
 import java.io.BufferedInputStream;
@@ -54,6 +55,7 @@ public class Event_Detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sport_final_layout);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        new GCMStarter(this).GCMEnable();
         String activityTitle = getIntent().getStringExtra("sportTitle");
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

@@ -157,9 +157,6 @@
             android:label="Sponsers" >
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
         </activity>
-
-        <activity android:name="com.ritesh.spardha.pinterest.MainActivity"
-            android:label ="pin cat"/>
         <activity android:name=".TestimonialActivity"
             android:label="Testimonials">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
@@ -175,17 +172,9 @@
             android:screenOrientation="sensor" >
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.ritesh.spardha.youtube.YtpChannel"/>
         </activity>
-        <activity android:name=".Sportcard" android:label="sportcard"/>
         <activity android:name=".AboutSpardha"
             android:label="About Spardha">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
-        </activity>
-        <activity android:name="com.ritesh.spardha.adapters.CattestActivity" android:label="Categories">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
     </application>
 

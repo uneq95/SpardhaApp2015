@@ -18,11 +18,6 @@
     <color name="half_black">#808080</color>
     <color name="pink">#e91e63</color>
     <color name="light_green_bkg">#C8E6C9</color>
-
-    <!-- for pinterest -->
-    <color name="blue">#ff82e0ff</color>
-
-
-    <color name="testiColor">#dd3c04</color>
+    <color name="blue">#7733B5E5</color>
 
 </resources>

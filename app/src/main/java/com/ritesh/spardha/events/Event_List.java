@@ -1,6 +1,5 @@
 package com.ritesh.spardha.events;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -9,12 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 
-import com.ritesh.spardha.adapters.CategoriesGridAdapter;
 import com.ritesh.spardha.adapters.CattestAdapter;
+import com.ritesh.spardha.gcm.GCMStarter;
 import com.ritesh.spardha.spardha2015.R;
-import com.ritesh.spardha.spardha2015.SponsersActivity;
 
 /**
  * Created by Abhishek on 8/29/2015.
@@ -22,7 +19,6 @@ import com.ritesh.spardha.spardha2015.SponsersActivity;
 public class Event_List extends AppCompatActivity{
 
     GridView gridView;
-    CategoriesGridAdapter adapter;
     Toolbar toolbar;
     Bundle b;
     Intent intent;
@@ -39,7 +35,7 @@ public class Event_List extends AppCompatActivity{
         String[] colorCodes ={"#e74c3c","#3498db","#e67e22","#9b59b6","#27ae60","#2c3e50","#e74c3c","#3498db","#e67e22","#9b59b6","#27ae60","#2c3e50","#e74c3c","#3498db","#e67e22","#9b59b6","#27ae60","#2c3e50","#e74c3c"};
         gridView = (GridView) findViewById(R.id.gvcattest);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-
+        new GCMStarter(this).GCMEnable();
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

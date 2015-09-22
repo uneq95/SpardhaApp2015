@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.ritesh.spardha.gcm.GCMStarter;
 import com.ritesh.spardha.location.IITPlacesOfInterest;
 import com.ritesh.spardha.location.SinglePlaceLocation;
 
@@ -38,6 +39,7 @@ public class LocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iit_bhu_navigator_layout);
+        new GCMStarter(this).GCMEnable();
         loadLocationData();
         initViews();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -60,7 +62,7 @@ public class LocationActivity extends AppCompatActivity {
     public void loadLocationData() {
         iitPlacesOfInterest = new IITPlacesOfInterest();
         IITPlaces = iitPlacesOfInterest.getIITPlaces();
-        System.out.println("location data loaded");
+       // System.out.println("location data loaded");
     }
 
     public void initViews() {
@@ -68,7 +70,7 @@ public class LocationActivity extends AppCompatActivity {
         spinnerFromPlaceName = (Spinner) findViewById(R.id.spinnerFromPlaceName);
         spinnerToPlaceCategory = (Spinner) findViewById(R.id.spinnerToPlaceCategory);
         spinnerToPlaceName = (Spinner) findViewById(R.id.spinnerToPlaceName);
-        System.out.println("spinners initialised");
+        //System.out.println("spinners initialised");
     }
 
     public void loadLocationLists() {
@@ -82,7 +84,7 @@ public class LocationActivity extends AppCompatActivity {
 
         spinnerFromPlaceCategory.setAdapter(dataAdapter);
         spinnerToPlaceCategory.setAdapter(dataAdapter);
-        System.out.println("category adapters set");
+       // System.out.println("category adapters set");
         spinnerFromPlaceCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -96,12 +98,12 @@ public class LocationActivity extends AppCompatActivity {
 
                 spinnerFromPlaceName.setAdapter(dataAdapter);
                 spinnerCheck[2] = true;
-                System.out.println("inside from place category listener");
-                System.out.println("starting locations list: "+ locationNameListWRTCategory);
-                for(int i=0;i<locationNameListWRTCategory.size();i++){
+                //System.out.println("inside from place category listener");
+                //System.out.println("starting locations list: "+ locationNameListWRTCategory);
+                /*for(int i=0;i<locationNameListWRTCategory.size();i++){
                     syso(locationNameListWRTCategory.get(i));
                 }
-
+*/
             }
 
             @Override
@@ -119,8 +121,8 @@ public class LocationActivity extends AppCompatActivity {
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerToPlaceName.setAdapter(dataAdapter);
                 spinnerCheck[3] = true;
-                System.out.println("inside to place category listener");
-                System.out.println("destination locations list: "+ locationNameListWRTCategory);
+                //System.out.println("inside to place category listener");
+                //System.out.println("destination locations list: "+ locationNameListWRTCategory);
 
             }
 
@@ -133,7 +135,7 @@ public class LocationActivity extends AppCompatActivity {
 
     }
 
-    public void syso(String msg){System.out.println(msg);}
+    //public void syso(String msg){System.out.println(msg);}
     public void setLocationSpinners() {
 
         spinnerFromPlaceName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -142,8 +144,8 @@ public class LocationActivity extends AppCompatActivity {
                 spinnerCheck[0] = true;
                 //startingPoint = (SinglePlaceLocation) parent.getAdapter().getItem(position);
                 startingPoint=startingLocationsListWRTCategory.get(position);
-                System.out.println("selected sp location:" +parent.getAdapter().getItem(position));
-                System.out.println("coded sp location:" +startingPoint.getPlaceName());
+                //System.out.println("selected sp location:" +parent.getAdapter().getItem(position));
+                //System.out.println("coded sp location:" +startingPoint.getPlaceName());
             }
 
             @Override
@@ -158,8 +160,8 @@ public class LocationActivity extends AppCompatActivity {
                 spinnerCheck[1] = true;
                 //destination = (SinglePlaceLocation) parent.getAdapter().getItem(position);
                 destination=destinationLocationListWRTCategory.get(position);
-                System.out.println("selected dp location:" +(parent.getAdapter().getItem(position)));
-                System.out.println("coded dp location:" +destination.getPlaceName());
+               // System.out.println("selected dp location:" +(parent.getAdapter().getItem(position)));
+               // System.out.println("coded dp location:" +destination.getPlaceName());
             }
 
             @Override
@@ -174,8 +176,8 @@ public class LocationActivity extends AppCompatActivity {
         for (int i = 0; i < IITPlaces.size(); i++) {
             if (IITPlaces.get(i).getPlaceCategory() == category) {
                 locationsListWRTCategory.add(IITPlaces.get(i));
-                System.out.println("category: "+IITPlacesOfInterest.Category[category] );
-                System.out.println("iit place: "+ IITPlaces.get(i).getPlaceName());
+               // System.out.println("category: "+IITPlacesOfInterest.Category[category] );
+                //System.out.println("iit place: "+ IITPlaces.get(i).getPlaceName());
 
             }
         }

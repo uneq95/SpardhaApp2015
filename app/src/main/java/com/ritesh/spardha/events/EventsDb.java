@@ -55,7 +55,7 @@ public class EventsDb {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-
+            db.execSQL("DROP TABLE IF EXISTS "+ DATABASE_TABLE);
             db.execSQL("CREATE TABLE " + DATABASE_TABLE +" (" + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_SPORTSNAME + " TEXT NOT NULL, "
                     +KEY_WINNER + " TEXT NOT NULL, "+KEY_RUNNERUP + " TEXT NOT NULL, "+KEY_RULEBOOK + " TEXT NOT NULL, "+KEY_CONTACTA + " TEXT NOT NULL, "+KEY_CONTACTB + " TEXT NOT NULL, "+KEY_NO_A+ " TEXT NOT NULL, "+KEY_NO_B+ " TEXT NOT NULL);");
 

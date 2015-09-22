@@ -17,6 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.ritesh.spardha.gcm.GCMStarter;
 import com.ritesh.spardha.spardha2015.LocationActivity;
 import com.ritesh.spardha.spardha2015.R;
 
@@ -26,13 +27,13 @@ public class MapsActivity extends AppCompatActivity {
     private GoogleMap mMap;
     float zoomlevel = (float) 14.55;
 
-    private final String[] HOSTEL_NAME = {"Visweshwarayya","SN Bose","Aryabhatta","Ramanujan","Dhanrajgiri","Morvi","CV Raman","Rajputana","Limbdi","SC De","Vivekanand","Vishwakarma","Old GSMC"};
+    private final String[] HOSTEL_NAME = {"Visweshwarayya","SN Bose","Aryabhatta","Ramanujan","Dhanrajgiri","Morvi","CV Raman","Rajputana","Limbdi","SC De","Vivekanand","Vishwakarma","GSMC"};
     private final double[] HOSTEL_LATITUDE = {25.262834,25.263125,25.264012,25.263124,25.263912,25.265025,25.265865,25.262418,25.261312,25.260184,25.259272,25.257690,25.260601};
     private final double[] HOSTEL_LONGITUDE = {82.983902,82.983886,82.984352,82.984826,82.986277,82.986382,82.986481,82.986349,82.986524,82.986859,82.987251,82.985695,82.983670};
 
-    private final String[] ATM_NAME = {"SBI Hyderabad Gate","Axis Bank Hyderabad Gate","SBI-BHU"};
-    private final double[] ATM_LATITUDE = {25.261717,25.261593,25.263738};
-    private final double[] ATM_LONGITUDE  = {82.981647,82.981642,82.994762};
+    private final String[] ATM_NAME = {"SBI Hyderabad Gate","Axis Bank Hyderabad Gate","SBI-BHU", "SBI VT", "Bank of Baroda"};
+    private final double[] ATM_LATITUDE = {25.261717,25.261593,25.263738, 25.265331,25.265386};
+    private final double[] ATM_LONGITUDE  = {82.981647,82.981642,82.994762,82.989635,82.989643};
 
     private final String[] VENUE_NAME = {"IIT-BHU Gymkhana","Rajputana Ground","Amphitheatre","Arun Dream Village(ADV)"};
     private final double[] VENUE_LATITUDE = {25.259176,25.262499,25.265730,25.259040};
@@ -51,8 +52,9 @@ public class MapsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_fragment_layout);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        Toast.makeText(this,"click on upper-right corner to navigate",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Click on upper-right corner to navigate",Toast.LENGTH_SHORT).show();
         setSupportActionBar(toolbar);
+        new GCMStarter(this).GCMEnable();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             getSupportActionBar().setElevation(10);

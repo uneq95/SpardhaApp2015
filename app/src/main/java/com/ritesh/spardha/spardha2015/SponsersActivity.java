@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ritesh.spardha.adapters.SponserListAdapter;
+import com.ritesh.spardha.gcm.GCMStarter;
 import com.ritesh.spardha.sponsers.Sponser;
 
 import java.io.File;
@@ -36,6 +37,7 @@ public class SponsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sponsers_activity);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        new GCMStarter(this).GCMEnable();
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

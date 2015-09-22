@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
+import com.ritesh.spardha.gcm.GCMStarter;
+
 /**
  * Created by ritesh_kumar on 12-Sep-15.
  */
@@ -19,6 +21,7 @@ public class AboutSpardha extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aboutspardha2);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        new GCMStarter(this).GCMEnable();
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

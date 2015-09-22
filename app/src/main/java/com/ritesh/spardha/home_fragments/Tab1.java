@@ -33,16 +33,16 @@ public class Tab1 extends Fragment {
         GcmMessageQueueDatabase db = new GcmMessageQueueDatabase(context);
         db.open();
         ArrayList<GcmMessage> gcmMessages = db.fetchAllGcmMessages();
-        System.out.println("msg size: " + gcmMessages.size());
+        //System.out.println("msg size: " + gcmMessages.size());
         db.close();
         gcmMsgList = (ListView) superView.findViewById(R.id.lvUpcomings);
         GcmUpdatesListAdapter adapter = new GcmUpdatesListAdapter(getActivity(), gcmMessages);
-        syso("initialised adapter");
+        //syso("initialised adapter");
         gcmMsgList.setAdapter(adapter);
-        syso("adapter set");
+        //syso("adapter set");
         return superView;
     }
-    private void syso(String msg){
-        System.out.println(msg);
-    }
+    //private void syso(String msg){
+       // System.out.println(msg);
+    //}
 }

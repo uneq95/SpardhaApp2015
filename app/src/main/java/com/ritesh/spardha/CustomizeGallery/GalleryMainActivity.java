@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.ritesh.spardha.gcm.GCMStarter;
 import com.ritesh.spardha.spardha2015.R;
 
 
@@ -30,6 +31,7 @@ public class GalleryMainActivity extends AppCompatActivity{
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gallery_activity_main);
+        new GCMStarter(this).GCMEnable();
         if (savedInstanceState == null) {
             manageFragment(MainFragment.newInstance(isOpenActivitiesActivated), FragmentTags.LIST_BUDDIES, false);
         }
