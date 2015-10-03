@@ -3,13 +3,17 @@ package com.ritesh.spardha.spardha2015;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +21,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ritesh.spardha.gcm.GCMStarter;
+import com.ritesh.spardha.gcm.QuickstartPreferences;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -55,7 +60,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         context = getBaseContext();
 
         setContentView(R.layout.registration_layout_new);
-        new GCMStarter(this).GCMEnable();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)){
+            new GCMStarter(this).GCMEnable();
+        }
         initView();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -231,19 +239,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             List<NameValuePair> nameValuePairs;
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost("http://spardha.co.in/android_recoded_twice.php");
-            //HttpPost httppost = new HttpPost("http://spardusers.host56.com/zyro/Registeration.php");
-            //HttpPost httppost = new HttpPost("http://spardusers.host56.com/spardhagcmfinal/android_recoded_twice.php");
             try {
-               /*JSONObject formData= JsonEncode();
-                BasicNameValuePair json = new BasicNameValuePair("json",formData.toString());
-                nameValuePairs.add(json);*/
                 nameValuePairs = regDataEncoder();
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                /*String jsonToStringFormData= formData.toString();
-                StringEntity stringEntity= new StringEntity(jsonToStringFormData);
-                httppost.setEntity(stringEntity);
-                httppost.setHeader("Accept", "application/json");
-                httppost.setHeader("Content-type", "application/json");*/
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
                 final String response = httpclient.execute(httppost, responseHandler);
                 regDataSentToserver = Integer.parseInt(response) == 200;
@@ -287,31 +285,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         selectedSports = null;
     }
 
-    private JSONObject JsonEncode() {
-        JSONObject registrationData = new JSONObject();
-
-        try {
-            registrationData.put("full_name", fullName);
-            registrationData.put("email", email);
-            registrationData.put("college", college);
-            registrationData.put("city", city);
-            registrationData.put("designation", designation);
-            registrationData.put("contact_num", contactNum);
-            registrationData.put("male_or_female", maleOrFemale);
-            JSONArray sportsArray = new JSONArray();
-            for (int i = 0; i < selectedSports.size(); i++) {
-                sportsArray.put(i, selectedSports.get(i));
-            }
-            registrationData.put("sports", sportsArray);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return registrationData;
-    }
-
     private ArrayList<NameValuePair> regDataEncoder() {
         ArrayList<NameValuePair> regData = new ArrayList<>();
         regData.add(new BasicNameValuePair("full_name", fullName));
@@ -335,4 +308,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return allSportList;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

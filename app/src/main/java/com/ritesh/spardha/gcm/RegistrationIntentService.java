@@ -49,7 +49,6 @@ public class RegistrationIntentService extends IntentService {
     private static final String[] TOPICS = {"global"};
     String TOKEN;
     private static final String SERVER_URL="http://spardusers.host56.com/gcmregister.php";
-    //private static final String SERVER_URL="http://spardha.co.in/gcmregister.php";
 
     public RegistrationIntentService() {
         super(TAG);

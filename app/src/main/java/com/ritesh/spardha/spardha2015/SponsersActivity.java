@@ -2,10 +2,13 @@ package com.ritesh.spardha.spardha2015;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 
 import com.ritesh.spardha.adapters.SponserListAdapter;
 import com.ritesh.spardha.gcm.GCMStarter;
+import com.ritesh.spardha.gcm.QuickstartPreferences;
 import com.ritesh.spardha.sponsers.Sponser;
 
 import java.io.File;
@@ -31,13 +35,15 @@ import java.util.ArrayList;
 public class SponsersActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sponsers_activity);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        new GCMStarter(this).GCMEnable();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)){
+            new GCMStarter(this).GCMEnable();
+        }
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -49,37 +55,8 @@ public class SponsersActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(),"Please connect to the internet!",Toast.LENGTH_LONG).show();
         }
         ListView lv = (ListView) findViewById(R.id.lvSponsers);
-//        String[] sponsers = this.getResources().getStringArray(R.array.sponsers);
-        String[] sponsers ={
-                "http://www.spardha.co.in/img/sponsors/hp.png",
-                "http://www.spardha.co.in/img/sponsors/ucobank.png",
-                "http://www.spardha.co.in/img/sponsors/pepsi.png",
-                "http://www.spardha.co.in/img/sponsors/bob.png",
-                "http://www.spardha.co.in/img/sponsors/paytm.png",
-                "http://www.spardha.co.in/img/sponsors/nokia.png",
-                "http://www.spardha.co.in/img/sponsors/baskin.png",
-                "http://www.spardha.co.in/img/sponsors/amul.png",
-                "http://www.spardha.co.in/img/sponsors/dominos.png",
-                "http://www.spardha.co.in/img/sponsors/mahindra.png",
-                "http://www.spardha.co.in/img/sponsors/godrej.png",
-                "http://www.spardha.co.in/img/sponsors/sail.png",
-                "http://www.spardha.co.in/img/sponsors/intel.png",
-                "http://www.spardha.co.in/img/sponsors/peta.png",
-                "http://www.spardha.co.in/img/sponsors/long/bsa.png",
-                "http://www.spardha.co.in/img/sponsors/long/her.png",
-                "http://www.spardha.co.in/img/sponsors/long/jabong.png",
-                "http://www.spardha.co.in/img/sponsors/long/reebok.png",
-                "http://www.spardha.co.in/img/sponsors/long/ht.png"
-
-        };
-        SponserListAdapter adapter = new SponserListAdapter(sponsers,this);
+        SponserListAdapter adapter = new SponserListAdapter(this);
         lv.setAdapter(adapter);
-        /*ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
-        File directory = contextWrapper.getDir(StorageDirs.spardhaRoot, Context.MODE_PRIVATE);
-        File oldSponsersFolder=new File(directory+File.separator+StorageDirs.prevSponser);
-        File newSponsers= new File(directory+File.separator+StorageDirs.newSponser);
-        if(newSponsers.listFiles().length!=0){
-        }*/
 
     }
 

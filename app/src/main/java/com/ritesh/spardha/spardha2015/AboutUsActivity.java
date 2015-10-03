@@ -2,8 +2,10 @@ package com.ritesh.spardha.spardha2015;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.ritesh.spardha.gcm.GCMStarter;
+import com.ritesh.spardha.gcm.QuickstartPreferences;
 
 /**
  * Created by ritesh_kumar on 11-Aug-15.
@@ -25,7 +28,10 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
-        new GCMStarter(this).GCMEnable();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)){
+            new GCMStarter(this).GCMEnable();
+        }
         initViews();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);

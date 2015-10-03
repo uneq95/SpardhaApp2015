@@ -41,11 +41,6 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mRegistrationProgressBar = (ProgressBar) findViewById(R.id.registrationProgressBar);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!isNetworkConnected() && !sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
-            //showDialog();
-            Toast.makeText(getApplicationContext(), "Please restart the app with Internet Connection to enable live notifications!", Toast.LENGTH_LONG).show();
-
-        }
 
         /*if (isNetworkConnected() &&!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)) {
             System.out.println("inside broadcast receiver");

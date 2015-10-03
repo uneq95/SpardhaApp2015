@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ritesh.spardha.gcm.GCMStarter;
+import com.ritesh.spardha.gcm.QuickstartPreferences;
 import com.ritesh.spardha.location.IITPlacesOfInterest;
 import com.ritesh.spardha.location.SinglePlaceLocation;
 
@@ -39,7 +42,10 @@ public class LocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iit_bhu_navigator_layout);
-        new GCMStarter(this).GCMEnable();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)){
+            new GCMStarter(this).GCMEnable();
+        }
         loadLocationData();
         initViews();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);

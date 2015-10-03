@@ -1,7 +1,9 @@
 package com.ritesh.spardha.spardha2015;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.ritesh.spardha.gcm.GCMStarter;
+import com.ritesh.spardha.gcm.QuickstartPreferences;
 
 /**
  * Created by nikhil on 8/16/2015.
@@ -27,7 +30,10 @@ public class FeedbackActivty extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feedbacklayout);
-        new GCMStarter(this).GCMEnable();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!sharedPreferences.getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false)){
+            new GCMStarter(this).GCMEnable();
+        }
         send = (Button) findViewById(R.id.bsendsuggestion);
         suggestion = (EditText) findViewById(R.id.etsuggestion);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);

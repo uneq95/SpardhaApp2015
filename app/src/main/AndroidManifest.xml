@@ -175,7 +175,11 @@
         <activity android:name=".AboutSpardha"
             android:label="About Spardha">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/>
+
         </activity>
+        <activity android:name=".CampusAmbassadorAct"
+            android:label="Campus Ambassador">
+        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".SpardhaHomeTest"/></activity>
     </application>
 
 

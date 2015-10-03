@@ -30,32 +30,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private String mNavTitles[]; // String Array to store the passed titles Value from MainActivity.java
     private int mIcons[];       // Int Array to store the passed icons resource value from MainActivity.java
-
-    private String name;        //String Resource for header View Name
-    private int profile;        //int Resource for header view profile picture
-    private String email;       //String Resource for header view email
     Context ctx;
 
     // Creating a ViewHolder which extends the RecyclerView View Holder
     // ViewHolder are used to to store the inflated views in order to recycle them
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {//implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         int Holderid;
-
         TextView textView;
         ImageView imageView;
-        ImageView profile;
-        TextView Name;
-        TextView email;
-        ImageButton fb,website,twitter,instagram;
+        ImageButton fb, website, twitter, instagram;
 
         Context context;
 
         public ViewHolder(View itemView, int ViewType, Context c) {                 // Creating ViewHolder Constructor with View and viewType As a parameter
             super(itemView);
             this.context = c;
-//            itemView.setClickable(true);
-//            itemView.setOnClickListener(this);
             // Here we set the appropriate view in accordance with the the view type as passed when the holder object is created
 
             if (ViewType == TYPE_ITEM) {
@@ -67,24 +57,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 fb = (ImageButton) itemView.findViewById(R.id.ib_fblink);
                 twitter = (ImageButton) itemView.findViewById(R.id.ib_twitter);
                 website = (ImageButton) itemView.findViewById(R.id.ib_webLink);
-                instagram=(ImageButton) itemView.findViewById(R.id.ib_instagram);
-//                Name = (TextView) itemView.findViewById(R.id.name);         // Creating Text View object from header.xml for name
-//                email = (TextView) itemView.findViewById(R.id.email);       // Creating Text View object from header.xml for email
-//                profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
+                instagram = (ImageButton) itemView.findViewById(R.id.ib_instagram);
                 Holderid = 0;                                                // Setting holder id = 0 as the object being populated are of type header view
             }
         }
     }
 
 
-   public MyAdapter(String Titles[], int Icons[], String Name, String Email, int Profile, Context passedContext) {
+    public MyAdapter(String Titles[], int Icons[], Context passedContext) {
         // MyAdapter Constructor with titles and icons parameter
         // titles, icons, name, email, profile pic are passed from the main activity as we
         mNavTitles = Titles;                //have seen earlier
-        mIcons = Icons;
-        name = Name;
-        email = Email;
-        profile = Profile;                     //here we assign those passed values to the values we declared here
+        mIcons = Icons;                    //here we assign those passed values to the values we declared here
         //in adapter
         this.ctx = passedContext;
 

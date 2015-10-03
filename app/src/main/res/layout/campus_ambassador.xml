@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8E6C9">
+    <include
+        android:elevation="10dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar">
+    </include>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:paddingLeft="15dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_margin="5dp"
+                android:hint="Full Name"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp"
+                android:inputType="textPersonName"
+                android:id="@+id/etFullName" />
+
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:layout_margin="5dp"
+                android:hint="College"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp"
+                android:inputType="textPersonName"
+                android:id="@+id/etCollege" />
+
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:layout_margin="5dp"
+                android:hint="City"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp"
+                android:inputType="textPersonName"
+                android:id="@+id/etCity" />
+
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:hint="Email Id"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp"
+                android:inputType="textEmailAddress"
+                android:id="@+id/etEmailId" />
+
+            <com.ritesh.spardha.custom_views.ClearableEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="15dp"
+                android:layout_margin="5dp"
+                android:hint="Contact Number"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:padding="10dp"
+                android:inputType="phone"
+                android:id="@+id/etContactNumber" />
+
+
+            <Button
+                android:elevation="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Register"
+                android:id="@+id/btRegister"
+                android:textColor="@color/white"
+                android:background="@color/ColorPrimary"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

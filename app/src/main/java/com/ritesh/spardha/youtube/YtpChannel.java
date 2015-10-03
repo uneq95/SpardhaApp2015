@@ -27,6 +27,7 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -56,6 +57,7 @@ public class YtpChannel extends AppCompatActivity {
 	Toolbar toolbar;
 	ProgressDialog progressDialog;
 	DownloadChannelList download;
+	SwipeRefreshLayout swipeRefreshLayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -64,6 +66,7 @@ public class YtpChannel extends AppCompatActivity {
 		setContentView(R.layout.ytpchannel);
 		progressDialog= new ProgressDialog(this);
 		toolbar = (Toolbar) findViewById(R.id.tool_bar);
+		swipeRefreshLayout =(SwipeRefreshLayout)findViewById(R.id.swipe_refresh_layout);
 		setSupportActionBar(toolbar);
 		ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null) {
@@ -86,6 +89,14 @@ public class YtpChannel extends AppCompatActivity {
 
 			Toast.makeText(getBaseContext(), "No Internet Access!",  Toast.LENGTH_LONG).show();
 		}
+		swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				DownloadChannelList download =new DownloadChannelList(YtpChannel.this);
+				download.execute();
+			}
+		});
+
 
 		
 	}
@@ -156,6 +167,7 @@ public class YtpChannel extends AppCompatActivity {
 					@Override
 					public void run() {
 						Toast.makeText(getApplicationContext(),"Connection Error! Please try again!",Toast.LENGTH_SHORT).show();
+						swipeRefreshLayout.setRefreshing(false);
 					}
 				});
 			}
@@ -205,6 +217,7 @@ public class YtpChannel extends AppCompatActivity {
 			if(progressDialog.isShowing()){
 				progressDialog.dismiss();
 			}
+			swipeRefreshLayout.setRefreshing(false);
 		}
 		
 	}
@@ -218,20 +231,7 @@ public class YtpChannel extends AppCompatActivity {
 		if (item.getItemId() == android.R.id.home) {
 			NavUtils.navigateUpFromSameTask(this);
 		}
-		if (item.getItemId() == R.id.action_refresh) {
-			DownloadChannelList download =new DownloadChannelList(this);
-			download.execute();
-			return true;
-		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_refresh, menu);
-		return true;
 	}
 
 

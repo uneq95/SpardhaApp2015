@@ -39,8 +39,7 @@ public class SponserListAdapter extends BaseAdapter {
 
     };
 
-    public SponserListAdapter(String[] sponsers,Context context) {
-        //this.sponsers=sponsers;
+    public SponserListAdapter(Context context) {
         this.context=context;
     }
 

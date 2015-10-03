@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     android:background="#C8E6C9"
     android:orientation="vertical">
+
     <include
         android:elevation="10dp"
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar">
     </include>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -115,7 +117,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selection for Female Teams"
+                    android:text="Selections for Female Teams"
                     android:id="@+id/btFemaleSelection"
                     android:textColor="@color/white"
                     android:background="@color/ColorPrimary"
@@ -133,10 +135,9 @@
                     android:layout_marginRight="5dp" />
 
                 <Button
-                    android:elevation="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selection for Male Teams"
+                    android:text="Selections for Male Teams"
                     android:id="@+id/btMaleSelection"
                     android:textColor="@color/white"
                     android:background="@color/ColorPrimary"
@@ -145,7 +146,6 @@
             </LinearLayout>
 
             <Button
-                android:elevation="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
