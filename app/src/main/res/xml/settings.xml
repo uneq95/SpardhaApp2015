@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Choose the sports you want to receive notifications for" />
+    <SwitchPreference
+        android:title="Athletics"
+        android:defaultValue="true"
+        android:key="1"/>
+    <SwitchPreference
+        android:title="Cricket"
+        android:defaultValue="true"
+        android:key="2"/>
+    <SwitchPreference
+        android:title="Hockey"
+        android:defaultValue="true"
+        android:key="3"/>
+    <SwitchPreference
+        android:title="Badminton"
+        android:defaultValue="true"
+        android:key="4"/>
+    <SwitchPreference
+        android:title="Football"
+        android:defaultValue="true"
+        android:key="5"/>
+    <SwitchPreference
+        android:title="Basketball"
+        android:defaultValue="true"
+        android:key="6"/>
+    <SwitchPreference
+        android:title="Volleyball"
+        android:defaultValue="true"
+        android:key="7"/>
+    <SwitchPreference
+        android:title="Lawn Tennis"
+        android:defaultValue="true"
+        android:key="8"/>
+    <SwitchPreference
+        android:title="Table Tennis"
+        android:defaultValue="true"
+        android:key="9"/>
+    <SwitchPreference
+        android:title="Handball"
+        android:defaultValue="true"
+        android:key="10"/>
+    <SwitchPreference
+        android:title="Kabaddi"
+        android:defaultValue="true"
+        android:key="11"/>
+    <SwitchPreference
+        android:title="Kho-Kho"
+        android:defaultValue="true"
+        android:key="12"/>
+    <SwitchPreference
+        android:title="Squash"
+        android:defaultValue="true"
+        android:key="13"/>
+    <SwitchPreference
+        android:title="Taekwondo"
+        android:defaultValue="true"
+        android:key="14"/>
+    <SwitchPreference
+        android:title="Boxing"
+        android:defaultValue="true"
+        android:key="15"/>
+    <SwitchPreference
+        android:title="Carrom"
+        android:defaultValue="true"
+        android:key="16"/>
+    <SwitchPreference
+        android:title="Chess"
+        android:defaultValue="true"
+        android:key="17"/>
+    <SwitchPreference
+        android:title="Weight Lifting"
+        android:defaultValue="true"
+        android:key="18"/>
+    <SwitchPreference
+        android:title="Power Lifting"
+        android:defaultValue="true"
+        android:key="19"/>
+</PreferenceScreen>

@@ -16,6 +16,7 @@ public class GcmMessage {
     private String team2;
     private String team1ImgLink;
     private String team2ImgLink;
+    private String sportId;
 
     //elements for message type 2
     private String photoLink;
@@ -26,6 +27,18 @@ public class GcmMessage {
     private String msgBody;
 
 
+    public GcmMessage(int msgType, String sport, String location, String date, String time, String team1, String team2, String team1ImgLink, String team2ImgLink,String sportId) {
+        this.sport = sport;
+        this.msgType = msgType;
+        this.location = location;
+        this.date = date;
+        this.time = time;
+        this.team1 = team1;
+        this.team2 = team2;
+        this.team1ImgLink = team1ImgLink;
+        this.team2ImgLink = team2ImgLink;
+        this.sportId=sportId;
+    }
     public GcmMessage(int msgType, String sport, String location, String date, String time, String team1, String team2, String team1ImgLink, String team2ImgLink) {
         this.sport = sport;
         this.msgType = msgType;
@@ -111,4 +124,6 @@ public class GcmMessage {
     public int getMsgType() {
         return msgType;
     }
+
+    public String getSportId(){return sportId;}
 }

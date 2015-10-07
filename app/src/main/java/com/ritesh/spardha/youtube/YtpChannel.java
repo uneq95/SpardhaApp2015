@@ -127,8 +127,10 @@ public class YtpChannel extends AppCompatActivity {
 			try {
 				HttpClient client = new DefaultHttpClient();
 				Log.d("http","http request set");
-				HttpUriRequest request = new HttpGet("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAAJfgyG3JQ0jm-uYUdx4BD-06MezIIVSI&channelId=UCA8-Lv8lTufkY507CUonbDQ&part=snippet,id&order=date&maxResults=20&type=video");
+				String requestString=String.format("https://www.googleapis.com/youtube/v3/search?key=%s&channelId=%s&part=snippet,id&order=date&maxResults=20&type=video",YoutubeCredentials.DEVELOPER_KEY,YoutubeCredentials.CHANNEL_ID);
+				//HttpUriRequest request = new HttpGet("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAAJfgyG3JQ0jm-uYUdx4BD-06MezIIVSI&channelId=UCA8-Lv8lTufkY507CUonbDQ&part=snippet,id&order=date&maxResults=20&type=video");
 				//HttpUriRequest request = new HttpGet("https://gdata.youtube.com/feeds/api/videos?author=technexiitbhu&v=2&alt=jsonc");
+				HttpUriRequest request = new HttpGet(requestString);
 				HttpResponse response = client.execute(request);
 				Log.d("http response","http request executed");
 				HttpEntity entity = response.getEntity();

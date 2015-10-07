@@ -39,8 +39,8 @@ public class SpardhaHomeTest extends AppCompatActivity {
     int Numboftabs = 2;
     //First We Declare Titles And Icons For Our Navigation Drawer List View
     //This Icons And Titles Are holded in an Array as you can see
-    String TITLES[] = {"Register", "Campus Ambassador", "Contacts", "Get Directions", "Gallery", "Feedback", "About Us"};
-    int ICONS[] = {R.drawable.ic_register, R.drawable.ic_campus_ambassador, R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_feedback, R.drawable.ic_aboutus};
+    String TITLES[] = {"Register", "Campus Ambassador", "Contacts", "Get Directions", "Gallery", "Settings", "Feedback", "About Us"};
+    int ICONS[] = {R.drawable.ic_register, R.drawable.ic_campus_ambassador, R.drawable.ic_contacts, R.drawable.ic_maps, R.drawable.ic_gallery, R.drawable.ic_settings, R.drawable.ic_feedback, R.drawable.ic_aboutus};
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
 
@@ -91,131 +91,134 @@ public class SpardhaHomeTest extends AppCompatActivity {
 
 
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+                                                 @Override
+                                                 public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+                                                     View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
 
 
-                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
-                    Drawer.closeDrawers();
-                    switch (recyclerView.getChildPosition(child)) {
-                    case 1:
-                        startActivity(new Intent(SpardhaHomeTest.this, RegisterActivity.class));
-                        break;
-                    case 2:
-                        startActivity(new Intent(SpardhaHomeTest.this, CampusAmbassadorAct.class));
-                        break;
-                    case 3:
-                        startActivity(new Intent(SpardhaHomeTest.this, ContactActivity.class));
-                        break;
-                    case 4:
-                        startActivity(new Intent(SpardhaHomeTest.this, MapsActivity.class));
-                        break;
-                    case 5:
-                        startActivity(new Intent(SpardhaHomeTest.this, GalleryMainActivity.class));
-                        break;
-                    case 6:
-                        startActivity(new Intent(SpardhaHomeTest.this, FeedbackActivty.class));
-                        break;
-                    case 7:
-                        startActivity(new Intent(SpardhaHomeTest.this, AboutUsActivity.class));
-                        break;
+                                                     if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+                                                         Drawer.closeDrawers();
+                                                         switch (recyclerView.getChildPosition(child)) {
+                                                             case 1:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, RegisterActivity.class));
+                                                                 break;
+                                                             case 2:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, CampusAmbassadorAct.class));
+                                                                 break;
+                                                             case 3:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, ContactActivity.class));
+                                                                 break;
+                                                             case 4:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, MapsActivity.class));
+                                                                 break;
+                                                             case 5:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, GalleryMainActivity.class));
+                                                                 break;
+                                                             case 6:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, SettingsActivity.class));
+                                                                 break;
+                                                             case 7:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, FeedbackActivty.class));
+                                                                 break;
+                                                             case 8:
+                                                                 startActivity(new Intent(SpardhaHomeTest.this, AboutUsActivity.class));
+                                                                 break;
+
+                                                         }
+                                                         return true;
+
+                                                     }
+
+                                                     return false;
+                                                 }
+
+                                                 @Override
+                                                 public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+                                                 }
+
+                                                 @Override
+                                                 public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+                                                 }
+                                             }
+
+        );
+
+
+        mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
+
+        mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
+
+
+        Drawer = (DrawerLayout)
+
+                findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
+
+        mDrawerToggle = new
+
+                ActionBarDrawerToggle(this, Drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+
+                    @Override
+                    public void onDrawerOpened(View drawerView) {
+                        super.onDrawerOpened(drawerView);
+                        // code here will execute once the drawer is opened( As I dont want anything happened whe drawer is
+                        // open I am not going to put anything here)
+                    }
+
+                    @Override
+                    public void onDrawerClosed(View drawerView) {
+                        super.onDrawerClosed(drawerView);
+                        // Code here will execute once drawer is closed
+                    }
+
 
                 }
-                return true;
 
-            }
+        ; // Drawer Toggle Object Made
+        Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
+        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
 
-            return false;
-        }
+        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+        adapter = new
 
-        @Override
-        public void onTouchEvent (RecyclerView recyclerView, MotionEvent motionEvent){
+                ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs
 
-        }
+        );
 
-        @Override
-        public void onRequestDisallowInterceptTouchEvent ( boolean disallowIntercept){
+        // Assigning ViewPager View and setting the adapter
+        pager = (ViewPager)
 
-        }
-    }
+                findViewById(R.id.pager);
 
-    );
+        pager.setAdapter(adapter);
 
+        // Assiging the Sliding Tab Layout View
+        tabs = (SlidingTabLayout)
 
-    mLayoutManager=new LinearLayoutManager(this);                 // Creating a layout Manager
+                findViewById(R.id.tabs);
 
-    mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
+        tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+        tabs.setSelected(true);
+        //tabs.setSelectedIndicatorColors(getResources().getColor(R.color.white));
+        tabs.setSelectedIndicatorColors(R.color.white);
+        // Setting Custom Color for the Scroll bar indicator of the Tab View
+        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer()
 
+                                   {
+                                       @Override
+                                       public int getIndicatorColor(int position) {
+                                           return getResources().getColor(R.color.tabsScrollColor);
+                                       }
+                                   }
 
-    Drawer=(DrawerLayout)
-
-    findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
-
-    mDrawerToggle=new
-
-    ActionBarDrawerToggle(this,Drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
-
-        @Override
-        public void onDrawerOpened (View drawerView){
-            super.onDrawerOpened(drawerView);
-            // code here will execute once the drawer is opened( As I dont want anything happened whe drawer is
-            // open I am not going to put anything here)
-        }
-
-        @Override
-        public void onDrawerClosed (View drawerView){
-            super.onDrawerClosed(drawerView);
-            // Code here will execute once drawer is closed
-        }
+        );
+        tabs.setSoundEffectsEnabled(true);
+        tabs.setSmoothScrollingEnabled(true);
+        // Setting the ViewPager For the SlidingTabsLayout
+        tabs.setViewPager(pager);
 
 
     }
-
-    ; // Drawer Toggle Object Made
-    Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
-    mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
-
-    // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-    adapter=new
-
-    ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs
-
-    );
-
-    // Assigning ViewPager View and setting the adapter
-    pager=(ViewPager)
-
-    findViewById(R.id.pager);
-
-    pager.setAdapter(adapter);
-
-    // Assiging the Sliding Tab Layout View
-    tabs=(SlidingTabLayout)
-
-    findViewById(R.id.tabs);
-
-    tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
-    tabs.setSelected(true);
-    //tabs.setSelectedIndicatorColors(getResources().getColor(R.color.white));
-    tabs.setSelectedIndicatorColors(R.color.white);
-    // Setting Custom Color for the Scroll bar indicator of the Tab View
-    tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer()
-
-    {
-        @Override
-        public int getIndicatorColor ( int position){
-        return getResources().getColor(R.color.tabsScrollColor);
-    }
-    }
-
-    );
-    tabs.setSoundEffectsEnabled(true);
-    tabs.setSmoothScrollingEnabled(true);
-    // Setting the ViewPager For the SlidingTabsLayout
-    tabs.setViewPager(pager);
-
-
-}
 
 }

@@ -20,14 +20,18 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.gcm.GcmListenerService;
 import com.ritesh.spardha.spardha2015.R;
 import com.ritesh.spardha.spardha2015.SpardhaHomeTest;
+
+import java.util.ArrayList;
 
 public class MyGcmListenerService extends GcmListenerService {
 
@@ -50,10 +54,13 @@ public class MyGcmListenerService extends GcmListenerService {
         switch (msg.getMsgType()) {
 
             case 1:
-                sendNotification1(msg);
-                db.open();
-                db.insertMsgType1(msg);
-                db.close();
+                if(checkSettings(msg.getSportId())){
+                    sendNotification1(msg);
+                    db.open();
+                    db.insertMsgType1(msg);
+                    db.close();
+                }
+
                 break;
             case 2:
                 sendNotification2(msg);
@@ -172,9 +179,10 @@ public class MyGcmListenerService extends GcmListenerService {
                 String team1 = data.getString("team1");
                 String team2 = data.getString("team2");
                 String team1ImgLink =data.getString("team1ImgLink");
+                String sportId =data.getString("sportId");
                 System.out.println("link 1 : "+data.getString("team1ImgLink"));
                 String team2ImgLink =data.getString("team2ImgLink");
-                msg = new GcmMessage(1, sport, location, date, time, team1, team2,team1ImgLink,team2ImgLink);
+                msg = new GcmMessage(1, sport, location, date, time, team1, team2,team1ImgLink,team2ImgLink,sportId);
                 break;
             case 2:
                 String imageLink = data.getString("imageLink");
@@ -188,5 +196,12 @@ public class MyGcmListenerService extends GcmListenerService {
                 break;
         }
         return msg;
+    }
+
+    private boolean checkSettings(String sportsId){
+        int sportsIdInInteger=Integer.parseInt(sportsId);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        return prefs.getBoolean(Integer.toString(sportsIdInInteger),true);
+
     }
 }

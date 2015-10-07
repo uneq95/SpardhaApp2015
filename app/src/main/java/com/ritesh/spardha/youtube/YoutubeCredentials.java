@@ -5,7 +5,8 @@ package com.ritesh.spardha.youtube;
 /**
  * Static container class for holding a reference to your YouTube Developer Key.
  */
-public class DeveloperKey {
+public class YoutubeCredentials {
+
 
   /**
    * Please replace this with a valid API key which is enabled for the
@@ -14,5 +15,6 @@ public class DeveloperKey {
    * to register a new developer key.
    */
   public static final String DEVELOPER_KEY = "AIzaSyAAJfgyG3JQ0jm-uYUdx4BD-06MezIIVSI";
+  public static final String CHANNEL_ID = "UCA8-Lv8lTufkY507CUonbDQ";
 
 }
