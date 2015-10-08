@@ -45,7 +45,7 @@ public class Event_Detail extends AppCompatActivity {
     public static final int progress_bar_type = 0;
     int url_no;
     String address = "http://www.spardha.co.in/file/";
-    String[] RuleBookUrl = {"athletics.pdf", "badminton.pdf", "basketball.pdf", "boxing.pdf", "carrom.pdf", "chess.pdf", "cricket.pdf", "football.pdf", "handball.pdf", "hockey.pdf",
+    String[] RuleBookUrl = {"athletics.pdf", "badminton.pdf", "basketball.pdf", "boxing.pdf", "carrom.pdf", "chess_updated.pdf", "cricket.pdf", "football.pdf", "handball.pdf", "hockey.pdf",
             "kabaddi.pdf", "kho-kho.pdf", "lifting.pdf","squash.pdf", "tae-kwon-do.pdf", "tennis.pdf", "table-tennis.pdf", "volleyball.pdf", "lifting.pdf", "winner-athletics.pdf", "winner-tae-kwon-do.pdf"};
 
     Toolbar toolbar;
@@ -170,7 +170,7 @@ public class Event_Detail extends AppCompatActivity {
 
                 String final_url = address + RuleBookUrl[url_no];
 
-                if (req_no == 4 || req_no == 5 ||req_no==19) {
+                if (req_no == 5 ) {
                     Toast.makeText(getBaseContext(), "Will be Uploaded Soon", Toast.LENGTH_LONG).show();
                 } else {
 
